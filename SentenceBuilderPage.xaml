@@ -9,7 +9,28 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-       
+        <!--Adapted From https://code.msdn.microsoft.com/windowsapps/How-to-upload-an-image-to-3293e4a8/sourcecode?fileId=153875&pathId=1744162746-->
+        <Grid x:Name="contentGrid" Margin="120,30,0,30">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock HorizontalAlignment="Left" Text="Upload Image" FontSize="36" Grid.Row="0"/>
+            <TextBlock Text="Select image to upload" Grid.Row="1"/>
+
+            <StackPanel x:Name="inputPanel" Orientation="Horizontal" Margin="0,20,0,20" Grid.Row="2">
+                <TextBox x:Name="imagePath" Width="300" HorizontalAlignment="Left"/>
+                <Button x:Name="uploadButton" Content="Select Image" Click="UploadButton_Click"/>
+            </StackPanel>
+
+            <Image x:Name="uploadedImage" HorizontalAlignment="Left" Grid.Row="3"></Image>
+
+        </Grid>
+        
     </Grid>
     
 </Page>
