@@ -129,6 +129,13 @@ namespace AutismCommunicationApp
             }
         }
 
+        // ==========  Page Navigation  ==========
+        // Adapted from https://www.tutorialspoint.com/windows10_development/windows10_development_navigation.htm
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(SentenceBuilderPage));
+        }
+
         #region Offline sync
 #if OFFLINE_SYNC_ENABLED
         private async Task InitLocalStoreAsync()
