@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,7 +25,7 @@ using Windows.UI.Xaml.Navigation;
 namespace AutismCommunicationApp
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    ///     Page is used to load an image from the devices local storage and save it to the app 
     /// </summary>
     public sealed partial class SentenceBuilderPage : Page
     {
@@ -33,130 +34,65 @@ namespace AutismCommunicationApp
             this.InitializeComponent();
         }
 
-        // Copyright of https://code.msdn.microsoft.com/windowsapps/How-to-upload-an-image-to-3293e4a8/sourcecode?fileId=153875&pathId=2041250276
+        // Button will open up the file explorer
         async void UploadButton_Click(object sender, RoutedEventArgs e)
         {
-            var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
-            picker.SuggestedStartLocation =
-                Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
-            picker.FileTypeFilter.Add(".jpg");
-            picker.FileTypeFilter.Add(".jpeg");
-            picker.FileTypeFilter.Add(".png");
 
-            Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
-            if (file != null)
+
+            /*
+             * 
+             *  Adapted from https://code.msdn.microsoft.com/windowsapps/How-to-upload-an-image-to-3293e4a8/sourcecode?fileId=153875&pathId=2041250276
+             * 
+            */
+
+            // Be able to open the file explorer
+            var pickerOpen = new Windows.Storage.Pickers.FileOpenPicker();
+
+            // Add the types of files that are suggested to the user
+            pickerOpen.FileTypeFilter.Add(".jpg");
+            pickerOpen.FileTypeFilter.Add(".jpeg");
+            pickerOpen.FileTypeFilter.Add(".png");
+
+            /*
+             * 
+             *  Copyright http://lunarfrog.com/blog/how-to-save-writeablebitmap-as-png-file
+             * 
+            */
+
+            // ****************  Comment this code  ****************
+            WriteableBitmap bitmap = new WriteableBitmap(50, 50);
+            StorageFile file = await pickerOpen.PickSingleFileAsync();
+
+            using (IRandomAccessStream fileStream = await file.OpenAsync(FileAccessMode.Read))
             {
-                // Application now has read/write access to the picked file 
-                imagePath.Text = file.Path;
-
-                // Open a stream for the selected file. 
-                // The 'using' block ensures the stream is disposed 
-                // after the image is loaded. 
-                using (Windows.Storage.Streams.IRandomAccessStream fileStream =
-                    await file.OpenAsync(Windows.Storage.FileAccessMode.Read))
-                {
-                    // Set the image source to the selected bitmap. 
-                    BitmapImage bitmapImage = new BitmapImage();
-                    bitmapImage.SetSource(fileStream);
-                    uploadedImage.Source = bitmapImage;
-
-                    // Save the image here
-                    // Have a new button for saving
-                    FileSavePicker fileSavePicker = new FileSavePicker();
-                    fileSavePicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-                    //fileSavePicker.FileTypeChoices.Add("JPEG files", new List<string>() { ".jpg", ".jpeg", ".png" });
-                    fileSavePicker.FileTypeChoices.Add("PNG files", new List<string>() { ".png" });
-                    fileSavePicker.SuggestedFileName = "image";
-
-                    var outputFile = await fileSavePicker.PickSaveFileAsync();
-
-                    if (outputFile == null)
-                    {
-                        // The user cancelled the picking operation
-                        return;
-                    }
-                }
+                await bitmap.SetSourceAsync(fileStream);
             }
 
+            FileSavePicker picker = new FileSavePicker();
+            picker.FileTypeChoices.Add("PNG File", new List<string> { ".png"});
+            picker.FileTypeChoices.Add("JPG File", new List<string> { ".jpg" });
+            picker.FileTypeChoices.Add("JPEG File", new List<string> { ".jpeg" });
+            StorageFile destFile = await picker.PickSaveFileAsync();
 
-
-            /*FileOpenPicker fileOpenPicker = new FileOpenPicker();
-            fileOpenPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-            fileOpenPicker.FileTypeFilter.Add(".jpg");
-            fileOpenPicker.FileTypeFilter.Add(".jpeg");
-            fileOpenPicker.FileTypeFilter.Add(".png");
-            fileOpenPicker.ViewMode = PickerViewMode.Thumbnail;
-
-            var inputFile = await fileOpenPicker.PickSingleFileAsync();
-
-            if (inputFile == null)
+            // ----------------  AN EXCEPTION HERE WILL NEED TO BE HANDLED IN CASE USER EXITS BEFORE SAVING PICTURE  ----------------
+            using (IRandomAccessStream stream = await destFile.OpenAsync(FileAccessMode.ReadWrite))
             {
-                // The user cancelled the picking operation
-                return;
+                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
+                Stream pixelStream = bitmap.PixelBuffer.AsStream();
+                byte[] pixels = new byte[pixelStream.Length];
+                await pixelStream.ReadAsync(pixels, 0, pixels.Length);
+
+                encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Ignore,
+                            (uint)bitmap.PixelWidth, (uint)bitmap.PixelHeight, 96.0, 96.0, pixels);
+                await encoder.FlushAsync();
             }
-
-            SoftwareBitmap softwareBitmap;
-
-            using (IRandomAccessStream stream = await inputFile.OpenAsync(FileAccessMode.Read))
-            {
-                // Create the decoder from the stream
-                BitmapDecoder decoder = await BitmapDecoder.CreateAsync(stream);
-
-                // Get the SoftwareBitmap representation of the file
-                softwareBitmap = await decoder.GetSoftwareBitmapAsync();
-            }*/ 
 
         }// End method UploadButton_Click
 
-        
-        /*
-        private async void SaveSoftwareBitmapToFile(SoftwareBitmap softwareBitmap, StorageFile outputFile)
-        {
 
-            using (IRandomAccessStream stream = await outputFile.OpenAsync(FileAccessMode.ReadWrite))
-            {
-                // Create an encoder with the desired format
-                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.JpegEncoderId, stream);
+        // ----------------  NEED NEW BUTTON TO ASK IF USER WANTS TO SAVE THE SELECTED IMAGE  ----------------
 
-                // Set the software bitmap
-                encoder.SetSoftwareBitmap(softwareBitmap);
-
-                // Set additional encoding parameters, if needed
-                encoder.BitmapTransform.ScaledWidth = 320;
-                encoder.BitmapTransform.ScaledHeight = 240;
-                encoder.BitmapTransform.Rotation = Windows.Graphics.Imaging.BitmapRotation.Clockwise90Degrees;
-                encoder.BitmapTransform.InterpolationMode = BitmapInterpolationMode.Fant;
-                encoder.IsThumbnailGenerated = true;
-
-                try
-                {
-                    await encoder.FlushAsync();
-                }
-                catch (Exception err)
-                {
-                    switch (err.HResult)
-                    {
-                        case unchecked((int)0x88982F81): //WINCODEC_ERR_UNSUPPORTEDOPERATION
-                                                         // If the encoder does not support writing a thumbnail, then try again
-                                                         // but disable thumbnail generation.
-                            encoder.IsThumbnailGenerated = false;
-                            break;
-                        default:
-                            throw err;
-                    }
-                }
-
-                if (encoder.IsThumbnailGenerated == false)
-                {
-                    await encoder.FlushAsync();
-                }
-
-
-            }// End using
-
-        }// End method SaveSoftwareBitmapToFile
-        */
+       
     }// End class
-  
+
 }// End namespace
