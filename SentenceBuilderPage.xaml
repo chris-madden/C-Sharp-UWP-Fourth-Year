@@ -16,6 +16,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -23,8 +24,21 @@
             <TextBlock Text="Select image to upload" Grid.Row="1"/>
 
             <StackPanel x:Name="inputPanel" Orientation="Horizontal" Margin="0,20,0,20" Grid.Row="2">
+                
+                <!--  Stores the path of the selected image  -->
                 <TextBox x:Name="imagePath" Width="300" HorizontalAlignment="Left"/>
+                
+                <!--  Button to open file explorer  -->
                 <Button x:Name="uploadButton" Content="Select Image" Click="UploadButton_Click"/>
+            </StackPanel>
+
+                
+            <!--  Stack panel containing save button-->
+            <StackPanel x:Name="savePanel" Orientation="Horizontal" Margin="0,20,0,20" Grid.Row="3">
+
+                <!--  Button to save file -->
+                <Button x:Name="saveButton" Content="Save" Click="saveButton_Click"/>
+
             </StackPanel>
 
             <Image x:Name="uploadedImage" HorizontalAlignment="Left" Grid.Row="3"></Image>

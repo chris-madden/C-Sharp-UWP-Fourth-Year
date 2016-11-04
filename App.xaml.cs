@@ -15,10 +15,12 @@ namespace AutismCommunicationApp
     {
         // This MobileServiceClient has been configured to communicate with the Azure Mobile Service and
         // Azure Gateway using the application key. You're all set to start working with your Mobile Service!
+
+        // **********  CLOUD ADDRESS FOR SAVING DATA =  https://autismcommunicationapp.azurewebsites.net**********
         public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://autismcommunicationapp.azurewebsites.net"
         );
-
+        
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().

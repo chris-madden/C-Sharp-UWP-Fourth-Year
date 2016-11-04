@@ -29,6 +29,10 @@ namespace AutismCommunicationApp
     /// </summary>
     public sealed partial class SentenceBuilderPage : Page
     {
+
+        WriteableBitmap bitmap;
+        StorageFile storageFile;
+
         public SentenceBuilderPage()
         {
             this.InitializeComponent();
@@ -46,53 +50,74 @@ namespace AutismCommunicationApp
             */
 
             // Be able to open the file explorer
-            var pickerOpen = new Windows.Storage.Pickers.FileOpenPicker();
+            var pickerOpen = new FileOpenPicker();
 
             // Add the types of files that are suggested to the user
             pickerOpen.FileTypeFilter.Add(".jpg");
             pickerOpen.FileTypeFilter.Add(".jpeg");
             pickerOpen.FileTypeFilter.Add(".png");
 
-            /*
-             * 
-             *  Copyright http://lunarfrog.com/blog/how-to-save-writeablebitmap-as-png-file
-             * 
-            */
+            storageFile = await pickerOpen.PickSingleFileAsync();
 
-            // ****************  Comment this code  ****************
-            WriteableBitmap bitmap = new WriteableBitmap(50, 50);
-            StorageFile file = await pickerOpen.PickSingleFileAsync();
+            bitmap = new WriteableBitmap(50, 50);
 
-            using (IRandomAccessStream fileStream = await file.OpenAsync(FileAccessMode.Read))
+            if (storageFile != null)
             {
-                await bitmap.SetSourceAsync(fileStream);
-            }
+                // Save path to text box
+                imagePath.Text = storageFile.Path;
 
-            FileSavePicker picker = new FileSavePicker();
-            picker.FileTypeChoices.Add("PNG File", new List<string> { ".png"});
-            picker.FileTypeChoices.Add("JPG File", new List<string> { ".jpg" });
-            picker.FileTypeChoices.Add("JPEG File", new List<string> { ".jpeg" });
-            StorageFile destFile = await picker.PickSaveFileAsync();
-
-            // ----------------  AN EXCEPTION HERE WILL NEED TO BE HANDLED IN CASE USER EXITS BEFORE SAVING PICTURE  ----------------
-            using (IRandomAccessStream stream = await destFile.OpenAsync(FileAccessMode.ReadWrite))
-            {
-                BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
-                Stream pixelStream = bitmap.PixelBuffer.AsStream();
-                byte[] pixels = new byte[pixelStream.Length];
-                await pixelStream.ReadAsync(pixels, 0, pixels.Length);
-
-                encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Ignore,
-                            (uint)bitmap.PixelWidth, (uint)bitmap.PixelHeight, 96.0, 96.0, pixels);
-                await encoder.FlushAsync();
-            }
+            }// End if 
 
         }// End method UploadButton_Click
 
+        // Button will save the image 
+        async void saveButton_Click(object sender, RoutedEventArgs e)
+        {
 
-        // ----------------  NEED NEW BUTTON TO ASK IF USER WANTS TO SAVE THE SELECTED IMAGE  ----------------
+            // if the file has contents
+            if (storageFile != null)
+            {
 
-       
+                /*
+                * 
+                *  Copyright http://lunarfrog.com/blog/how-to-save-writeablebitmap-as-png-file
+                * 
+               */
+
+                // Read inage into an access stream
+                using (IRandomAccessStream fileStream = await storageFile.OpenAsync(FileAccessMode.Read))
+                {
+                    await bitmap.SetSourceAsync(fileStream);
+                }
+
+                // Open the save file window
+                FileSavePicker picker = new FileSavePicker();
+
+                // Give options for choosing a file extension
+                picker.FileTypeChoices.Add("PNG File", new List<string> { ".png" });
+                picker.FileTypeChoices.Add("JPG File", new List<string> { ".jpg" });
+                picker.FileTypeChoices.Add("JPEG File", new List<string> { ".jpeg" });
+
+                StorageFile destFile = await picker.PickSaveFileAsync();
+
+                // ----------------  AN EXCEPTION HERE WILL NEED TO BE HANDLED IN CASE USER EXITS BEFORE SAVING PICTURE  ----------------
+                using (IRandomAccessStream stream = await destFile.OpenAsync(FileAccessMode.ReadWrite))
+                {
+                    BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
+                    Stream pixelStream = bitmap.PixelBuffer.AsStream();
+                    byte[] pixels = new byte[pixelStream.Length];
+                    await pixelStream.ReadAsync(pixels, 0, pixels.Length);
+
+                    encoder.SetPixelData(BitmapPixelFormat.Bgra8, BitmapAlphaMode.Ignore,
+                   (uint)bitmap.PixelWidth, (uint)bitmap.PixelHeight, 96.0, 96.0, pixels);
+                    await encoder.FlushAsync();
+
+                }// End using
+
+            }// End if
+           
+        }// End saveButton_Click
+
     }// End class
 
 }// End namespace
