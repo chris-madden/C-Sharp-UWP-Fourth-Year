@@ -2,6 +2,7 @@
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -13,6 +14,12 @@ namespace AutismCommunicationApp
     /// </summary>
     sealed partial class App : Application
     {
+
+       /* Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+        Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+        */
+      
+
         // This MobileServiceClient has been configured to communicate with the Azure Mobile Service and
         // Azure Gateway using the application key. You're all set to start working with your Mobile Service!
 
@@ -75,6 +82,7 @@ namespace AutismCommunicationApp
             }
             // Ensure the current window is active
             Window.Current.Activate();
+
         }
 
         /// <summary>

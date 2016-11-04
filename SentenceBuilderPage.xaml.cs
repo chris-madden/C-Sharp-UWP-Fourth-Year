@@ -1,24 +1,14 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Graphics.Imaging;
 using Windows.Storage;
 using Windows.Storage.Pickers;
-using Windows.Storage.Pickers.Provider;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -41,7 +31,6 @@ namespace AutismCommunicationApp
         // Button will open up the file explorer
         async void UploadButton_Click(object sender, RoutedEventArgs e)
         {
-
 
             /*
              * 
@@ -98,10 +87,22 @@ namespace AutismCommunicationApp
                 picker.FileTypeChoices.Add("JPG File", new List<string> { ".jpg" });
                 picker.FileTypeChoices.Add("JPEG File", new List<string> { ".jpeg" });
 
-                StorageFile destFile = await picker.PickSaveFileAsync();
+                //StorageFile destFile = await picker.PickSaveFileAsync();
 
-                // ----------------  AN EXCEPTION HERE WILL NEED TO BE HANDLED IN CASE USER EXITS BEFORE SAVING PICTURE  ----------------
-                using (IRandomAccessStream stream = await destFile.OpenAsync(FileAccessMode.ReadWrite))
+                /*
+                 * 
+                 *  adapted from  http://stackoverflow.com/questions/34362838/storing-a-bitmapimage-in-localfolder-uwp
+                 * 
+                */
+
+                // variable is pointing to the localFolder location and creating a new folder called Pictures where it is then pointing to that folder
+                StorageFolder pictureFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("Pictures", CreationCollisionOption.OpenIfExists);
+
+                // Image is being named automically here ***** NEEDS TO B3 FIXED *****
+                var file = await pictureFolder.CreateFileAsync("Test.jpg", CreationCollisionOption.ReplaceExisting);
+
+                // Writes the image to the devices local storage 
+                using (IRandomAccessStream stream = await file.OpenAsync(FileAccessMode.ReadWrite))
                 {
                     BitmapEncoder encoder = await BitmapEncoder.CreateAsync(BitmapEncoder.PngEncoderId, stream);
                     Stream pixelStream = bitmap.PixelBuffer.AsStream();
@@ -117,6 +118,22 @@ namespace AutismCommunicationApp
             }// End if
            
         }// End saveButton_Click
+
+        // Save to local data
+        async void localDataButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            //Create dataFile.txt in LocalFolder and write “My text” to it 
+            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+            StorageFile sampleFile = await localFolder.CreateFileAsync("newFile.txt");
+            await FileIO.WriteTextAsync(sampleFile, "My text");
+
+            /*
+            //Read the first line of dataFile.txt in LocalFolder and store it in a String
+            StorageFile file = await localFolder.GetFileAsync("dataFile.txt");
+            String fileContent = await FileIO.ReadTextAsync(file);
+            */
+        }
 
     }// End class
 

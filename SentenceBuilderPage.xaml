@@ -24,15 +24,15 @@
             <TextBlock Text="Select image to upload" Grid.Row="1"/>
 
             <StackPanel x:Name="inputPanel" Orientation="Horizontal" Margin="0,20,0,20" Grid.Row="2">
-                
+
                 <!--  Stores the path of the selected image  -->
                 <TextBox x:Name="imagePath" Width="300" HorizontalAlignment="Left"/>
-                
+
                 <!--  Button to open file explorer  -->
                 <Button x:Name="uploadButton" Content="Select Image" Click="UploadButton_Click"/>
             </StackPanel>
 
-                
+
             <!--  Stack panel containing save button-->
             <StackPanel x:Name="savePanel" Orientation="Horizontal" Margin="0,20,0,20" Grid.Row="3">
 
@@ -41,10 +41,19 @@
 
             </StackPanel>
 
+            <StackPanel x:Name="testLocalDataPanel" Orientation="Horizontal" Margin="80,20,0,20" Grid.Row="3">
+                
+                <Button x:Name="localDataButton" Content="Local " Click="localDataButton_Click" VerticalAlignment="Bottom"/>
+
+                <!--  Button to save file -->
+
+            </StackPanel>
+
+            <!--  GET WORKING LATER  -->
             <Image x:Name="uploadedImage" HorizontalAlignment="Left" Grid.Row="3"></Image>
 
         </Grid>
-        
+
     </Grid>
-    
+
 </Page>
