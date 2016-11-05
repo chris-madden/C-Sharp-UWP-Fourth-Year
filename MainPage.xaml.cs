@@ -136,6 +136,11 @@ namespace AutismCommunicationApp
             this.Frame.Navigate(typeof(SentenceBuilderPage));
         }
 
+        private void page2Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DisplayPictures));
+        }
+
         #region Offline sync
 #if OFFLINE_SYNC_ENABLED
         private async Task InitLocalStoreAsync()

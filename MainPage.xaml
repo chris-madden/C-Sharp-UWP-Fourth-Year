@@ -120,6 +120,7 @@
                         </StackPanel>
                     </Button>
                     <Button Content = "Go to Page 1" Margin = "74,-58,-10.333,666" Click = "Button_Click"/>
+                    <Button Content = "Go to Page 2" Margin = "-207,151,0,433" Click = "page2Button_Click" Height="56"/>
                 </RelativePanel>
 
                 <ScrollViewer Grid.Row="1" Margin="0,10,0,0" 
