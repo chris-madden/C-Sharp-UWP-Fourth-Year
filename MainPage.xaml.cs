@@ -36,7 +36,7 @@ namespace AutismCommunicationApp
             this.InitializeComponent();
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
 #if OFFLINE_SYNC_ENABLED
             await InitLocalStoreAsync(); // offline sync
@@ -162,5 +162,10 @@ namespace AutismCommunicationApp
         }
 #endif
         #endregion
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(UI_Page));
+        }
     }
 }

@@ -8,6 +8,7 @@
     mc:Ignorable="d">
 
     <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
                 <VisualState x:Name="NarrowState">
@@ -66,7 +67,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!--TitleGrid contains the name of the application and page title-->
+            <!--TitleGrid contains the name of the application and page title -->
             <Grid x:Name="TitleGrid" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,16">
                 <StackPanel>
                     <TextBlock Foreground="#0094ff" FontFamily="Segoe UI Light" Margin="0,0,0,6">AZURE APP SERVICE</TextBlock>
@@ -74,7 +75,9 @@
                 </StackPanel>
             </Grid>
 
-            <!--ContentPanel - place additional content here-->
+
+
+            <!--ContentPanel - place additional content here  -->
             <Grid x:Name="ContentPanel" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -121,6 +124,7 @@
                     </Button>
                     <Button Content = "Go to Page 1" Margin = "74,-58,-10.333,666" Click = "Button_Click"/>
                     <Button Content = "Go to Page 2" Margin = "-207,151,0,433" Click = "page2Button_Click" Height="56"/>
+                    <Button Content = "Go to Page 3" Margin = "-41,161,-65,423" Click = "Button_Click_1" Height="56"/>
                 </RelativePanel>
 
                 <ScrollViewer Grid.Row="1" Margin="0,10,0,0" 
@@ -142,6 +146,9 @@
                 </ScrollViewer>
             </Grid>
         </Grid>
+      
+        
+        
     </Grid>
-
+   
 </Page>

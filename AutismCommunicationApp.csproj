@@ -109,6 +109,9 @@
     <Compile Include="SentenceBuilderPage.xaml.cs">
       <DependentUpon>SentenceBuilderPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI_Page.xaml.cs">
+      <DependentUpon>UI_Page.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -143,6 +146,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SentenceBuilderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
