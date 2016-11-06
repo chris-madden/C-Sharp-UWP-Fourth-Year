@@ -24,12 +24,15 @@
 
         <Image x:Name="firstImage" 
                HorizontalAlignment="Left" 
-               Height="800"
-               Width="150"
-               Grid.Row="1"></Image>
+               Height="200"
+               Width="200"
+               Grid.Row="1"
+               CanDrag="True"></Image>
 
         <Image x:Name="secondImage" 
                HorizontalAlignment="Left" 
+               Height="200"
+               Width="200"
                Grid.Row="2"></Image>
 
     </Grid>

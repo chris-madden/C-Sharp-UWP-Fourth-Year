@@ -1,21 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Diagnostics;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -26,6 +18,10 @@ namespace AutismCommunicationApp
     /// </summary>
     public sealed partial class DisplayPictures : Page
     {
+
+        // A list that can store Bitmaps 
+        List<BitmapImage> storeBitmaps = new List<BitmapImage>();
+
         public DisplayPictures()
         {
             this.InitializeComponent();
@@ -35,23 +31,49 @@ namespace AutismCommunicationApp
         async void loadImagesButton_Click(object sender, RoutedEventArgs e)
         {
 
+            /*  =====  THIS BLOCK OF CODE GETS 1 FILE AND CONVERTS IT TO A BITMAP IMAGE  =====
+            // Point to Local folder
+            StorageFolder folder = ApplicationData.Current.LocalFolder;
+            // Point to pictures folder in the local folder
+            StorageFolder picturesSubFolder = await folder.GetFolderAsync("Pictures");
+            // Get the file called Test.jpg in the pictures subfolder
+            StorageFile file = await picturesSubFolder.GetFileAsync("Test.jpg");
+            // ********** adapted from  http://windowsapptutorials.com/tips/storagefile/convert-storagefile-to-a-bitmapimage-in-universal-windows-apps/  **********
+            // Convert storage file to bitmap image
+            BitmapImage bitmapImage = await ImageUtils.StorageFileToBitmapImage(file);
+            firstImage.Source = bitmapImage;
+            */
+
             // Point to Local folder
             StorageFolder folder = ApplicationData.Current.LocalFolder;
 
             // Point to pictures folder in the local folder
             StorageFolder picturesSubFolder = await folder.GetFolderAsync("Pictures");
 
-            // Get the file called Test.jpg in the pictures subfolder
-            StorageFile file = await picturesSubFolder.GetFileAsync("Test.jpg");
+            // Read all the files in the Pictures folder and store them in a list
+            IReadOnlyList<StorageFile> pictureList = await picturesSubFolder.GetFilesAsync();
 
-            // ********** adapted from  http://windowsapptutorials.com/tips/storagefile/convert-storagefile-to-a-bitmapimage-in-universal-windows-apps/  **********
+            //Debug.WriteLine(pictureList.Count());
 
-            // Convert storage file to bitmap image
-            BitmapImage bitmapImage = await ImageUtils.StorageFileToBitmapImage(file);
+            
+            // Loop through the list 
+            foreach (StorageFile file in pictureList)
+            {
 
-            firstImage.Source = bitmapImage;
+                // Convert each Storage File into a bitmap
+                BitmapImage bitmapImage = await ImageUtils.StorageFileToBitmapImage(file);
 
-        }
+                Debug.WriteLine(bitmapImage);
+
+                // Place bitmaps into a list
+                storeBitmaps.Add(bitmapImage);
+
+            }// End foreach loop
+
+            firstImage.Source = storeBitmaps.ElementAt(0);
+            secondImage.Source = storeBitmaps.ElementAt(1);
+            
+        }// End loadImagesButton_Click
 
     }// End class DisplayIamges
 
@@ -68,8 +90,8 @@ namespace AutismCommunicationApp
             using (IRandomAccessStream fileStream = await savedStorageFile.OpenAsync(FileAccessMode.Read))
             {
                 BitmapImage bitmapImage = new BitmapImage();
-                bitmapImage.DecodePixelHeight = 100;
-                bitmapImage.DecodePixelWidth = 100;
+                bitmapImage.DecodePixelHeight = 200;
+                bitmapImage.DecodePixelWidth = 200;
                 await bitmapImage.SetSourceAsync(fileStream);
                 return bitmapImage;
             }
