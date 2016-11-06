@@ -36,12 +36,43 @@
                 
             </SplitView.Pane>
             <SplitView.Content>
-                   
-                <!--  ==========  Can put pivot in here?  ==========  -->
+
+                <!--
                 <Grid>
                     <TextBlock Text="SplitView Basic" FontSize="54" Foreground="White"
                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
+                -->
+                <!--  ==========  Can put pivot in here?  ==========  -->
+
+                <Pivot Title="Pivot">
+
+                    <PivotItem Header="PivotItem 0">
+                        <Grid/>
+                    </PivotItem>
+
+                    <PivotItem Header="PivotItem 1">
+                        <Grid/>
+                    </PivotItem>
+
+                    <PivotItem Header="PivotItem 2">
+                        <Grid/>
+                    </PivotItem>
+
+                    <PivotItem Header="">
+                        <Grid/>
+                    </PivotItem>
+
+                    <PivotItem Header="PivotItem 4">
+                        <Grid/>
+                    </PivotItem>
+
+                    <PivotItem Header="PivotItem 5">
+                        <Grid/>
+                    </PivotItem>
+
+                </Pivot>
+
 
             </SplitView.Content>
         </SplitView>
