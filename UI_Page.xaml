@@ -61,11 +61,23 @@
                             <!--  Spit grid into 5 columns in the pivot  -->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition  Width="1*"/>
-                                <ColumnDefinition  Width="1*"/>
-                                <ColumnDefinition  Width="1*"/>
-                                <ColumnDefinition  Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
+                            
+                            <!--  Create item template  -->
+                            <GridView ItemsSource="{x:Bind Pictures}">
+                                <GridView.ItemTemplate>
+                                    <DataTemplate x:DataType="Picture">
+                                        
+                                        <Image Width="150" Height="150"/>
+                                        <TextBlock Fontsize="16"/>
+
+                                    </DataTemplate>
+                                </GridView.ItemTemplate>
+                            </GridView>
 
                         </Grid>
 
@@ -79,7 +91,7 @@
                         <Grid/>
                     </PivotItem>
 
-                    <PivotItem Header="">
+                    <PivotItem Header="PivotItem 3">
                         <Grid/>
                     </PivotItem>
 
