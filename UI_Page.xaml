@@ -13,7 +13,7 @@
         <SplitView x:Name="MySplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
                CompactPaneLength="50" OpenPaneLength="150">
             <SplitView.Pane>
-                
+
                 <StackPanel Background="Gray">
                     <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
                     Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
@@ -33,8 +33,9 @@
                         <TextBlock Text="Button 3" FontSize="18" VerticalAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
-                
+
             </SplitView.Pane>
+            
             <SplitView.Content>
 
                 <!--
@@ -48,7 +49,26 @@
                 <Pivot Title="Pivot">
 
                     <PivotItem Header="PivotItem 0">
-                        <Grid/>
+
+                        <Grid>
+                            
+                            <!--  Spit grid into 2 rows in the pivot  -->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition  Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <!--  Spit grid into 5 columns in the pivot  -->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition  Width="1*"/>
+                                <ColumnDefinition  Width="1*"/>
+                                <ColumnDefinition  Width="1*"/>
+                                <ColumnDefinition  Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+                        </Grid>
+
                     </PivotItem>
 
                     <PivotItem Header="PivotItem 1">
