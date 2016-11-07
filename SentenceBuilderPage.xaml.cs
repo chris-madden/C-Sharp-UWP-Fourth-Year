@@ -98,7 +98,7 @@ namespace AutismCommunicationApp
                 // Variable is pointing to the localFolder location and creating a new folder called Pictures where it is then pointing to that folder
                 StorageFolder pictureFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("Pictures", CreationCollisionOption.OpenIfExists);
 
-                // Image is being named automically here ***** NEEDS TO B3 FIXED *****
+                // Image is being named automically here ***** NEEDS TO BE FIXED - User needs to give it name that will become label*****
                 var file = await pictureFolder.CreateFileAsync("NewTest.jpg", CreationCollisionOption.ReplaceExisting);
 
                 // Writes the image to the devices local storage 

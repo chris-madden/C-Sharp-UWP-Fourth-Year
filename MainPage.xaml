@@ -5,150 +5,102 @@
     xmlns:local="using:AutismCommunicationApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:AutismCommunicationApp.DataModel"
     mc:Ignorable="d">
 
     <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="VisualStateGroup">
-                <VisualState x:Name="NarrowState">
-                    <VisualState.Setters>
-                        <Setter Target="TitleTextBlock.(TextBlock.FontSize)" Value="32"/>
-                        <Setter Target="TextInput.(FrameworkElement.Margin)">
-                            <Setter.Value>
-                                <Thickness>0,8,8,0</Thickness>
-                            </Setter.Value>
-                        </Setter>
-                        <Setter Target="TextInput.(TextBox.MinWidth)" Value="200"/>
-                        <Setter Target="TextInput.(TextBox.MaxWidth)" Value="200"/>
-                        <Setter Target="TextInput.(TextBox.HorizontalAlignment)" Value="Left"/>
-                        <Setter Target="quickStartTask.(QuickStartTask.ShowMinimal)" Value="True"/>
-                        <Setter Target="quickStartTaskQuery.(QuickStartTask.ShowMinimal)" Value="True"/>
-                        <Setter Target="ListItems.(CheckBox.Width)" Value="300"/>
-                        <Setter Target="ItemsGrid.(Grid.Row)" Value="2"/>
-                        <Setter Target="ItemsGrid.(Grid.Column)" Value="0"/>
-                        <Setter Target="ItemsGrid.(Grid.ColumnSpan)" Value="2"/>
-                        <Setter Target="ContentPanel.(Grid.ColumnSpan)" Value="2"/>
-                    </VisualState.Setters>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="1"/>
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="WideState">
-                    <VisualState.Setters>
-                        <Setter Target="TitleTextBlock.(TextBlock.FontSize)" Value="45"/>
-                        <Setter Target="TextInput.(FrameworkElement.Margin)">
-                            <Setter.Value>
-                                <Thickness>72,5,10,5</Thickness>
-                            </Setter.Value>
-                        </Setter>
-                        <Setter Target="quickStartTask.(QuickStartTask.ShowMinimal)" Value="False"/>
-                        <Setter Target="quickStartTaskQuery.(QuickStartTask.ShowMinimal)" Value="False"/>
-                        <Setter Target="ItemsGrid.(Grid.Row)" Value="1"/>
-                        <Setter Target="ItemsGrid.(Grid.Column)" Value="1"/>
-                        <Setter Target="ItemsGrid.(Grid.ColumnSpan)" Value="1"/>
-                        <Setter Target="ContentPanel.(Grid.ColumnSpan)" Value="1"/>
-                    </VisualState.Setters>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="600"/>
-                    </VisualState.StateTriggers>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
 
-        <Grid x:Name="ContentGrid" Margin="12">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <!--  Copyright https://blogs.msdn.microsoft.com/quick_thoughts/2015/06/01/windows-10-splitview-build-your-first-hamburger-menu/  -->
+        <SplitView x:Name="MySplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
+               CompactPaneLength="50" OpenPaneLength="150">
+            <SplitView.Pane>
 
-            <!--TitleGrid contains the name of the application and page title -->
-            <Grid x:Name="TitleGrid" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,16">
-                <StackPanel>
-                    <TextBlock Foreground="#0094ff" FontFamily="Segoe UI Light" Margin="0,0,0,6">AZURE APP SERVICE</TextBlock>
-                    <TextBlock x:Name="TitleTextBlock" Foreground="Gray" FontFamily="Segoe UI Light" FontSize="20" >Try Mobile Apps</TextBlock>
-                </StackPanel>
-            </Grid>
-
-
-
-            <!--ContentPanel - place additional content here  -->
-            <Grid x:Name="ContentPanel" Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <StackPanel Grid.Row="0">
-                    <local:QuickStartTask x:Name="quickStartTask" Number="1" Title="Insert a TodoItem" 
-                                      Description="Enter some text below and click Save to insert a new todo item into your database" />
-
-                    <StackPanel x:Name="addItemPanel" Orientation="Horizontal">
-                        <TextBox Grid.Row="1" MinWidth="300" Margin="5,5,5,5" Name="TextInput" KeyDown="TextInput_KeyDown" Height="44"></TextBox>
-                        <Button Name="ButtonSave" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="0,8,8,8" Click="ButtonSave_Click">
-                            <StackPanel Orientation="Horizontal">
-                                <SymbolIcon Symbol="Add"/>
-                                <TextBlock Margin="5">Save</TextBlock>
-                            </StackPanel>
-                        </Button>
+                <StackPanel Background="Gray">
+                    <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;"
+                    Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="MenuButton1" FontFamily="Segoe MDL2 Assets" Content="&#xE825;"
+                   Width="50" Height="50" Background="Transparent"/>
+                        <TextBlock Text="Button 1" FontSize="18" VerticalAlignment="Center" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="MenuButton2" FontFamily="Segoe MDL2 Assets" Content="&#xE10F;"
+                       Width="50" Height="50" Background="Transparent"/>
+                        <TextBlock Text="Button 2" FontSize="18" VerticalAlignment="Center" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="MenuButton3" FontFamily="Segoe MDL2 Assets" Content="&#xE1D6;"
+                       Width="50" Height="50" Background="Transparent"/>
+                        <TextBlock Text="Button 3" FontSize="18" VerticalAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
 
-            </Grid>
+            </SplitView.Pane>
 
-            <Grid x:Name="ItemsGrid" Grid.Row="2" Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="500"/>
-                </Grid.RowDefinitions>
+            <SplitView.Content>
 
-                <RelativePanel Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,10,0">
-                    <local:QuickStartTask x:Name="quickStartTaskQuery" Number="2" Title="Query and Update Data" 
-                                          Description="Click refresh below to load the unfinished TodoItems from your hosted service" 
-                                          />
-                    <Button x:Name="ButtonRefresh" Click="ButtonRefresh_Click" Margin="72,10,0,0" Height="44"
-                            RelativePanel.Below="quickStartTaskQuery"  HorizontalAlignment="Center">
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Refresh"/>
-                            <TextBlock Margin="5">Refresh</TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <Button Content = "Go to Page 1" Margin = "74,-58,-10.333,666" Click = "Button_Click"/>
-                    <Button Content = "Go to Page 2" Margin = "-207,151,0,433" Click = "page2Button_Click" Height="56"/>
-                    <Button Content = "Go to Page 3" Margin = "-41,161,-65,423" Click = "Button_Click_1" Height="56"/>
-                </RelativePanel>
+                <Pivot Title="Pivot">
+                    <PivotItem Header="PivotItem 0">
+                        <Grid>
 
-                <ScrollViewer Grid.Row="1" Margin="0,10,0,0" 
-                              ScrollViewer.VerticalScrollBarVisibility="Visible" 
-                              VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                    <ListView x:Name="ListItems">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <CheckBox x:Name="CheckBoxComplete" 
-                                          IsChecked="{Binding Complete, Mode=TwoWay}" 
-                                          Checked="CheckBoxComplete_Checked" 
-                                          MaxWidth="550"
-                                          VerticalAlignment="Center">
-                                    <TextBlock Name="ItemText" Text="{Binding Text}" MaxWidth="550" HorizontalAlignment="Left" TextWrapping="WrapWholeWords"/>
-                                </CheckBox>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </ScrollViewer>
-            </Grid>
-        </Grid>
-      
-        
-        
+                            <!--  Spit grid into 2 rows in the pivot  {x:Bind picture}-->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition  Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <!--  Spit grid into 5 columns in the pivot -->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--  Create item template and bind data to it <img src="ms-appdata:///local/myFile.png" alt="" />-->
+                            <GridView ItemsSource="{x:Bind picturesList}">
+                                <GridView.ItemTemplate>
+                                    <DataTemplate x:DataType="data:Picture">
+                                        <StackPanel>
+                                            <Image Width="150" Height="150" Source="{x:Bind picturePath}"/>
+                                            <TextBlock FontSize="16" Text="{x:Bind pictureLabel}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridView.ItemTemplate>
+                            </GridView>
+
+                        </Grid>
+                    </PivotItem>
+
+                    <PivotItem Header="PivotItem 1">
+                        <Grid>
+                            <StackPanel>
+                                <Image Width="150" Height="150" Source="C:/Users/Christy/AppData/Local/Packages/b7657ddb-b2f7-4885-9e64-d4f2feaf51e1_ka1dgav0par9g/LocalState/Pictures/Test.jpg"/>
+                            </StackPanel>
+                        </Grid>
+                    </PivotItem>
+
+                    <PivotItem Header="PivotItem 2">
+                        <Grid/>
+                    </PivotItem>
+
+                    <PivotItem Header="PivotItem 3">
+                        <Grid/>
+                    </PivotItem>
+
+                    <PivotItem Header="PivotItem 4">
+                        <Grid/>
+                    </PivotItem>
+
+                    <PivotItem Header="PivotItem 5">
+                        <Grid/>
+                    </PivotItem>
+
+                </Pivot>
+            </SplitView.Content>
+        </SplitView>
+
     </Grid>
-   
+
 </Page>

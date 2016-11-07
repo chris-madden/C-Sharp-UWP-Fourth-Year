@@ -14,6 +14,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -35,5 +36,14 @@
                Width="200"
                Grid.Row="2"></Image>
 
+        <Image x:Name="thirdImage" 
+               HorizontalAlignment="Left" 
+               Height="200"
+               Width="200"
+               Source="{x:Bind writeFilePath}"
+               Grid.Row="3"></Image>
+
+        <!--ms-appx:///Local/Pictures/Test.jpg-->
+        <!-- C:\Users\Christy\AppData\Local\Packages\b7657ddb-b2f7-4885-9e64-d4f2feaf51e1_ka1dgav0par9g\LocalState\Pictures  -->
     </Grid>
 </Page>

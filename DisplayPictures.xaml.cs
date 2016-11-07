@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
@@ -21,6 +22,15 @@ namespace AutismCommunicationApp
 
         // A list that can store Bitmaps 
         List<BitmapImage> storeBitmaps = new List<BitmapImage>();
+
+        /*
+         * 
+         * 
+         * Adapted from http://stackoverflow.com/questions/36036398/accessing-storage-of-simulator-device-while-debugging 
+         * 
+        */
+        // ==========    THIS IS A WAY TO GET THE PATH TO THE LOCAL FOLDER ON THE DEVICE    ==========
+        string writeFilePath = Path.Combine(ApplicationData.Current.LocalFolder.Path, "Pictures/Test.jpg");
 
         public DisplayPictures()
         {
