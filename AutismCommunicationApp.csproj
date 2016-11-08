@@ -89,6 +89,9 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +102,7 @@
       <DependentUpon>QuickStartTask.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Picture.cs" />
+    <Compile Include="DataModel\PictureContext.cs" />
     <Compile Include="DataModel\TodoItem.cs" />
     <Compile Include="DisplayPictures.xaml.cs">
       <DependentUpon>DisplayPictures.xaml</DependentUpon>
