@@ -6,6 +6,8 @@ using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.EntityFrameworkCore;
+using AutismCommunicationApp.DataModel;
 
 namespace AutismCommunicationApp
 {
@@ -35,6 +37,11 @@ namespace AutismCommunicationApp
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+            using (var db = new PictureContext())
+            {
+                db.Database.Migrate();
+            }
         }
 
         /// <summary>

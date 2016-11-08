@@ -6,6 +6,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using System;
+using AutismCommunicationApp.ViewModel;
 
 
 namespace AutismCommunicationApp
@@ -29,6 +30,10 @@ namespace AutismCommunicationApp
 
             // Set pane to open if it closed
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+
+            AddToDB atd = new AddToDB();
+
+            atd.deletePicture();
 
         }// End HamburgerButton_Click
 

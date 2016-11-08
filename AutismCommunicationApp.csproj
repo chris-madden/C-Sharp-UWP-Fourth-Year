@@ -110,10 +110,16 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20161108115147_PictureDbMigration.cs" />
+    <Compile Include="Migrations\20161108115147_PictureDbMigration.designer.cs">
+      <DependentUpon>20161108115147_PictureDbMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\PictureContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SentenceBuilderPage.xaml.cs">
       <DependentUpon>SentenceBuilderPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AddToDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
