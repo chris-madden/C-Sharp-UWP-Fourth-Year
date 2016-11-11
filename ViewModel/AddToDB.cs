@@ -31,7 +31,7 @@ namespace AutismCommunicationApp.ViewModel
         }
         */
 
-        public void deletePicture()
+       /* public void deletePicture()
         {
 
             using (var db = new PictureContext())
@@ -48,5 +48,6 @@ namespace AutismCommunicationApp.ViewModel
             }
 
         }// End deletePicture
+        */
     }
 }

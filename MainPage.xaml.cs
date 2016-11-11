@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using System;
 using AutismCommunicationApp.ViewModel;
-
+using System.Diagnostics;
 
 namespace AutismCommunicationApp
 {
@@ -33,10 +33,14 @@ namespace AutismCommunicationApp
 
             AddToDB atd = new AddToDB();
 
-            atd.deletePicture();
+            //atd.deletePicture();
 
         }// End HamburgerButton_Click
 
+        // This button needs to direct you to new page
+        // New page needs to display the selected image and give options to 
+        // 1. Change the image name
+        // 2. Give the image a label
         private async void MenuButton1_Click(object sender, RoutedEventArgs e)
         {
             /*
@@ -59,11 +63,31 @@ namespace AutismCommunicationApp
 
             if (storageFile != null)
             {
-                // Save path to text box
-                //imagePath.Text = storageFile.Path;
 
+                // Navigate to new page and pass in the image (bitmap)
+                if (bitmap != null)
+                {
+
+
+                    /*
+                     *
+                     *
+                     *  adapted from http://stackoverflow.com/questions/35304615/pass-some-parameters-between-pages-in-uwp
+                     *
+                     */
+                    var details = new ImageDetails();
+                    details.image = bitmap;
+                    details.imagePath = storageFile.Path;
+
+                    // Pass over the image and imagePath to the Image details class
+                    this.Frame.Navigate(typeof(ImageDetails), details);
+
+                }// End if
+               
             }// End if 
-        }
+
+        }// End MenuButton1_Click
+
     }// End class MainPage
 
 }// End namespace AutismCommunicationApp
