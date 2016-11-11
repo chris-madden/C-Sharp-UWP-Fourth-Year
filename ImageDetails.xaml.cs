@@ -25,7 +25,7 @@ namespace AutismCommunicationApp
     public sealed partial class ImageDetails : Page
     {
         public string imagePath { get; set; }
-        public WriteableBitmap image { get; set; }
+        public BitmapImage image { get; set; }
 
         public ImageDetails()
         {

@@ -15,7 +15,6 @@ namespace AutismCommunicationApp
     {
         private List<Picture> picturesList;
         StorageFile storageFile;
-        WriteableBitmap bitmap;
 
         public MainPage()
         {
@@ -59,30 +58,30 @@ namespace AutismCommunicationApp
 
             storageFile = await pickerOpen.PickSingleFileAsync();
 
-            bitmap = new WriteableBitmap(50, 50);
-
+            /*
+             *  Adapted from https://code.msdn.microsoft.com/windowsapps/How-to-upload-an-image-to-3293e4a8/sourcecode?fileId=153875&pathId=2041250276 
+            */ 
             if (storageFile != null)
             {
 
-                // Navigate to new page and pass in the image (bitmap)
-                if (bitmap != null)
+                // Open a stream for the selected file
+                using (Windows.Storage.Streams.IRandomAccessStream fileStream = await storageFile.OpenAsync(Windows.Storage.FileAccessMode.Read))
                 {
-
+                    // Set the image source to the selected bitmap. 
+                    BitmapImage bitmapImage = new BitmapImage();
+                    bitmapImage.SetSource(fileStream);
 
                     /*
-                     *
-                     *
                      *  adapted from http://stackoverflow.com/questions/35304615/pass-some-parameters-between-pages-in-uwp
-                     *
-                     */
+                    */
                     var details = new ImageDetails();
-                    details.image = bitmap;
+                    details.image = bitmapImage;
                     details.imagePath = storageFile.Path;
 
                     // Pass over the image and imagePath to the Image details class
                     this.Frame.Navigate(typeof(ImageDetails), details);
 
-                }// End if
+                }// End using
                
             }// End if 
 
