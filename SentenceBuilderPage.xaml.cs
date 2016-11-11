@@ -46,6 +46,7 @@ namespace AutismCommunicationApp
             pickerOpen.FileTypeFilter.Add(".jpeg");
             pickerOpen.FileTypeFilter.Add(".png");
 
+            // storageFile here is holding the image but only as a File
             storageFile = await pickerOpen.PickSingleFileAsync();
 
             bitmap = new WriteableBitmap(50, 50);
@@ -98,7 +99,7 @@ namespace AutismCommunicationApp
                 // Variable is pointing to the localFolder location and creating a new folder called Pictures where it is then pointing to that folder
                 StorageFolder pictureFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("Pictures", CreationCollisionOption.OpenIfExists);
 
-                // Image is being named automically here ***** NEEDS TO BE FIXED - User needs to give it name that will become label*****
+                // Image is being named automically here ***** NEEDS TO BE FIXED - ******  NAME USER PICKS FOR THE LABEL TO GO HERE  ******
                 var file = await pictureFolder.CreateFileAsync("NewTest.jpg", CreationCollisionOption.ReplaceExisting);
 
                 // Writes the image to the devices local storage 

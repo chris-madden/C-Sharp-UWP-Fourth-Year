@@ -8,6 +8,11 @@ using Windows.UI.Xaml.Media.Imaging;
 using System;
 using AutismCommunicationApp.ViewModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
+using Windows.Storage.Streams;
+using Windows.Graphics.Imaging;
+using System.IO;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace AutismCommunicationApp
 {
@@ -15,6 +20,7 @@ namespace AutismCommunicationApp
     {
         private List<Picture> picturesList;
         StorageFile storageFile;
+        string fileName;
 
         public MainPage()
         {
@@ -42,51 +48,29 @@ namespace AutismCommunicationApp
         // 2. Give the image a label
         private async void MenuButton1_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            * 
-            *  Adapted from https://code.msdn.microsoft.com/windowsapps/How-to-upload-an-image-to-3293e4a8/sourcecode?fileId=153875&pathId=2041250276
-            * 
-           */
 
-            // Be able to open the file explorer
+            // adapted from http://stackoverflow.com/questions/39111925/uwp-copy-file-from-fileopenpicker-to-localstorage
+
+            // Open file explorer
             var pickerOpen = new FileOpenPicker();
 
-            // Add the types of files that are suggested to the user
-            pickerOpen.FileTypeFilter.Add(".jpg");
-            pickerOpen.FileTypeFilter.Add(".jpeg");
+            // Have a filter for png files
             pickerOpen.FileTypeFilter.Add(".png");
 
-            storageFile = await pickerOpen.PickSingleFileAsync();
+            // pick file and store it in a storage file
+            StorageFile storageFile = await pickerOpen.PickSingleFileAsync();
 
-            /*
-             *  Adapted from https://code.msdn.microsoft.com/windowsapps/How-to-upload-an-image-to-3293e4a8/sourcecode?fileId=153875&pathId=2041250276 
-            */ 
+            // Check if file is selected
             if (storageFile != null)
             {
-
-                // Open a stream for the selected file
-                using (Windows.Storage.Streams.IRandomAccessStream fileStream = await storageFile.OpenAsync(Windows.Storage.FileAccessMode.Read))
-                {
-                    // Set the image source to the selected bitmap. 
-                    BitmapImage bitmapImage = new BitmapImage();
-                    bitmapImage.SetSource(fileStream);
-
-                    /*
-                     *  adapted from http://stackoverflow.com/questions/35304615/pass-some-parameters-between-pages-in-uwp
-                    */
-                    var details = new ImageDetails();
-                    details.image = bitmapImage;
-                    details.imagePath = storageFile.Path;
-
-                    // Pass over the image and imagePath to the Image details class
-                    this.Frame.Navigate(typeof(ImageDetails), details);
-
-                }// End using
-               
-            }// End if 
+                // Copy the file into the devices local storage
+                await storageFile.CopyAsync(ApplicationData.Current.LocalFolder);
+            }
 
         }// End MenuButton1_Click
 
     }// End class MainPage
 
 }// End namespace AutismCommunicationApp
+
+
