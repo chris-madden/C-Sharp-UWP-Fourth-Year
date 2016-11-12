@@ -48,10 +48,16 @@ namespace AutismCommunicationApp
                 await storageFile.CopyAsync(ApplicationData.Current.LocalFolder, storageFile.Name, NameCollisionOption.ReplaceExisting);
             }
 
-            // Navigate to page where image is displayed and label can be set
-            // Pass the file name along
-            this.Frame.Navigate(typeof(ImageDetails), storageFile.Name);
+            // If a file has been selected
+            if (storageFile != null)
+            {
 
+                // Navigate to page where image is displayed and label can be set
+                // Pass the file name along
+                this.Frame.Navigate(typeof(ImageDetails), storageFile.Name);
+
+            }// End if
+           
         }// End MenuButton1_Click
 
     }// End class MainPage

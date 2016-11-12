@@ -114,6 +114,13 @@ namespace AutismCommunicationApp
 
             }// End if
 
+            // Clear the textbox
+            label = "";
+
+            // Navigate to page where image is displayed and label can be set
+            // Pass the file name along
+            this.Frame.Navigate(typeof(MainPage));
+
         }// End SaveToDB_Click
 
     }// End class ImageDetails
