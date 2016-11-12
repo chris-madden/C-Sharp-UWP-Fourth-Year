@@ -11,37 +11,55 @@
 
         <Grid.RowDefinitions>
 
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
 
         </Grid.RowDefinitions>
         
-        <Image Name="SelectedImage" Grid.Row="0" Height="200" Width="200"/>
+        <!--  Show the selected image on screen  -->
+        <Image Name="SelectedImage" 
+               Grid.Row="0" 
+               Height="200" 
+               Width="200"
+               Margin="0,0,0,20"/>
 
         <TextBlock Name="PathOfImage" 
                    Grid.Row="1" 
                    HorizontalAlignment="Center"
-                   Text="" />
+                   Text="Give your picture a label" />
 
-        <!--  Store the name of the file here  -->
-        <TextBox Name="RenameImage" 
+        <!--  Store the label here  -->
+        <TextBox Name="Label" 
                  Grid.Row="1"
                  Height="25"
                  Width="250"
                  HorizontalAlignment="Center"
+                 PlaceholderText="Put Label Here"
                  Text=""/>
 
-        <Button Name="SaveImage"
+        <!--  Save path and label of image to database -->
+        <Button Name="SaveToDB"
                 Grid.Row="2"
                 HorizontalAlignment="Center"
                 Height="30"
                 Width="100"
-                Content="Save"/>
+                Content="Save" 
+                Margin="341,29,199,31"
+                Click="SaveToDB_Click"/>
 
-        <Image Name="TestImage" Grid.Row="3" Height="200" Width="200"/>
+        <!--  Delete picture from local folder and return to main page -->
+        <Button Name="DiscardPicture"
+                Grid.Row="2"
+                HorizontalAlignment="Center"
+                Height="30"
+                Width="100"
+                Content="Discard" 
+                Margin="193,29,347,31"/>
 
+        <TextBlock Name="Test" 
+                   Grid.Row="2" 
+                   HorizontalAlignment="Center"/>
 
     </Grid>
     
