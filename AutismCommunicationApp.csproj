@@ -107,11 +107,11 @@
     <Compile Include="DisplayPictures.xaml.cs">
       <DependentUpon>DisplayPictures.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ImageDetails.xaml.cs">
+    <Compile Include="View\ImageDetails.xaml.cs">
       <DependentUpon>ImageDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="ImageUtils.cs" />
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Migrations\20161108115147_PictureDbMigration.cs" />
@@ -153,11 +153,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ImageDetails.xaml">
+    <Page Include="View\ImageDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
