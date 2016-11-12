@@ -1,27 +1,14 @@
-﻿using AutismCommunicationApp.DataModel;
-using System.Collections.Generic;
-using Windows.Storage;
+﻿using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Imaging;
 using System;
-using AutismCommunicationApp.ViewModel;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using Windows.Storage.Streams;
-using Windows.Graphics.Imaging;
-using System.IO;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace AutismCommunicationApp
 {
     public sealed partial class MainPage : Page
     {
-        private List<Picture> picturesList;
-        StorageFile storageFile;
-        string fileName;
-
+        
         public MainPage()
         {
 
@@ -36,16 +23,9 @@ namespace AutismCommunicationApp
             // Set pane to open if it closed
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
 
-            AddToDB atd = new AddToDB();
-
-            //atd.deletePicture();
-
         }// End HamburgerButton_Click
 
-        // This button needs to direct you to new page
-        // New page needs to display the selected image and give options to 
-        // 1. Change the image name
-        // 2. Give the image a label
+        // This button opens file explorer, copies the selected file and navigates to the ImageDetails page
         private async void MenuButton1_Click(object sender, RoutedEventArgs e)
         {
 
@@ -64,8 +44,13 @@ namespace AutismCommunicationApp
             if (storageFile != null)
             {
                 // Copy the file into the devices local storage
-                await storageFile.CopyAsync(ApplicationData.Current.LocalFolder);
+                // If file alredy exists replace the copy
+                await storageFile.CopyAsync(ApplicationData.Current.LocalFolder, storageFile.Name, NameCollisionOption.ReplaceExisting);
             }
+
+            // Navigate to page where image is displayed and label can be set
+            // Pass the file name along
+            this.Frame.Navigate(typeof(ImageDetails), storageFile.Name);
 
         }// End MenuButton1_Click
 

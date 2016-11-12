@@ -23,7 +23,7 @@
         <TextBlock Name="PathOfImage" 
                    Grid.Row="1" 
                    HorizontalAlignment="Center"
-                   Text="{x:Bind imagePath}" />
+                   Text="" />
 
         <!--  Store the name of the file here  -->
         <TextBox Name="RenameImage" 
@@ -31,15 +31,14 @@
                  Height="25"
                  Width="250"
                  HorizontalAlignment="Center"
-                 Text="{x:Bind fileName}"/>
+                 Text=""/>
 
         <Button Name="SaveImage"
                 Grid.Row="2"
                 HorizontalAlignment="Center"
                 Height="30"
                 Width="100"
-                Content="Save"
-                Click="SaveImage_Click"/>
+                Content="Save"/>
 
         <Image Name="TestImage" Grid.Row="3" Height="200" Width="200"/>
 

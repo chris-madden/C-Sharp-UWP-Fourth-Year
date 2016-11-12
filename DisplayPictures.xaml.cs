@@ -93,19 +93,6 @@ namespace AutismCommunicationApp
      *  Copyright http://windowsapptutorials.com/tips/storagefile/convert-storagefile-to-a-bitmapimage-in-universal-windows-apps/
      * 
     */
-    public class ImageUtils
-    {
-        public static async Task<BitmapImage> StorageFileToBitmapImage(StorageFile savedStorageFile)
-        {
-            using (IRandomAccessStream fileStream = await savedStorageFile.OpenAsync(FileAccessMode.Read))
-            {
-                BitmapImage bitmapImage = new BitmapImage();
-                bitmapImage.DecodePixelHeight = 200;
-                bitmapImage.DecodePixelWidth = 200;
-                await bitmapImage.SetSourceAsync(fileStream);
-                return bitmapImage;
-            }
-        }
-    }
+   
 
 }// End namespace AutismCommunicationApp

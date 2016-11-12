@@ -110,6 +110,7 @@
     <Compile Include="ImageDetails.xaml.cs">
       <DependentUpon>ImageDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ImageUtils.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
