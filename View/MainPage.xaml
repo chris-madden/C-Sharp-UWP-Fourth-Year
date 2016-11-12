@@ -10,7 +10,7 @@
 
     <Page.Resources>
         <DataTemplate x:DataType="data:Picture" x:Key="PictureDataTemplate">
-            <StackPanel HorizontalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" Margin="10">
                 <Image Width="180" Height="180" Stretch="Fill" Source="{x:Bind picturePath}" />
                 <TextBlock FontSize="16" Text="{x:Bind pictureLabel}" HorizontalAlignment="Center" />
             </StackPanel>
@@ -70,6 +70,13 @@
                             </ItemsPanelTemplate>
                         </GridView.ItemsPanel>
 
+                    </GridView>
+
+                    <GridView Name="CommunicationBar"
+                              Background="Aqua"
+                              Grid.Row="1">
+                        
+                        
                     </GridView>
 
                 </Grid>
