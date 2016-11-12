@@ -59,12 +59,12 @@
                             </Grid.ColumnDefinitions>
 
                             <!--  Create item template and bind data to it <img src="ms-appdata:///local/myFile.png" alt="" />-->
-                            <GridView >
+                            <GridView ItemsSource="{x:Bind Pictures}">
                                 <GridView.ItemTemplate>
                                     <DataTemplate x:DataType="data:Picture">
                                         <StackPanel>
-                                            <Image Width="150" Height="150" />
-                                            <TextBlock FontSize="16" Text=""/>
+                                            <Image Width="150" Height="150" Source="{x:Bind picturePath}"/>
+                                            <TextBlock FontSize="16" Text="{x:Bind pictureLabel}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </GridView.ItemTemplate>

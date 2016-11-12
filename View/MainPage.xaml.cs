@@ -3,16 +3,23 @@ using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using System;
+using AutismCommunicationApp.DataModel;
+using System.Collections.Generic;
+using ViewModel;
 
 namespace AutismCommunicationApp
 {
     public sealed partial class MainPage : Page
     {
+
+        private List<Picture> Pictures;
         
         public MainPage()
         {
 
             this.InitializeComponent();
+
+            this.Pictures = PictureManager.loadData();
 
         }// End Constructor
 

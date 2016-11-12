@@ -107,6 +107,7 @@
     <Compile Include="DisplayPictures.xaml.cs">
       <DependentUpon>DisplayPictures.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\PictureManager.cs" />
     <Compile Include="View\ImageDetails.xaml.cs">
       <DependentUpon>ImageDetails.xaml</DependentUpon>
     </Compile>
