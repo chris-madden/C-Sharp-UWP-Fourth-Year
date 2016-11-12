@@ -12,6 +12,7 @@ namespace AutismCommunicationApp
     public sealed partial class MainPage : Page
     {
 
+        // Private list used to bind to MainPage view
         private List<Picture> Pictures;
         
         public MainPage()
@@ -19,6 +20,7 @@ namespace AutismCommunicationApp
 
             this.InitializeComponent();
 
+            // Save data to this list
             this.Pictures = PictureManager.loadData();
 
         }// End Constructor
