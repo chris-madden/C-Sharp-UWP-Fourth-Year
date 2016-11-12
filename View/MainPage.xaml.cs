@@ -6,6 +6,9 @@ using System;
 using AutismCommunicationApp.DataModel;
 using System.Collections.Generic;
 using ViewModel;
+using System.Linq;
+using Windows.ApplicationModel.DataTransfer;
+using System.Collections.ObjectModel;
 
 namespace AutismCommunicationApp
 {
@@ -14,6 +17,7 @@ namespace AutismCommunicationApp
 
         // Private list used to bind to MainPage view
         private List<Picture> Pictures;
+        private ObservableCollection<Picture> communicationBar;
         
         public MainPage()
         {
@@ -22,6 +26,8 @@ namespace AutismCommunicationApp
 
             // Save data to this list
             this.Pictures = PictureManager.loadData();
+
+            this.communicationBar = new ObservableCollection<Picture>();
 
         }// End Constructor
 
@@ -69,6 +75,49 @@ namespace AutismCommunicationApp
            
         }// End MenuButton1_Click
 
+        /*
+         *  Adapted from http://www.shenchauhan.com/blog/2015/8/23/drag-and-drop-in-uwp
+        */
+
+        // Code for gridview displaying pictures
+        private void DisplayPictures_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
+        {
+            var items = string.Join(",", e.Items.Cast<Picture>().Select(i => i.pictureId));
+            e.Data.SetText(items);
+            e.Data.RequestedOperation = DataPackageOperation.Move;
+        }
+
+        // Code for communication bar
+        private void CommunicationBar_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.DataView.Contains(StandardDataFormats.Text))
+            {
+                e.AcceptedOperation = DataPackageOperation.Move;
+            }
+        }
+
+        private async void CommunicationBar_Drop(object sender, DragEventArgs e)
+        {
+            if (e.DataView.Contains(StandardDataFormats.Text))
+            {
+                var id = await e.DataView.GetTextAsync();
+                var itemIdsToMove = id.Split(',');
+
+                var destinationListView = sender as GridView;
+                var listViewItemsSource = destinationListView?.ItemsSource as ObservableCollection<Picture>;
+
+                if (listViewItemsSource != null)
+                {
+                    foreach (var itemId in itemIdsToMove)
+                    {
+                        var itemToMove = this.Pictures.First(i => i.pictureId.ToString() == itemId);
+
+                        listViewItemsSource.Add(itemToMove);
+                        this.Pictures.Remove(itemToMove);
+                    }
+                }
+            }
+        }
     }// End class MainPage
 
 }// End namespace AutismCommunicationApp

@@ -10,8 +10,8 @@
 
     <Page.Resources>
         <DataTemplate x:DataType="data:Picture" x:Key="PictureDataTemplate">
-            <StackPanel HorizontalAlignment="Center" Margin="10">
-                <Image Width="180" Height="180" Stretch="Fill" Source="{x:Bind picturePath}" />
+            <StackPanel HorizontalAlignment="Center" Margin="5">
+                <Image Width="170" Height="170" Stretch="Fill" Source="{x:Bind picturePath}" />
                 <TextBlock FontSize="16" Text="{x:Bind pictureLabel}" HorizontalAlignment="Center" />
             </StackPanel>
         </DataTemplate>
@@ -51,16 +51,19 @@
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="3*" />
-                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1.5*" />
                     </Grid.RowDefinitions>
 
                     <GridView ItemsSource="{x:Bind Pictures}" 
                               ItemTemplate="{StaticResource PictureDataTemplate}"
+                              Name="DisplayPictures"
                               ScrollViewer.VerticalScrollMode="Disabled"
                               ScrollViewer.VerticalScrollBarVisibility="Hidden"
                               ScrollViewer.HorizontalScrollMode="Auto"
                               ScrollViewer.HorizontalScrollBarVisibility="Visible"
                               IsSwipeEnabled="True"
+                              CanDragItems="True"
+                              DragItemsStarting="DisplayPictures_DragItemsStarting"
                               Grid.Row="0">
 
                         <GridView.ItemsPanel>
@@ -73,10 +76,21 @@
                     </GridView>
 
                     <GridView Name="CommunicationBar"
+                              ItemsSource="{x:Bind communicationBar}"
+                              ItemTemplate="{StaticResource PictureDataTemplate}"
                               Background="Aqua"
-                              Grid.Row="1">
-                        
-                        
+                              Grid.Row="1"
+                              AllowDrop="True"
+                              DragOver="CommunicationBar_DragOver"
+                              Drop="CommunicationBar_Drop">
+
+                        <GridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsWrapGrid Orientation="Vertical"
+                                               MaximumRowsOrColumns="4"/>
+                            </ItemsPanelTemplate>
+                        </GridView.ItemsPanel>
+
                     </GridView>
 
                 </Grid>
