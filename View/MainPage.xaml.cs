@@ -82,19 +82,12 @@ namespace AutismCommunicationApp
         // Code for gridview displaying pictures
         private void DisplayPictures_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
         {
-           /* var items = string.Join(",", e.Items.Cast<Picture>().Select(i => i.pictureId));
-            e.Data.SetText(items);
-            e.Data.RequestedOperation = DataPackageOperation.Move;
-            */
-
-            //var card = e.Items.Cast<Picture>().Select(i => i.pictureId).ToString();
-                
-                //this.Pictures.Select(i => i.pictureId);
-
+           
             // Get ID of card and set as a string
             var card = string.Concat(e.Items.Cast<Picture>().Select(i => i.pictureId));
             e.Data.SetText(card);
             e.Data.RequestedOperation = DataPackageOperation.Move;
+
         }
 
         // Code for communication bar
@@ -114,6 +107,7 @@ namespace AutismCommunicationApp
             if (e.DataView.Contains(StandardDataFormats.Text))
             {
 
+                // Retrieve the pictures id and store in string
                 var id = await e.DataView.GetTextAsync();
 
                 var itemIdsToMove = id.Split(',');
@@ -124,17 +118,27 @@ namespace AutismCommunicationApp
                 if (listViewItemsSource != null)
                 {
 
+                    // Loop through list containing picture
                     foreach (var itemId in itemIdsToMove)
                     {
+                        
+                        // Find picture in list 
                         var itemToMove = this.Pictures.First(i => i.pictureId.ToString() == itemId);
 
+                        // Move picture to communication bar
                         listViewItemsSource.Add(itemToMove);
+
+                        // Remove picture from display 
                         this.Pictures.Remove(itemToMove);
-                    }
+
+                    }// End foreach
                     
-                }
-            }
-        }
+                }// End if
+
+            }// End if
+
+        }// End CommunicationBar_Drop
+
     }// End class MainPage
 
 }// End namespace AutismCommunicationApp
