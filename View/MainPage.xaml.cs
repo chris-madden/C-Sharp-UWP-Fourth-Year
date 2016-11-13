@@ -96,6 +96,8 @@ namespace AutismCommunicationApp
             }
         }
 
+        // Moves the item being dragged into an observable collection and moves it into a different 
+        // gridview on the screen
         private async void CommunicationBar_Drop(object sender, DragEventArgs e)
         {
             if (e.DataView.Contains(StandardDataFormats.Text))
