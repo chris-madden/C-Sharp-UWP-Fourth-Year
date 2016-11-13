@@ -16,7 +16,7 @@ namespace AutismCommunicationApp
     {
 
         // Private list used to bind to MainPage view
-        private List<Picture> Pictures;
+        private ObservableCollection<Picture> Pictures;
         private ObservableCollection<Picture> communicationBar;
         
         public MainPage()
@@ -82,8 +82,18 @@ namespace AutismCommunicationApp
         // Code for gridview displaying pictures
         private void DisplayPictures_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
         {
-            var items = string.Join(",", e.Items.Cast<Picture>().Select(i => i.pictureId));
+           /* var items = string.Join(",", e.Items.Cast<Picture>().Select(i => i.pictureId));
             e.Data.SetText(items);
+            e.Data.RequestedOperation = DataPackageOperation.Move;
+            */
+
+            //var card = e.Items.Cast<Picture>().Select(i => i.pictureId).ToString();
+                
+                //this.Pictures.Select(i => i.pictureId);
+
+            // Get ID of card and set as a string
+            var card = string.Concat(e.Items.Cast<Picture>().Select(i => i.pictureId));
+            e.Data.SetText(card);
             e.Data.RequestedOperation = DataPackageOperation.Move;
         }
 
@@ -100,16 +110,20 @@ namespace AutismCommunicationApp
         // gridview on the screen
         private async void CommunicationBar_Drop(object sender, DragEventArgs e)
         {
+            // If a string is being passed over 
             if (e.DataView.Contains(StandardDataFormats.Text))
             {
+
                 var id = await e.DataView.GetTextAsync();
+
                 var itemIdsToMove = id.Split(',');
 
                 var destinationListView = sender as GridView;
-                var listViewItemsSource = destinationListView?.ItemsSource as ObservableCollection<Picture>;
+                var listViewItemsSource = destinationListView.ItemsSource as ObservableCollection<Picture>;
 
                 if (listViewItemsSource != null)
                 {
+
                     foreach (var itemId in itemIdsToMove)
                     {
                         var itemToMove = this.Pictures.First(i => i.pictureId.ToString() == itemId);
@@ -117,6 +131,7 @@ namespace AutismCommunicationApp
                         listViewItemsSource.Add(itemToMove);
                         this.Pictures.Remove(itemToMove);
                     }
+                    
                 }
             }
         }

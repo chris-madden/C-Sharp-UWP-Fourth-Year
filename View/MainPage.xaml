@@ -61,7 +61,6 @@
                               ScrollViewer.VerticalScrollBarVisibility="Hidden"
                               ScrollViewer.HorizontalScrollMode="Auto"
                               ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                              IsSwipeEnabled="True"
                               CanDragItems="True"
                               DragItemsStarting="DisplayPictures_DragItemsStarting"
                               Grid.Row="0">
