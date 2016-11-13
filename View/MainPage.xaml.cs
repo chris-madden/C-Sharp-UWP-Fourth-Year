@@ -75,6 +75,8 @@ namespace AutismCommunicationApp
            
         }// End MenuButton1_Click
 
+        //  ====================  DRAG AND DROP FROM DISPLAY TO COMMUNICATION BAR  ====================
+
         /*
          *  Adapted from http://www.shenchauhan.com/blog/2015/8/23/drag-and-drop-in-uwp
         */
@@ -138,6 +140,67 @@ namespace AutismCommunicationApp
             }// End if
 
         }// End CommunicationBar_Drop
+
+        //  ====================  DRAG AND DROP FROM COMMUNICATION BAR TO DISPLAY  ====================
+
+        private void CommunicationBar_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
+        {
+
+            // Get ID of card and set as a string
+            var card = string.Concat(e.Items.Cast<Picture>().Select(i => i.pictureId));
+            e.Data.SetText(card);
+            e.Data.RequestedOperation = DataPackageOperation.Move;
+
+        }
+
+        private void DisplayPictures_DragOver(object sender, DragEventArgs e)
+        {
+
+            if (e.DataView.Contains(StandardDataFormats.Text))
+            {
+                e.AcceptedOperation = DataPackageOperation.Move;
+            }
+
+        }
+
+        private async void DisplayPictures_Drop(object sender, DragEventArgs e)
+        {
+            // If a string is being passed over 
+            if (e.DataView.Contains(StandardDataFormats.Text))
+            {
+
+                // Retrieve the pictures id and store in string
+                var id = await e.DataView.GetTextAsync();
+
+                // Created an array with picture ID
+                var itemIdsToMove = id.Split(',');
+
+                var destinationListView = sender as GridView;
+                var listViewItemsSource = destinationListView.ItemsSource as ObservableCollection<Picture>;
+
+                if (listViewItemsSource != null)
+                {
+
+                    // Loop through list containing picture
+                    foreach (var itemId in itemIdsToMove)
+                    {
+
+                        // Find picture in communication bar list 
+                        var itemToMove = this.communicationBar.First(i => i.pictureId.ToString() == itemId);
+
+                        // Move picture to communication bar
+                        listViewItemsSource.Add(itemToMove);
+
+                        // Remove picture from communication bar 
+                        this.communicationBar.Remove(itemToMove);
+
+                    }// End foreach
+
+                }// End nested if
+
+            }// End if
+
+        }// End DisplayPictures_Drop
 
     }// End class MainPage
 

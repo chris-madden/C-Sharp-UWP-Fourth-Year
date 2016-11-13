@@ -54,6 +54,7 @@
                         <RowDefinition Height="1.5*" />
                     </Grid.RowDefinitions>
 
+                    <!-- ==========  Picture Display  ========== -->
                     <GridView ItemsSource="{x:Bind Pictures}" 
                               ItemTemplate="{StaticResource PictureDataTemplate}"
                               Name="DisplayPictures"
@@ -61,8 +62,11 @@
                               ScrollViewer.VerticalScrollBarVisibility="Hidden"
                               ScrollViewer.HorizontalScrollMode="Auto"
                               ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                              AllowDrop="True"
                               CanDragItems="True"
                               DragItemsStarting="DisplayPictures_DragItemsStarting"
+                              DragOver="DisplayPictures_DragOver"
+                              Drop="DisplayPictures_Drop"
                               Grid.Row="0">
 
                         <GridView.ItemsPanel>
@@ -74,11 +78,14 @@
 
                     </GridView>
 
+                    <!-- ==========  Communication Bar  ========== -->
                     <GridView Name="CommunicationBar"
                               ItemsSource="{x:Bind communicationBar}"
                               ItemTemplate="{StaticResource PictureDataTemplate}"
                               Background="Aqua"
                               Grid.Row="1"
+                              CanDragItems="True"
+                              DragItemsStarting="CommunicationBar_DragItemsStarting"
                               AllowDrop="True"
                               DragOver="CommunicationBar_DragOver"
                               Drop="CommunicationBar_Drop">
