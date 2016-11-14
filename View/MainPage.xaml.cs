@@ -18,6 +18,7 @@ namespace AutismCommunicationApp
         // Private list used to bind to MainPage view
         private ObservableCollection<Picture> Pictures;
         private ObservableCollection<Picture> communicationBar;
+        public static bool editEnabled;
         
         public MainPage()
         {
@@ -28,6 +29,8 @@ namespace AutismCommunicationApp
             this.Pictures = PictureManager.loadData();
 
             this.communicationBar = new ObservableCollection<Picture>();
+
+            editEnabled = false;
 
         }// End Constructor
 
@@ -208,6 +211,11 @@ namespace AutismCommunicationApp
 
         }// End DisplayPictures_Drop
 
+        // Button will enable edit mode
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            editEnabled = true;
+        }
     }// End class MainPage
 
 }// End namespace AutismCommunicationApp
