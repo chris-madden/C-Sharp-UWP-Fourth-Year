@@ -9,6 +9,7 @@ using ViewModel;
 using System.Linq;
 using Windows.ApplicationModel.DataTransfer;
 using System.Collections.ObjectModel;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace AutismCommunicationApp
 {
@@ -18,7 +19,7 @@ namespace AutismCommunicationApp
         // Private list used to bind to MainPage view
         private ObservableCollection<Picture> Pictures;
         private ObservableCollection<Picture> communicationBar;
-        public static bool editEnabled;
+        private bool editEnabled;
         
         public MainPage()
         {
@@ -211,6 +212,8 @@ namespace AutismCommunicationApp
 
         }// End DisplayPictures_Drop
 
+        // ====================  EDIT MODE FUNCTIONALITY  ====================
+
         // Button will enable edit mode
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
@@ -223,15 +226,20 @@ namespace AutismCommunicationApp
 
         }// End Edit_Click
 
-        // On double tap user is navigated to the Edit Card Page
-        private void CardTemplate_DoubleTapped(object sender, Windows.UI.Xaml.Input.DoubleTappedRoutedEventArgs e)
+        private void DisplayPictures_DoubleTapped(object sender, Windows.UI.Xaml.Input.DoubleTappedRoutedEventArgs e)
         {
 
-            // If edit mode is enabled navigate to the edit page
-            if (editEnabled == true)
-                this.Frame.Navigate(typeof(EditCardPage));
+            // Adapted from http://stackoverflow.com/questions/13696210/how-to-get-tapped-item-in-gridview
 
-        }// End CardTemplate_DoubleTapped 
+            // Get the details of the selected Card
+            var card = (Picture)(sender as GridView).SelectedItem;
+
+            // If edit mode is enabled navigate to the edit page
+            // Pass over the card with the details
+            if (editEnabled == true)
+                this.Frame.Navigate(typeof(EditCardPage), card);
+
+        }// DisplayPictures_DoubleTapped
 
     }// End class MainPage
 

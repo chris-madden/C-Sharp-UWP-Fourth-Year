@@ -88,6 +88,8 @@
                               DragItemsStarting="DisplayPictures_DragItemsStarting"
                               DragOver="DisplayPictures_DragOver"
                               Drop="DisplayPictures_Drop"
+                              IsDoubleTapEnabled="True"
+                              DoubleTapped="DisplayPictures_DoubleTapped"
                               Grid.Row="0">
 
                         <!-- ==========  Template For Pictures  ========== -->
@@ -95,8 +97,7 @@
                             <DataTemplate x:DataType="data:Picture">
                                 
                                 <local:CardTemplate HorizontalAlignment="Stretch"
-                                                    VerticalAlignment="Stretch"
-                                                    DoubleTapped="CardTemplate_DoubleTapped"/>
+                                                    VerticalAlignment="Stretch"/>
                                 
                             </DataTemplate>
                         </GridView.ItemTemplate>

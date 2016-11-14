@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutismCommunicationApp.DataModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,14 +18,46 @@ using Windows.UI.Xaml.Navigation;
 
 namespace AutismCommunicationApp
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
+    // This page will allow the user to delete images from database 
+    // and also update labels
     public sealed partial class EditCardPage : Page
     {
+
+        private int pictureID;
+        private string picturePath;
+        private string pictureLabel;
+        Picture card;
+
         public EditCardPage()
         {
             this.InitializeComponent();
         }
-    }
+
+        // Recieve the image that was selected 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            // Passed over the image name and extension
+            card = e.Parameter as Picture;
+
+            // Returns the file that was just copied to local folder
+            /* foundFile = await SearchForFile(imageName);
+
+             if (foundFile != null)
+             {
+
+                 // Store the path of the image in the local folder
+                 imagePath = foundFile.Path;
+
+                 // Convert file to a bitmap image
+                 BitmapImage bp = await ImageUtils.StorageFileToBitmapImage(foundFile);
+                 // NEED TO SHOW IMAGE TO XAML
+                 SelectedImage.Source = bp;
+             }*/
+
+        }// End OnNavigatedTo
+
+    }// End class EditCardPage
+
 }
