@@ -15,10 +15,11 @@ namespace AutismCommunicationApp
         public async void deleteImage(int id, string pictureName)
         {
 
+            // Get access to database
             using (var db = new PictureContext())
             {
 
-                // Find id in database and delete it
+                // Find id in database 
                 var image = db.Pictures.Single(i => i.pictureId == id);
 
                 // Remove data from database
@@ -26,6 +27,8 @@ namespace AutismCommunicationApp
 
                 // Save chanages to database
                 await db.SaveChangesAsync();
+
+                // ===== DELETE FILE FROM LOCAL STORAGE =====
 
                 // Point to the local storage folder
                 StorageFile deleteFile = await ApplicationData.Current.LocalFolder.GetFileAsync(pictureName);
@@ -36,12 +39,30 @@ namespace AutismCommunicationApp
                     await deleteFile.DeleteAsync();
                 }
 
-
             }// End using
 
         }// End deleteImage
 
         // Update the label in the database
+        public async void updateLabel(int id, string newLabel)
+        {
+
+            // Get access to database
+            using (var db = new PictureContext())
+            {
+
+                // Find id in database 
+                var label = db.Pictures.Single(i => i.pictureId == id);
+
+                // Update the label
+                label.pictureLabel = newLabel;
+
+                // Save changes 
+                await db.SaveChangesAsync();
+
+            }//End using
+
+        }// End updateLabel
 
     }// End DatabaseOperations
 

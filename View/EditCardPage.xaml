@@ -27,26 +27,27 @@
         <TextBlock Name="PathOfImage" 
                    Grid.Row="1" 
                    HorizontalAlignment="Center"
-                   Text="Give your picture a label" />
+                   Text="Give your picture a new label" />
 
-        <!--  Store the label here  -->
+        <!--  Input the new label here  -->
         <TextBox Name="Label" 
                  Grid.Row="1"
                  Height="25"
                  Width="250"
                  HorizontalAlignment="Center"
-                 PlaceholderText="Put Label Here"
+                 PlaceholderText="Put New Label Here"
                  Text=""/>
 
-        <!--  Save path and label of image to database -->
-        <Button Name="SaveToDB"
+        <!--  Save a new label to database -->
+        <Button Name="Update"
                 Grid.Row="2"
                 HorizontalAlignment="Center"
                 Height="30"
                 Width="100"
-                Content="Save" 
+                Content="Update" 
                 Foreground="White"
                 Background="Green"
+                Click="Update_Click"
                 Margin="341,29,199,31"/>
 
         <!--  Delete picture from local folder and return to main page -->
@@ -62,4 +63,5 @@
                 Margin="193,29,347,31"/>
 
     </Grid>
+    
 </Page>
