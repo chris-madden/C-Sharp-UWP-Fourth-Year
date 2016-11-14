@@ -59,6 +59,7 @@
                               Drop="DisplayPictures_Drop"
                               Grid.Row="0">
 
+                        <!-- ==========  Template For Pictures  ========== -->
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="data:Picture">
                                 
@@ -68,7 +69,7 @@
                             </DataTemplate>
                         </GridView.ItemTemplate>
 
-                       
+                        <!-- ==========  GridView Panel Design  ========== -->
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <ItemsWrapGrid Orientation="Vertical"
@@ -89,6 +90,7 @@
                               DragOver="CommunicationBar_DragOver"
                               Drop="CommunicationBar_Drop">
 
+                        <!-- ==========  Template For Pictures  ========== -->
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="data:Picture">
 

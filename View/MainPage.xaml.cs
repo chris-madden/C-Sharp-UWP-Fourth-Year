@@ -127,12 +127,18 @@ namespace AutismCommunicationApp
                         // Find picture in list 
                         var itemToMove = this.Pictures.First(i => i.pictureId.ToString() == itemId);
 
-                        // Move picture to communication bar
-                        listViewItemsSource.Add(itemToMove);
+                        // If communication bar has no more than 2 pictures in it
+                        if (listViewItemsSource.Count() < 2)
+                        {
 
-                        // Remove picture from display 
-                        this.Pictures.Remove(itemToMove);
+                            // Move picture to communication bar
+                            listViewItemsSource.Add(itemToMove);
 
+                            // Remove picture from display 
+                            this.Pictures.Remove(itemToMove);
+
+                        }// End if
+                           
                     }// End foreach
                     
                 }// End if
