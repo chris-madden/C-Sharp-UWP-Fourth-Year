@@ -45,6 +45,8 @@
                 Height="30"
                 Width="100"
                 Content="Save" 
+                Foreground="White"
+                Background="Green"
                 Margin="341,29,199,31"
                 Click="SaveToDB_Click"/>
 
@@ -55,6 +57,9 @@
                 Height="30"
                 Width="100"
                 Content="Discard" 
+                Click="DiscardPicture_Click"
+                Background="Red"
+                Foreground="White"
                 Margin="193,29,347,31"/>
 
         <TextBlock Name="Test" 
