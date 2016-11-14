@@ -1,0 +1,64 @@
+﻿<Page
+    x:Class="AutismCommunicationApp.EditCardPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AutismCommunicationApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+
+        </Grid.RowDefinitions>
+
+        <!--  Show the selected image on screen  -->
+        <Image Name="SelectedImage" 
+               Grid.Row="0" 
+               Height="200" 
+               Width="200"
+               Margin="0,0,0,20"/>
+
+        <TextBlock Name="PathOfImage" 
+                   Grid.Row="1" 
+                   HorizontalAlignment="Center"
+                   Text="Give your picture a label" />
+
+        <!--  Store the label here  -->
+        <TextBox Name="Label" 
+                 Grid.Row="1"
+                 Height="25"
+                 Width="250"
+                 HorizontalAlignment="Center"
+                 PlaceholderText="Put Label Here"
+                 Text=""/>
+
+        <!--  Save path and label of image to database -->
+        <Button Name="SaveToDB"
+                Grid.Row="2"
+                HorizontalAlignment="Center"
+                Height="30"
+                Width="100"
+                Content="Save" 
+                Foreground="White"
+                Background="Green"
+                Margin="341,29,199,31"/>
+
+        <!--  Delete picture from local folder and return to main page -->
+        <Button Name="DiscardPicture"
+                Grid.Row="2"
+                HorizontalAlignment="Center"
+                Height="30"
+                Width="100"
+                Content="Discard" 
+                Background="Red"
+                Foreground="White"
+                Margin="193,29,347,31"/>
+
+    </Grid>
+</Page>

@@ -13,6 +13,7 @@
         <!--  Copyright https://blogs.msdn.microsoft.com/quick_thoughts/2015/06/01/windows-10-splitview-build-your-first-hamburger-menu/  -->
         <SplitView x:Name="MySplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
                CompactPaneLength="50" OpenPaneLength="150">
+            
             <SplitView.Pane>
 
                 <!--  Hamburger Button  -->
@@ -26,7 +27,7 @@
                             Background="Transparent" 
                             Click="HamburgerButton_Click"/>
 
-                    <!--  Edit Button  -->
+                    <!--  Add Picture From Device Button  -->
                     <StackPanel Orientation="Horizontal">
                         
                         <Button x:Name="MenuButton1" 
@@ -53,7 +54,7 @@
                                 Click="Edit_Click"/>
                         
                         <!--  Need visual state manager to change this on click -->
-                        <TextBlock Text="Disabled" FontSize="18" VerticalAlignment="Center" />
+                        <TextBlock Name="EditTextBlock" Text="Disabled" FontSize="18" VerticalAlignment="Center" />
                         
                     </StackPanel>
                     
@@ -94,7 +95,8 @@
                             <DataTemplate x:DataType="data:Picture">
                                 
                                 <local:CardTemplate HorizontalAlignment="Stretch"
-                                                    VerticalAlignment="Stretch"/>
+                                                    VerticalAlignment="Stretch"
+                                                    DoubleTapped="CardTemplate_DoubleTapped"/>
                                 
                             </DataTemplate>
                         </GridView.ItemTemplate>

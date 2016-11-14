@@ -107,6 +107,9 @@
     <Compile Include="DataModel\Picture.cs" />
     <Compile Include="DataModel\PictureContext.cs" />
     <Compile Include="DataModel\TodoItem.cs" />
+    <Compile Include="View\EditCardPage.xaml.cs">
+      <DependentUpon>EditCardPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\PictureManager.cs" />
     <Compile Include="View\ImageDetails.xaml.cs">
       <DependentUpon>ImageDetails.xaml</DependentUpon>
@@ -150,6 +153,10 @@
     <Page Include="Common\QuickStartTask.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\EditCardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ImageDetails.xaml">
       <SubType>Designer</SubType>

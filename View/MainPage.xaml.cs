@@ -214,8 +214,25 @@ namespace AutismCommunicationApp
         // Button will enable edit mode
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            editEnabled = true;
-        }
+
+            // Switch the value of editEnabled to the opposite of what is currently is 
+            editEnabled = (editEnabled == true) ? false : true;
+
+            // Change the content of the edit textblock to show if it's enabled or disabled
+            EditTextBlock.Text = (editEnabled == true) ? "Enabled" : "Disabled";
+
+        }// End Edit_Click
+
+        // On double tap user is navigated to the Edit Card Page
+        private void CardTemplate_DoubleTapped(object sender, Windows.UI.Xaml.Input.DoubleTappedRoutedEventArgs e)
+        {
+
+            // If edit mode is enabled navigate to the edit page
+            if (editEnabled == true)
+                this.Frame.Navigate(typeof(EditCardPage));
+
+        }// End CardTemplate_DoubleTapped 
+
     }// End class MainPage
 
 }// End namespace AutismCommunicationApp
