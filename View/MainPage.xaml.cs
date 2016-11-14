@@ -10,6 +10,7 @@ using System.Linq;
 using Windows.ApplicationModel.DataTransfer;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Media.Imaging;
+using System.Diagnostics;
 
 namespace AutismCommunicationApp
 {
@@ -127,22 +128,28 @@ namespace AutismCommunicationApp
                     // Loop through list containing picture
                     foreach (var itemId in itemIdsToMove)
                     {
-                        
-                        // Find picture in list 
-                        var itemToMove = this.Pictures.First(i => i.pictureId.ToString() == itemId);
 
-                        // If communication bar has no more than 2 pictures in it
-                        if (listViewItemsSource.Count() < 2)
+                        // Catch exception that won't let you drop an image in the same list it is already in
+                        try
                         {
 
-                            // Move picture to communication bar
-                            listViewItemsSource.Add(itemToMove);
+                            // Find picture in list 
+                            var itemToMove = this.Pictures.First(i => i.pictureId.ToString() == itemId);
 
-                            // Remove picture from display 
-                            this.Pictures.Remove(itemToMove);
+                            // If communication bar has no more than 2 pictures in it
+                            if (listViewItemsSource.Count() < 2)
+                            {
 
-                        }// End if
-                           
+                                // Move picture to communication bar
+                                listViewItemsSource.Add(itemToMove);
+
+                                // Remove picture from display 
+                                this.Pictures.Remove(itemToMove);
+
+                            }// End if
+                        }
+                        catch (InvalidOperationException){ }
+                        
                     }// End foreach
                     
                 }// End if
@@ -173,7 +180,7 @@ namespace AutismCommunicationApp
 
         }
 
-        private async void DisplayPictures_Drop(object sender, DragEventArgs e)
+        private async void DisplayPictures_Drop(object sender, DragEventArgs e) 
         {
             // If a string is being passed over 
             if (e.DataView.Contains(StandardDataFormats.Text))
@@ -192,17 +199,23 @@ namespace AutismCommunicationApp
                 {
 
                     // Loop through list containing picture
-                    foreach (var itemId in itemIdsToMove)
+                    foreach (var itemId in itemIdsToMove) 
                     {
 
-                        // Find picture in communication bar list 
-                        var itemToMove = this.communicationBar.First(i => i.pictureId.ToString() == itemId);
+                        try {
 
-                        // Move picture to communication bar
-                        listViewItemsSource.Add(itemToMove);
+                            // Find picture in communication bar list 
+                            var itemToMove = this.communicationBar.First(i => i.pictureId.ToString() == itemId);
 
-                        // Remove picture from communication bar 
-                        this.communicationBar.Remove(itemToMove);
+                            // Move picture to communication bar
+                            listViewItemsSource.Add(itemToMove);
+
+                            // Remove picture from communication bar 
+                            this.communicationBar.Remove(itemToMove);
+
+                        }catch (InvalidOperationException) { }
+
+                       
 
                     }// End foreach
 

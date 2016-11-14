@@ -50,14 +50,15 @@
                 Margin="341,29,199,31"/>
 
         <!--  Delete picture from local folder and return to main page -->
-        <Button Name="DiscardPicture"
+        <Button Name="DeletePicture"
                 Grid.Row="2"
                 HorizontalAlignment="Center"
                 Height="30"
                 Width="100"
-                Content="Discard" 
+                Content="Delete" 
                 Background="Red"
                 Foreground="White"
+                Click="DeletePicture_Click"
                 Margin="193,29,347,31"/>
 
     </Grid>

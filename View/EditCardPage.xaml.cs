@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -24,9 +25,9 @@ namespace AutismCommunicationApp
     {
 
         private int pictureID;
-        private string picturePath;
-        private string pictureLabel;
+        private string pictureName;
         Picture card;
+   
 
         public EditCardPage()
         {
@@ -41,23 +42,23 @@ namespace AutismCommunicationApp
             // Passed over the image name and extension
             card = e.Parameter as Picture;
 
-            // Returns the file that was just copied to local folder
-            /* foundFile = await SearchForFile(imageName);
+            // Get ID of image
+            pictureID = card.pictureId;
 
-             if (foundFile != null)
-             {
+            pictureName = Path.GetFileName(card.picturePath);
 
-                 // Store the path of the image in the local folder
-                 imagePath = foundFile.Path;
 
-                 // Convert file to a bitmap image
-                 BitmapImage bp = await ImageUtils.StorageFileToBitmapImage(foundFile);
-                 // NEED TO SHOW IMAGE TO XAML
-                 SelectedImage.Source = bp;
-             }*/
 
         }// End OnNavigatedTo
 
+        private void DeletePicture_Click(object sender, RoutedEventArgs e)
+        {
+            DatabaseOperations dataOp = new DatabaseOperations();
+
+            dataOp.deleteImage(pictureID, pictureName);
+
+            this.Frame.Navigate(typeof(MainPage));
+        }
     }// End class EditCardPage
 
 }

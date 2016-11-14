@@ -104,6 +104,7 @@
     <Compile Include="Common\QuickStartTask.xaml.cs">
       <DependentUpon>QuickStartTask.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseOperations.cs" />
     <Compile Include="DataModel\Picture.cs" />
     <Compile Include="DataModel\PictureContext.cs" />
     <Compile Include="DataModel\TodoItem.cs" />
