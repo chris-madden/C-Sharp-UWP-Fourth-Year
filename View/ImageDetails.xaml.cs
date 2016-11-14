@@ -15,7 +15,9 @@ namespace AutismCommunicationApp
     {
 
         private string imagePath;
-       
+        private string imageName;
+        private StorageFile foundFile;
+      
         public ImageDetails()
         {
 
@@ -29,10 +31,10 @@ namespace AutismCommunicationApp
             base.OnNavigatedTo(e);
 
             // Passed over the image name and extension
-            string imageName = e.Parameter as string;
+            imageName = e.Parameter as string;
 
             // Returns the file that was just copied to local folder
-            StorageFile foundFile = await SearchForFile(imageName);
+            foundFile = await SearchForFile(imageName);
 
             if (foundFile != null)
             {
@@ -122,6 +124,27 @@ namespace AutismCommunicationApp
             this.Frame.Navigate(typeof(MainPage));
 
         }// End SaveToDB_Click
+
+        // Will delete the file and return to the main page if Discard button is clicked
+        private async void DiscardPicture_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+            // Get file 
+            foundFile = await SearchForFile(imageName);
+
+            // Point to the local storage folder
+            StorageFile deleteFile = await ApplicationData.Current.LocalFolder.GetFileAsync(foundFile.Name);
+
+            // If file exists then delete it
+            if (deleteFile != null)
+            {
+                await deleteFile.DeleteAsync();
+            }
+
+            // Bring user back to main page
+            this.Frame.Navigate(typeof(MainPage));
+
+        }// End DiscardPicture_Click
 
     }// End class ImageDetails
 

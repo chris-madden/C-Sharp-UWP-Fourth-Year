@@ -98,15 +98,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CardTemplate.xaml.cs">
+      <DependentUpon>CardTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Common\QuickStartTask.xaml.cs">
       <DependentUpon>QuickStartTask.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Picture.cs" />
     <Compile Include="DataModel\PictureContext.cs" />
     <Compile Include="DataModel\TodoItem.cs" />
-    <Compile Include="DisplayPictures.xaml.cs">
-      <DependentUpon>DisplayPictures.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\PictureManager.cs" />
     <Compile Include="View\ImageDetails.xaml.cs">
       <DependentUpon>ImageDetails.xaml</DependentUpon>
@@ -121,9 +121,6 @@
     </Compile>
     <Compile Include="Migrations\PictureContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SentenceBuilderPage.xaml.cs">
-      <DependentUpon>SentenceBuilderPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\AddToDB.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -146,13 +143,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CardTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Common\QuickStartTask.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="DisplayPictures.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ImageDetails.xaml">
       <SubType>Designer</SubType>
@@ -161,10 +158,6 @@
     <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="SentenceBuilderPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

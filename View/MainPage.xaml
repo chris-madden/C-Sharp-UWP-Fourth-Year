@@ -8,15 +8,6 @@
     xmlns:data="using:AutismCommunicationApp.DataModel"
     mc:Ignorable="d">
 
-    <Page.Resources>
-        <DataTemplate x:DataType="data:Picture" x:Key="PictureDataTemplate">
-            <StackPanel HorizontalAlignment="Center" Margin="5">
-                <Image Width="170" Height="170" Stretch="Fill" Source="{x:Bind picturePath}" />
-                <TextBlock FontSize="16" Text="{x:Bind pictureLabel}" HorizontalAlignment="Center" />
-            </StackPanel>
-        </DataTemplate>
-    </Page.Resources>
-
     <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <!--  Copyright https://blogs.msdn.microsoft.com/quick_thoughts/2015/06/01/windows-10-splitview-build-your-first-hamburger-menu/  -->
@@ -47,7 +38,7 @@
             <!-- Images and Labels are displayed in the content section -->
             <SplitView.Content>
 
-                <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20">
+                <Grid Name="GridContent" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="3*" />
@@ -56,7 +47,6 @@
 
                     <!-- ==========  Picture Display  ========== -->
                     <GridView ItemsSource="{x:Bind Pictures}" 
-                              ItemTemplate="{StaticResource PictureDataTemplate}"
                               Name="DisplayPictures"
                               ScrollViewer.VerticalScrollMode="Disabled"
                               ScrollViewer.VerticalScrollBarVisibility="Hidden"
@@ -69,6 +59,16 @@
                               Drop="DisplayPictures_Drop"
                               Grid.Row="0">
 
+                        <GridView.ItemTemplate>
+                            <DataTemplate x:DataType="data:Picture">
+                                
+                                <local:CardTemplate HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"/>
+                                
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+
+                       
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <ItemsWrapGrid Orientation="Vertical"
@@ -81,7 +81,6 @@
                     <!-- ==========  Communication Bar  ========== -->
                     <GridView Name="CommunicationBar"
                               ItemsSource="{x:Bind communicationBar}"
-                              ItemTemplate="{StaticResource PictureDataTemplate}"
                               Background="Aqua"
                               Grid.Row="1"
                               CanDragItems="True"
@@ -90,13 +89,23 @@
                               DragOver="CommunicationBar_DragOver"
                               Drop="CommunicationBar_Drop">
 
+                        <GridView.ItemTemplate>
+                            <DataTemplate x:DataType="data:Picture">
+
+                                <local:CardTemplate HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"/>
+
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+
+                        <!--
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <ItemsWrapGrid Orientation="Vertical"
                                                MaximumRowsOrColumns="2"/>
                             </ItemsPanelTemplate>
                         </GridView.ItemsPanel>
-
+-->
                     </GridView>
 
                 </Grid>

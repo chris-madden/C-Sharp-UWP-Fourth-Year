@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace AutismCommunicationApp.DataModel
 {
-    class Picture
+    public class Picture
     {
 
         public int pictureId { get; set; }
