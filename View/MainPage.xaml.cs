@@ -45,6 +45,9 @@ namespace AutismCommunicationApp
 
         }// End HamburgerButton_Click
 
+
+        // ====================  FILE EXPLORER BUTTON  ====================
+
         // This button opens file explorer, copies the selected file and navigates to the ImageDetails page
         private async void MenuButton1_Click(object sender, RoutedEventArgs e)
         {
@@ -56,6 +59,8 @@ namespace AutismCommunicationApp
 
             // Have a filter for png files
             pickerOpen.FileTypeFilter.Add(".png");
+            pickerOpen.FileTypeFilter.Add(".jpg");
+            pickerOpen.FileTypeFilter.Add(".jpeg");
 
             // pick file and store it in a storage file
             StorageFile storageFile = await pickerOpen.PickSingleFileAsync();
@@ -202,7 +207,9 @@ namespace AutismCommunicationApp
                     foreach (var itemId in itemIdsToMove) 
                     {
 
-                        try {
+                        // Catch exception that won't let you drop an image in the same list it is already in
+                        try
+                        {
 
                             // Find picture in communication bar list 
                             var itemToMove = this.communicationBar.First(i => i.pictureId.ToString() == itemId);
@@ -214,8 +221,6 @@ namespace AutismCommunicationApp
                             this.communicationBar.Remove(itemToMove);
 
                         }catch (InvalidOperationException) { }
-
-                       
 
                     }// End foreach
 
