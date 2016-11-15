@@ -21,7 +21,9 @@ namespace AutismCommunicationApp
         private ObservableCollection<Picture> Pictures;
         private ObservableCollection<Picture> communicationBar;
         private bool editEnabled;
-        
+
+        public object SupportedOrientations { get; private set; }
+
         public MainPage()
         {
 

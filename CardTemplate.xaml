@@ -30,8 +30,8 @@
                         <AdaptiveTrigger MinWindowWidth="600" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="CardPicture.Height" Value="200" />
-                        <Setter Target="CardPicture.Width" Value="200" />
+                        <Setter Target="CardPicture.Height" Value="125" />
+                        <Setter Target="CardPicture.Width" Value="125" />
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualStateDesktop">
@@ -39,8 +39,8 @@
                         <AdaptiveTrigger MinWindowWidth="800" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="CardPicture.Height" Value="300" />
-                        <Setter Target="CardPicture.Width" Value="300" />
+                        <Setter Target="CardPicture.Height" Value="150" />
+                        <Setter Target="CardPicture.Width" Value="150" />
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
