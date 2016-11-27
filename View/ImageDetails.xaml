@@ -7,65 +7,134 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Name="DisplaySelectedIamge" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Name="DisplaySelectedIamge" Background="#FFBAE4F0">
+
+        <!--  Adpated from https://github.com/Windows-Readiness/AbsoluteBeginnersWin10/blob/master/UWP-037/UWP-037/SimpleVisualStateTriggerExample/SimpleVisualStateTriggerExample/MainPage.xaml -->
+        <VisualStateManager.VisualStateGroups>
+
+            <VisualStateGroup x:Name="VisualStateGroup">
+
+                <!--  ==========  Phone state  ==========  -->
+                <VisualState x:Name="VisualStatePhone">
+
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="SelectedImage.Height" Value="200" />
+                        <Setter Target="SelectedImage.Width" Value="200" />
+                    </VisualState.Setters>
+
+                </VisualState>
+
+                <!--  ==========  Tablet state  ==========  -->
+                <VisualState x:Name="VisualStateTablet">
+
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="SelectedImage.Height" Value="250" />
+                        <Setter Target="SelectedImage.Width" Value="250" />
+                    </VisualState.Setters>
+
+                </VisualState>
+
+                <!--  ==========  Tablet state  ==========  -->
+                <VisualState x:Name="VisualStateDesktop">
+
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="SelectedImage.Height" Value="300" />
+                        <Setter Target="SelectedImage.Width" Value="300" />
+                    </VisualState.Setters>
+
+                </VisualState>
+
+            </VisualStateGroup>
+
+        </VisualStateManager.VisualStateGroups>
 
         <Grid.RowDefinitions>
 
-            <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
 
         </Grid.RowDefinitions>
-        
-        <!--  Show the selected image on screen  -->
-        <Image Name="SelectedImage" 
-               Grid.Row="0" 
-               Height="200" 
-               Width="200"
-               Margin="0,0,0,20"/>
 
-        <TextBlock Name="PathOfImage" 
-                   Grid.Row="1" 
-                   HorizontalAlignment="Center"
-                   Text="Give your picture a label" />
+        <!--  ==========  Stackpanel for image and prompt  ==========  -->
+        <StackPanel Name="stk_Image_Label"
+                    Orientation="Vertical"
+                    VerticalAlignment="Center"
+                    Grid.Row="0">
 
-        <!--  Store the label here  -->
-        <TextBox Name="Label" 
-                 Grid.Row="1"
-                 Height="25"
-                 Width="250"
-                 HorizontalAlignment="Center"
-                 PlaceholderText="Put Label Here"
-                 Text=""/>
+            <!--  Show the selected image on screen  -->
+            <Image Name="SelectedImage" 
+                   Height="150" 
+                   Width="150"
+                   Margin="10"
+                   Stretch="Fill"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"/>
 
-        <!--  Save path and label of image to database -->
-        <Button Name="SaveToDB"
-                Grid.Row="2"
-                HorizontalAlignment="Center"
-                Height="30"
-                Width="100"
-                Content="Save" 
-                Foreground="White"
-                Background="Green"
-                Margin="341,29,199,31"
-                Click="SaveToDB_Click"/>
+            
+        </StackPanel>
 
-        <!--  Delete picture from local folder and return to main page -->
-        <Button Name="DiscardPicture"
-                Grid.Row="2"
-                HorizontalAlignment="Center"
-                Height="30"
-                Width="100"
-                Content="Discard" 
-                Click="DiscardPicture_Click"
-                Background="Red"
-                Foreground="White"
-                Margin="193,29,347,31"/>
+        <!--  ==========  Stackpanel for Textbox and Buttons  ==========  -->
+        <StackPanel Name="stk_Textbox_Buttons"
+                    Orientation="Vertical"
+                    VerticalAlignment="Center"
+                    Grid.Row="1">
 
-        <TextBlock Name="Test" 
-                   Grid.Row="2" 
-                   HorizontalAlignment="Center"/>
+            <TextBlock Name="PathOfImage" 
+                       HorizontalAlignment="Center"
+                       Text="Give your picture a label" 
+                       FontSize="20"
+                       Margin="15"/>
+
+            <!--  Store the label here  -->
+            <TextBox Name="Label" 
+                     Height="20"
+                     Width="200"
+                     HorizontalAlignment="Center"
+                     PlaceholderText="         Add Label Here"
+                     Text=""/>
+
+            <!--  =====  Stackpanel to house the buttons =====  -->
+            <StackPanel  Orientation="Horizontal"
+                         HorizontalAlignment="Center">
+
+                <!--  Save path and label of image to database -->
+                <Button Name="SaveToDB"
+                        Height="30"
+                        Width="100"
+                        Content="Save" 
+                        Foreground="White"
+                        Background="Green"
+                        Margin="5, 10"
+                        Click="SaveToDB_Click"/>
+
+                <!--  Delete picture from local folder and return to main page -->
+                <Button Name="DiscardPicture"
+                        Height="30"
+                        Width="100"
+                        Content="Discard" 
+                        Click="DiscardPicture_Click"
+                        Background="Red"
+                        Foreground="White"
+                        Margin="5, 10"/>    
+
+            </StackPanel>
+
+        </StackPanel>
 
     </Grid>
     
 </Page>
+
+
