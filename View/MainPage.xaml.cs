@@ -261,6 +261,27 @@ namespace AutismCommunicationApp
 
         }// DisplayPictures_DoubleTapped
 
+        // Adapted from https://msdn.microsoft.com/en-us/windows/uwp/launch-resume/launch-default-app
+        // Button to lauch the web browser
+        private async void WebBrowser_Click(object sender, RoutedEventArgs e)
+        {
+            // The URI to launch
+            var google = new Uri(@"http://www.google.com");
+
+            // Launch the URI
+            var success = await Windows.System.Launcher.LaunchUriAsync(google);
+
+            // If it fails go back to main page
+            if (!success)
+            {
+
+                // Return to main page if browser can't open
+                this.Frame.Navigate(typeof(MainPage));
+
+            }// End if
+
+        }// End WebBrowser_Click
+
     }// End class MainPage
 
 }// End namespace AutismCommunicationApp

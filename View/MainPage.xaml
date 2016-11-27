@@ -12,7 +12,7 @@
 
         <!--  Copyright https://blogs.msdn.microsoft.com/quick_thoughts/2015/06/01/windows-10-splitview-build-your-first-hamburger-menu/  -->
         <SplitView x:Name="MySplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
-                   CompactPaneLength="50" OpenPaneLength="150">
+                   CompactPaneLength="50" OpenPaneLength="170">
             
             <SplitView.Pane>
 
@@ -60,9 +60,17 @@
                     
                     <!--  BUTTON NOT IN USE AT THE MOMENT  -->
                     <StackPanel Orientation="Horizontal">
-                        <Button x:Name="MenuButton3" FontFamily="Segoe MDL2 Assets" Content="&#xE1D6;"
-                       Width="50" Height="50" Background="Transparent"/>
-                        <TextBlock Text="Button 3" FontSize="18" VerticalAlignment="Center" />
+                        
+                        <Button x:Name="WebBrowser"
+                                FontFamily="Segoe MDL2 Assets"
+                                Content="&#xE909;"
+                                Width="50" 
+                                Height="50" 
+                                Background="Transparent"
+                                Click="WebBrowser_Click"/>
+                        
+                        <TextBlock Text="Web Browser" FontSize="16" VerticalAlignment="Center" />
+                        
                     </StackPanel>
                 </StackPanel>
             </SplitView.Pane>
