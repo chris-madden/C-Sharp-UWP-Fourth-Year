@@ -32,8 +32,6 @@ namespace AutismCommunicationApp
             // Passed over the image name and extension
             card = e.Parameter as Picture;
 
-            var image = card.picturePath;
-
             // Get ID of image
             pictureID = card.pictureId;
 
@@ -42,6 +40,9 @@ namespace AutismCommunicationApp
 
             // Display the picture that is being updated or deleted
             SelectedImage.Source = new BitmapImage(new Uri(card.picturePath, UriKind.Absolute));
+
+            // Display the current label for the picture
+            Image_Label.Text = card.pictureLabel;
 
         }// End OnNavigatedTo
 

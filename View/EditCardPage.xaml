@@ -7,62 +7,137 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="#FFBAE4F0">
+
+        <!--  Adpated from https://github.com/Windows-Readiness/AbsoluteBeginnersWin10/blob/master/UWP-037/UWP-037/SimpleVisualStateTriggerExample/SimpleVisualStateTriggerExample/MainPage.xaml -->
+        <VisualStateManager.VisualStateGroups>
+            
+            <VisualStateGroup x:Name="VisualStateGroup">
+                
+                <!--  ==========  Phone state  ==========  -->
+                <VisualState x:Name="VisualStatePhone">
+                    
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    
+                    <VisualState.Setters>
+                        <Setter Target="SelectedImage.Height" Value="200" />
+                        <Setter Target="SelectedImage.Width" Value="200" />
+                    </VisualState.Setters>
+                    
+                </VisualState>
+
+                <!--  ==========  Tablet state  ==========  -->
+                <VisualState x:Name="VisualStateTablet">
+                    
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                    </VisualState.StateTriggers>
+                    
+                    <VisualState.Setters>
+                        <Setter Target="SelectedImage.Height" Value="250" />
+                        <Setter Target="SelectedImage.Width" Value="250" />
+                    </VisualState.Setters>
+                    
+                </VisualState>
+
+                <!--  ==========  Tablet state  ==========  -->
+                <VisualState x:Name="VisualStateDesktop">
+
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="SelectedImage.Height" Value="300" />
+                        <Setter Target="SelectedImage.Width" Value="300" />
+                    </VisualState.Setters>
+
+                </VisualState>
+
+            </VisualStateGroup>
+            
+        </VisualStateManager.VisualStateGroups>
+
 
         <Grid.RowDefinitions>
 
-            <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
 
         </Grid.RowDefinitions>
+    
+            <!--  ==========  Stackpanel to hold image and current label  ==========  -->
+            <StackPanel Name="stk_Image_Label"
+                        Orientation="Vertical"
+                        VerticalAlignment="Center"
+                        Grid.Row="0">
 
-        <!--  Show the selected image on screen  -->
-        <Image Name="SelectedImage" 
-               Source="UpdateImage"
-               Grid.Row="0" 
-               Height="200" 
-               Width="200"
-               Margin="0,0,0,20"/>
+                <!--  Image that is carried over from the main page  -->
+                <Image Name="SelectedImage" 
+                       Source="UpdateImage"
+                       Height="150" 
+                       Width="150"
+                       Margin="10"
+                       Stretch="Fill"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Stretch"/>
 
-        <TextBlock Name="PathOfImage" 
-                   Grid.Row="1" 
-                   HorizontalAlignment="Center"
-                   Text="Give your picture a new label" />
+                <!--  Textblock that holds the current label for the image  -->
+                <TextBlock Name="Image_Label" 
+                           HorizontalAlignment="Center"
+                           Text="Label will go here"
+                           FontSize="20"
+                           Margin="5"/>
 
-        <!--  Input the new label here  -->
-        <TextBox Name="Label" 
-                 Grid.Row="1"
-                 Height="25"
-                 Width="250"
-                 HorizontalAlignment="Center"
-                 PlaceholderText="Put New Label Here"
-                 Text=""/>
+        </StackPanel>
 
-        <!--  Save a new label to database -->
-        <Button Name="Update"
-                Grid.Row="2"
-                HorizontalAlignment="Center"
-                Height="30"
-                Width="100"
-                Content="Update" 
-                Foreground="White"
-                Background="Green"
-                Click="Update_Click"
-                Margin="341,29,199,31"/>
+            <!--  ==========  Stackpanel to hold Textbox and Edit buttons  ==========  -->
+        <StackPanel Name="OuterTextboxButtons"
+                    Orientation="Vertical"
+                    VerticalAlignment="Top"
+                    Grid.Row="1">
 
-        <!--  Delete picture from local folder and return to main page -->
-        <Button Name="DeletePicture"
-                Grid.Row="2"
-                HorizontalAlignment="Center"
-                Height="30"
-                Width="100"
-                Content="Delete" 
-                Background="Red"
-                Foreground="White"
-                Click="DeletePicture_Click"
-                Margin="193,29,347,31"/>
+            <!--  Textbox for changing the current label of picture  -->
+            <TextBox x:Name="Label"
+                         Height="20"
+                         Width="200"
+                         HorizontalAlignment="Center"
+                         PlaceholderText="     Update Label Name"
+                         Text="" 
+                         Margin="5"/>
+
+            <!--  Stackpanel to house the edit buttons  -->
+            <StackPanel  Orientation="Horizontal"
+                         HorizontalAlignment="Center">
+
+                <Button x:Name="DeletePicture"
+                            Height="30"
+                            Width="100"
+                            Content="Delete" 
+                            Background="Red"
+                            Foreground="White"
+                            Click="DeletePicture_Click"
+                            Margin="5"/>
+
+                <Button x:Name="Update"
+                            Height="30"
+                            Width="100"
+                            Content="Update" 
+                            Foreground="White"
+                            Background="Green"
+                            Click="Update_Click"
+                            Margin="5"/>
+
+            </StackPanel>
+
+        </StackPanel>
 
     </Grid>
-    
+
 </Page>
+
+
+    
+
