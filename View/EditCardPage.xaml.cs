@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -18,7 +19,6 @@ namespace AutismCommunicationApp
         private string pictureName;
         Picture card;
    
-
         public EditCardPage()
         {
             this.InitializeComponent();
@@ -32,11 +32,16 @@ namespace AutismCommunicationApp
             // Passed over the image name and extension
             card = e.Parameter as Picture;
 
+            var image = card.picturePath;
+
             // Get ID of image
             pictureID = card.pictureId;
 
             // Extract name from path
             pictureName = Path.GetFileName(card.picturePath);
+
+            // Display the picture that is being updated or deleted
+            SelectedImage.Source = new BitmapImage(new Uri(card.picturePath, UriKind.Absolute));
 
         }// End OnNavigatedTo
 

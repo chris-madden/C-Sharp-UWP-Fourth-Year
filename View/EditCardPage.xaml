@@ -19,6 +19,7 @@
 
         <!--  Show the selected image on screen  -->
         <Image Name="SelectedImage" 
+               Source="UpdateImage"
                Grid.Row="0" 
                Height="200" 
                Width="200"
