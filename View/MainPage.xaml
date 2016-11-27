@@ -42,23 +42,7 @@
                         
                     </StackPanel>
                     
-                    <!--  Edit Button  -->
-                    <StackPanel Orientation="Horizontal">
-                        
-                        <Button x:Name="Edit" 
-                                FontFamily="Segoe MDL2 Assets" 
-                                Content="&#xE70F;"
-                                Width="50" 
-                                Height="50" 
-                                Background="Transparent"
-                                Click="Edit_Click"/>
-                        
-                        <!--  Need visual state manager to change this on click -->
-                        <TextBlock Name="EditTextBlock" Text="Edit Disabled" FontSize="16" VerticalAlignment="Center" />
-                        
-                    </StackPanel>
-                    
-                    <!--  BUTTON NOT IN USE AT THE MOMENT  -->
+                    <!--  Access the web browser -->
                     <StackPanel Orientation="Horizontal">
                         
                         <Button x:Name="WebBrowser"
@@ -72,6 +56,38 @@
                         <TextBlock Text="Web Browser" FontSize="16" VerticalAlignment="Center" />
                         
                     </StackPanel>
+
+                    <!--  Take a photo -->
+                    <StackPanel Orientation="Horizontal">
+
+                        <Button x:Name="Camera"
+                                FontFamily="Segoe MDL2 Assets"
+                                Content="&#xE722;"
+                                Width="50" 
+                                Height="50" 
+                                Background="Transparent"
+                                Click="Camera_Click"/>
+
+                        <TextBlock Text="Take Photo" FontSize="16" VerticalAlignment="Center" />
+
+                    </StackPanel>
+
+                    <!--  Edit Button  -->
+                    <StackPanel Orientation="Horizontal">
+
+                        <Button x:Name="Edit" 
+                                FontFamily="Segoe MDL2 Assets" 
+                                Content="&#xE70F;"
+                                Width="50" 
+                                Height="50" 
+                                Background="Transparent"
+                                Click="Edit_Click"/>
+
+                        <!--  Need visual state manager to change this on click -->
+                        <TextBlock Name="EditTextBlock" Text="Edit Disabled" FontSize="16" VerticalAlignment="Center" />
+
+                    </StackPanel>
+                    
                 </StackPanel>
             </SplitView.Pane>
             

@@ -11,6 +11,8 @@ using Windows.ApplicationModel.DataTransfer;
 using System.Collections.ObjectModel;
 using Windows.UI.Xaml.Media.Imaging;
 using System.Diagnostics;
+using Windows.Media.Capture;
+using Windows.Foundation;
 
 namespace AutismCommunicationApp
 {
@@ -282,6 +284,38 @@ namespace AutismCommunicationApp
 
         }// End WebBrowser_Click
 
+        // Method for taking a photo with the devices camera
+        private async void Camera_Click(object sender, RoutedEventArgs e)
+        {
+
+            CameraCaptureUI captureUI = new CameraCaptureUI();
+            captureUI.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Jpeg;
+            captureUI.PhotoSettings.CroppedSizeInPixels = new Size(300, 300);
+
+            StorageFile photo = await captureUI.CaptureFileAsync(CameraCaptureUIMode.Photo);
+
+            if (photo == null)
+            {
+                // User cancelled photo capture
+                return;
+            }
+            else
+            {
+                // Save file to applicaitons local folder
+                await photo.CopyAsync(ApplicationData.Current.LocalFolder, photo.Name, NameCollisionOption.ReplaceExisting);
+            }
+
+            // If a file has been selected
+            if (photo != null)
+            {
+
+                // Navigate to page where image is displayed and label can be set
+                // Pass the file name along
+                this.Frame.Navigate(typeof(ImageDetails), photo.Name);
+
+            }// End if
+
+        }
     }// End class MainPage
 
 }// End namespace AutismCommunicationApp
