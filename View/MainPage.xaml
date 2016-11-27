@@ -8,7 +8,7 @@
     xmlns:data="using:AutismCommunicationApp.DataModel"
     mc:Ignorable="d">
 
-    <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid x:Name="LayoutRoot" Background="White">
 
         <!--  Copyright https://blogs.msdn.microsoft.com/quick_thoughts/2015/06/01/windows-10-splitview-build-your-first-hamburger-menu/  -->
         <SplitView x:Name="MySplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
@@ -17,7 +17,7 @@
             <SplitView.Pane>
 
                 <!--  Hamburger Button  -->
-                <StackPanel Background="Gray">
+                <StackPanel Background="#F06560">
                     
                     <Button x:Name="HamburgerButton" 
                             FontFamily="Segoe MDL2 Assets" 
@@ -32,13 +32,13 @@
                         
                         <Button x:Name="MenuButton1" 
                                 FontFamily="Segoe MDL2 Assets" 
-                                Content="&#xE825;"
+                                Content="&#xE710;"
                                 Width="50" 
                                 Height="50" 
                                 Background="Transparent" 
                                 Click="MenuButton1_Click"/>
                         
-                        <TextBlock Text="Device" FontSize="18" VerticalAlignment="Center" />
+                        <TextBlock Text="Add Picture" FontSize="16" VerticalAlignment="Center" />
                         
                     </StackPanel>
                     
@@ -47,17 +47,18 @@
                         
                         <Button x:Name="Edit" 
                                 FontFamily="Segoe MDL2 Assets" 
-                                Content="&#xE10F;"
+                                Content="&#xE70F;"
                                 Width="50" 
                                 Height="50" 
                                 Background="Transparent"
                                 Click="Edit_Click"/>
                         
                         <!--  Need visual state manager to change this on click -->
-                        <TextBlock Name="EditTextBlock" Text="Disabled" FontSize="18" VerticalAlignment="Center" />
+                        <TextBlock Name="EditTextBlock" Text="Edit Disabled" FontSize="16" VerticalAlignment="Center" />
                         
                     </StackPanel>
                     
+                    <!--  BUTTON NOT IN USE AT THE MOMENT  -->
                     <StackPanel Orientation="Horizontal">
                         <Button x:Name="MenuButton3" FontFamily="Segoe MDL2 Assets" Content="&#xE1D6;"
                        Width="50" Height="50" Background="Transparent"/>
@@ -69,7 +70,8 @@
             <!-- Images and Labels are displayed in the content section -->
             <SplitView.Content>
 
-                <Grid Name="GridContent" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20">
+                <Grid Name="GridContent"
+                      Margin="20">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*" />
@@ -118,7 +120,7 @@
                     <!-- ==========  Communication Bar  ========== -->
                     <GridView Name="CommunicationBar"
                               ItemsSource="{x:Bind communicationBar}"
-                              Background="#A9D26A"
+                              Background="#E3F0C9"
                               Grid.Row="1"
                               CanDragItems="True"
                               DragItemsStarting="CommunicationBar_DragItemsStarting"
@@ -131,7 +133,8 @@
                             <DataTemplate x:DataType="data:Picture" >
 
                                 <!--  Cards have a margin for a cleaner look within the gridview  -->
-                                <local:CardTemplate HorizontalAlignment="Stretch"
+                                <local:CardTemplate x:Name="CardTemplate" 
+                                                    HorizontalAlignment="Stretch"
                                                     VerticalAlignment="Stretch"
                                                     Margin="10"/>
 

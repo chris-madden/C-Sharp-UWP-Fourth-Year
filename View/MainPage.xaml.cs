@@ -242,7 +242,7 @@ namespace AutismCommunicationApp
             editEnabled = (editEnabled == true) ? false : true;
 
             // Change the content of the edit textblock to show if it's enabled or disabled
-            EditTextBlock.Text = (editEnabled == true) ? "Enabled" : "Disabled";
+            EditTextBlock.Text = (editEnabled == true) ? "Edit Enabled" : "Edit Disabled";
 
         }// End Edit_Click
 
