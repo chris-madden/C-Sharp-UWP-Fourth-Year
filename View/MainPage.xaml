@@ -12,7 +12,7 @@
 
         <!--  Copyright https://blogs.msdn.microsoft.com/quick_thoughts/2015/06/01/windows-10-splitview-build-your-first-hamburger-menu/  -->
         <SplitView x:Name="MySplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
-               CompactPaneLength="50" OpenPaneLength="150">
+                   CompactPaneLength="50" OpenPaneLength="150">
             
             <SplitView.Pane>
 
@@ -72,8 +72,8 @@
                 <Grid Name="GridContent" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="20">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3*" />
-                        <RowDefinition Height="1.5*" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="1.2*" />
                     </Grid.RowDefinitions>
 
                     <!-- ==========  Picture Display  ========== -->
@@ -96,8 +96,10 @@
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="data:Picture">
                                 
+                                <!--  Cards have a margin for a cleaner look within the gridview  -->
                                 <local:CardTemplate HorizontalAlignment="Stretch"
-                                                    VerticalAlignment="Stretch"/>
+                                                    VerticalAlignment="Stretch"
+                                                    Margin="10"/>
                                 
                             </DataTemplate>
                         </GridView.ItemTemplate>
@@ -106,7 +108,8 @@
                         <GridView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <ItemsWrapGrid Orientation="Vertical"
-                                               MaximumRowsOrColumns="2"/>
+                                               MaximumRowsOrColumns="2"
+                                               Background="#FFBAE4F0"/>
                             </ItemsPanelTemplate>
                         </GridView.ItemsPanel>
 
@@ -115,7 +118,7 @@
                     <!-- ==========  Communication Bar  ========== -->
                     <GridView Name="CommunicationBar"
                               ItemsSource="{x:Bind communicationBar}"
-                              Background="Aqua"
+                              Background="#A9D26A"
                               Grid.Row="1"
                               CanDragItems="True"
                               DragItemsStarting="CommunicationBar_DragItemsStarting"
@@ -125,22 +128,16 @@
 
                         <!-- ==========  Template For Pictures  ========== -->
                         <GridView.ItemTemplate>
-                            <DataTemplate x:DataType="data:Picture">
+                            <DataTemplate x:DataType="data:Picture" >
 
+                                <!--  Cards have a margin for a cleaner look within the gridview  -->
                                 <local:CardTemplate HorizontalAlignment="Stretch"
-                                                    VerticalAlignment="Stretch"/>
+                                                    VerticalAlignment="Stretch"
+                                                    Margin="10"/>
 
                             </DataTemplate>
                         </GridView.ItemTemplate>
 
-                        <!--
-                        <GridView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <ItemsWrapGrid Orientation="Vertical"
-                                               MaximumRowsOrColumns="2"/>
-                            </ItemsPanelTemplate>
-                        </GridView.ItemsPanel>
--->
                     </GridView>
 
                 </Grid>

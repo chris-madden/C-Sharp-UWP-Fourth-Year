@@ -42,7 +42,7 @@
                     
                 </VisualState>
 
-                <!--  ==========  Tablet state  ==========  -->
+                <!--  ==========  Desktop state  ==========  -->
                 <VisualState x:Name="VisualStateDesktop">
 
                     <VisualState.StateTriggers>

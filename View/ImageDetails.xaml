@@ -42,7 +42,7 @@
 
                 </VisualState>
 
-                <!--  ==========  Tablet state  ==========  -->
+                <!--  ==========  Desktop state  ==========  -->
                 <VisualState x:Name="VisualStateDesktop">
 
                     <VisualState.StateTriggers>
@@ -82,7 +82,6 @@
                    HorizontalAlignment="Stretch"
                    VerticalAlignment="Stretch"/>
 
-            
         </StackPanel>
 
         <!--  ==========  Stackpanel for Textbox and Buttons  ==========  -->
