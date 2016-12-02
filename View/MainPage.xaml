@@ -94,9 +94,8 @@
             <!-- Images and Labels are displayed in the content section -->
             <SplitView.Content>
 
-                <Grid Name="GridContent"
-                      Margin="20">
-
+                <Grid Name="GridContent" Margin="20">
+                    
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*" />
                         <RowDefinition Height="1.2*" />

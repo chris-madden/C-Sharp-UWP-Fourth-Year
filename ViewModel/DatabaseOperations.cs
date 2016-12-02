@@ -30,6 +30,13 @@ namespace AutismCommunicationApp
 
                 // ===== DELETE FILE FROM LOCAL STORAGE =====
 
+                // try to find image in local storage and delete it
+               /* try
+                {
+                   
+                }
+                catch (Exception) { }*/
+
                 // Point to the local storage folder
                 StorageFile deleteFile = await ApplicationData.Current.LocalFolder.GetFileAsync(pictureName);
 
