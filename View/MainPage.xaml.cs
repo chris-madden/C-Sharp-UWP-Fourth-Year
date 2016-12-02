@@ -87,49 +87,53 @@ namespace AutismCommunicationApp
 
         }// End HamburgerButton_Click
 
-
         // ====================  FILE EXPLORER BUTTON  ====================
 
         // This button opens file explorer, copies the selected file and navigates to the ImageDetails page
         private async void MenuButton1_Click(object sender, RoutedEventArgs e)
         {
 
-            // adapted from http://stackoverflow.com/questions/39111925/uwp-copy-file-from-fileopenpicker-to-localstorage
-
-            // Open file explorer
-            var pickerOpen = new FileOpenPicker();
-
-            // Have a filter for png files
-            pickerOpen.FileTypeFilter.Add(".png");
-            pickerOpen.FileTypeFilter.Add(".jpg");
-            pickerOpen.FileTypeFilter.Add(".jpeg");
-
-            // pick file and store it in a storage file
-            StorageFile storageFile = await pickerOpen.PickSingleFileAsync();
-
-            // Check if file is selected
-            if (storageFile != null)
-            {
-                // Copy the file into the devices local storage
-                // If file alredy exists replace the copy
-                await storageFile.CopyAsync(ApplicationData.Current.LocalFolder, storageFile.Name, NameCollisionOption.ReplaceExisting);
-            }
-
-            // If a file has been selected
-            if (storageFile != null)
+            // If pin code has been entered correctly and menu has been unlocked
+            if (MySplitView.IsPaneOpen == true)
             {
 
-                // Navigate to page where image is displayed and label can be set
-                // Pass the file name along
-                this.Frame.Navigate(typeof(ImageDetails), storageFile.Name);
+                //  ----------  adapted from http://stackoverflow.com/questions/39111925/uwp-copy-file-from-fileopenpicker-to-localstorage  ----------
+
+                // Open file explorer
+                var pickerOpen = new FileOpenPicker();
+
+                // Have a filter for png files
+                pickerOpen.FileTypeFilter.Add(".png");
+                pickerOpen.FileTypeFilter.Add(".jpg");
+                pickerOpen.FileTypeFilter.Add(".jpeg");
+
+                // pick file and store it in a storage file
+                StorageFile storageFile = await pickerOpen.PickSingleFileAsync();
+
+                // Check if file is selected
+                if (storageFile != null)
+                {
+                    // Copy the file into the devices local storage
+                    // If file alredy exists replace the copy
+                    await storageFile.CopyAsync(ApplicationData.Current.LocalFolder, storageFile.Name, NameCollisionOption.ReplaceExisting);
+                }
+
+                // If a file has been selected
+                if (storageFile != null)
+                {
+
+                    // Navigate to page where image is displayed and label can be set
+                    // Pass the file name along
+                    this.Frame.Navigate(typeof(ImageDetails), storageFile.Name);
+
+                }// End if
 
             }// End if
-           
+
         }// End MenuButton1_Click
 
         //  ====================  DRAG AND DROP FROM DISPLAY TO COMMUNICATION BAR  ====================
 
-        
         //  ----------  Adapted from http://www.shenchauhan.com/blog/2015/8/23/drag-and-drop-in-uwp  ----------
 
         // Code for gridview displaying pictures
@@ -304,55 +308,66 @@ namespace AutismCommunicationApp
         // Button to lauch the web browser
         private async void WebBrowser_Click(object sender, RoutedEventArgs e)
         {
-            // The URI to launch
-            var google = new Uri(@"http://www.google.com");
 
-            // Launch the URI
-            var success = await Windows.System.Launcher.LaunchUriAsync(google);
-
-            // If it fails go back to main page
-            if (!success)
+            // If pin code has been entered correctly and menu has been unlocked
+            if (MySplitView.IsPaneOpen == true)
             {
+                // The URI to launch
+                var google = new Uri(@"http://www.google.com");
 
-                // Return to main page if browser can't open
-                this.Frame.Navigate(typeof(MainPage));
+                // Launch the URI
+                var success = await Windows.System.Launcher.LaunchUriAsync(google);
 
-            }// End if
+                // If it fails go back to main page
+                if (!success)
+                {
 
+                    // Return to main page if browser can't open
+                    this.Frame.Navigate(typeof(MainPage));
+
+                }// End if
+            }
+          
         }// End WebBrowser_Click
 
         // Method for taking a photo with the devices camera
         private async void Camera_Click(object sender, RoutedEventArgs e)
         {
 
-            CameraCaptureUI captureUI = new CameraCaptureUI();
-            captureUI.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Jpeg;
-            captureUI.PhotoSettings.CroppedSizeInPixels = new Size(300, 300);
-
-            StorageFile photo = await captureUI.CaptureFileAsync(CameraCaptureUIMode.Photo);
-
-            if (photo == null)
-            {
-                // User cancelled photo capture
-                return;
-            }
-            else
-            {
-                // Save file to applicaitons local folder
-                await photo.CopyAsync(ApplicationData.Current.LocalFolder, photo.Name, NameCollisionOption.ReplaceExisting);
-            }
-
-            // If a file has been selected
-            if (photo != null)
+            // If pin code has been entered correctly and menu has been unlocked
+            if (MySplitView.IsPaneOpen == true)
             {
 
-                // Navigate to page where image is displayed and label can be set
-                // Pass the file name along
-                this.Frame.Navigate(typeof(ImageDetails), photo.Name);
+                CameraCaptureUI captureUI = new CameraCaptureUI();
+                captureUI.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Jpeg;
+                captureUI.PhotoSettings.CroppedSizeInPixels = new Size(300, 300);
+
+                StorageFile photo = await captureUI.CaptureFileAsync(CameraCaptureUIMode.Photo);
+
+                if (photo == null)
+                {
+                    // User cancelled photo capture
+                    return;
+                }
+                else
+                {
+                    // Save file to applicaitons local folder
+                    await photo.CopyAsync(ApplicationData.Current.LocalFolder, photo.Name, NameCollisionOption.ReplaceExisting);
+                }
+
+                // If a file has been selected
+                if (photo != null)
+                {
+
+                    // Navigate to page where image is displayed and label can be set
+                    // Pass the file name along
+                    this.Frame.Navigate(typeof(ImageDetails), photo.Name);
+
+                }// End if
 
             }// End if
 
-        }
+        }// End Camera_Click
 
         //  ====================  PIN CODE FUNCTIONS  ====================
 
