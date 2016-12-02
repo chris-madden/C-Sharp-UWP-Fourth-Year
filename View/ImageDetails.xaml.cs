@@ -42,11 +42,25 @@ namespace AutismCommunicationApp
                 // Store the path of the image in the local folder
                 imagePath = foundFile.Path;
 
-                // Convert file to a bitmap image
-                BitmapImage bp = await ImageUtils.StorageFileToBitmapImage(foundFile);
-                // NEED TO SHOW IMAGE TO XAML
-                SelectedImage.Source = bp;
-            }
+                BitmapImage bp;
+
+                try
+                {
+                    // Convert file to a bitmap image
+                    bp = await ImageUtils.StorageFileToBitmapImage(foundFile);
+
+                    // NEED TO SHOW IMAGE TO XAML
+                    SelectedImage.Source = bp;
+                }
+                catch (Exception) {
+
+                    // If file is empty ( 0KB ) then the exception for component not found will be caught
+                    // If exception is caught then bring user back to main page
+                    this.Frame.Navigate(typeof(MainPage));
+
+                }// End try catch
+               
+            }// End if
 
         }// End OnNavigatedTo
 
