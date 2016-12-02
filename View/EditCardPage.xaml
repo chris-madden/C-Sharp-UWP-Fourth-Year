@@ -102,7 +102,7 @@
             <!--  Textbox for changing the current label of picture  -->
             <TextBox x:Name="Label"
                          Height="20"
-                         Width="200"
+                         Width="210"
                          HorizontalAlignment="Center"
                          PlaceholderText="     Update Label Name"
                          Text="" 
@@ -131,6 +131,17 @@
                             Margin="5"/>
 
             </StackPanel>
+
+            <!--  Return to main page without making changes -->
+            <Button x:Name="ReturnToMainPage"
+                    HorizontalAlignment="Center"
+                    Width="210"
+                    Height="30"
+                    Margin="5"
+                    Content="Return Without Changes"
+                    Foreground="White"
+                    Background="Blue"
+                    Click="ReturnToMainPage_Click"/> 
 
         </StackPanel>
 

@@ -55,6 +55,7 @@ namespace AutismCommunicationApp
             this.Frame.Navigate(typeof(MainPage));
         }
 
+        // Button to update a label for a picture
         private void Update_Click(object sender, RoutedEventArgs e)
         {
 
@@ -71,6 +72,12 @@ namespace AutismCommunicationApp
             }// End if
             
         }// End Update_Click
+
+        // Button to return user to main page
+        private void ReturnToMainPage_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
 
     }// End class EditCardPage
 
