@@ -16,6 +16,7 @@ namespace AutismCommunicationApp
 
         private string imagePath;
         private string imageName;
+        private string textValidation = "Label must be 20 characters or less";
         private StorageFile foundFile;
       
         public ImageDetails()
@@ -105,37 +106,50 @@ namespace AutismCommunicationApp
             // Get text from label textbox
             string label = Label.Text;
 
-            // Adapted from https://msdn.microsoft.com/en-us/library/system.string.isnullorempty(v=vs.110).aspx
-
-            // If the label textbox has text in it 
-            if (!String.IsNullOrEmpty(label))
+            // Check that string is 20 characters or less
+            if (label.Length <= 20)
             {
-
-                // ==========  SAVE TO DATABASE  ==========
-
-                // Get access to the database
-                using (var db = new PictureContext())
+                // ----------  Adapted from https://msdn.microsoft.com/en-us/library/system.string.isnullorempty(v=vs.110).aspx  ----------
+                // If the label textbox has text in it 
+                if (!String.IsNullOrEmpty(label))
                 {
 
-                    // Store image path and label into model
-                    var picture = new Picture { picturePath = imagePath, pictureLabel = label };
+                    // ==========  SAVE TO DATABASE  ==========
 
-                    // Add picture to table
-                    db.Pictures.Add(picture);
+                    // Get access to the database
+                    using (var db = new PictureContext())
+                    {
 
-                    // Save the database with the new picture
-                    db.SaveChangesAsync();
+                        // Store image path and label into model
+                        var picture = new Picture { picturePath = imagePath, pictureLabel = label };
 
-                }// End using
+                        // Add picture to table
+                        db.Pictures.Add(picture);
 
-            }// End if
+                        // Save the database with the new picture
+                        db.SaveChangesAsync();
+
+                    }// End using
+
+                }// End if
+
+                // Clear the textbox
+                label = "";
+
+                // Navigate to page where image is displayed and label can be set
+                // Pass the file name along
+                this.Frame.Navigate(typeof(MainPage));
+
+            }
+            else {
+
+                // Display message to user saying it must be 20 characters or less
+                TextValidation.Text = textValidation;
+
+            }
 
             // Clear the textbox
             label = "";
-
-            // Navigate to page where image is displayed and label can be set
-            // Pass the file name along
-            this.Frame.Navigate(typeof(MainPage));
 
         }// End SaveToDB_Click
 

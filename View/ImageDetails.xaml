@@ -130,6 +130,14 @@
 
             </StackPanel>
 
+            <!--  Text appears if label is more than 20 characters-->
+            <TextBlock Name="TextValidation" 
+                       HorizontalAlignment="Center"
+                       Text="" 
+                       FontSize="13"
+                       Margin="10"
+                       Foreground="Red"/>
+
         </StackPanel>
 
     </Grid>

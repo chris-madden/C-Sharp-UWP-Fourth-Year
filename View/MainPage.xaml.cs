@@ -4,13 +4,10 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using System;
 using AutismCommunicationApp.DataModel;
-using System.Collections.Generic;
 using ViewModel;
 using System.Linq;
 using Windows.ApplicationModel.DataTransfer;
 using System.Collections.ObjectModel;
-using Windows.UI.Xaml.Media.Imaging;
-using System.Diagnostics;
 using Windows.Media.Capture;
 using Windows.Foundation;
 
