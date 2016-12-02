@@ -42,25 +42,48 @@ namespace AutismCommunicationApp
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
 
-            // If panel is closed when button is pressed then open it otherwise if it is open then close it
-            PinCodeStackPanel.Visibility = (PinCodeStackPanel.Visibility == Visibility.Collapsed) ? Visibility.Visible : Visibility.Collapsed;
+            //  ====================  LOCKS AND UNLOCKS THE MENU  ====================
 
-           var pin = loadPinCode();
+            // If User is in edit mode and they click the hamburger mode then it locks the menu  
+            if (MySplitView.IsPaneOpen == true)
+            {
+
+                if (PinCodeStackPanel.Visibility == Visibility.Collapsed)
+                {
+
+                    // Keep the pin code stackpanel closed
+                    PinCodeStackPanel.Visibility = Visibility.Collapsed;
+
+                    // Close the splitview which it turn locks the menu
+                    MySplitView.IsPaneOpen = false;
+
+                }// End nested if
+
+            }// End if
+            else {
+
+                // If panel is closed when button is pressed then open it otherwise if it is open then close it
+                PinCodeStackPanel.Visibility = (PinCodeStackPanel.Visibility == Visibility.Collapsed) ? Visibility.Visible : Visibility.Collapsed;
+
+            }
+
+            //  ====================  LOADS THE PIN AND PROMPTS THE USER  ====================
+
+            var pin = loadPinCode();
 
             if (String.IsNullOrEmpty(pin))
             {
 
+                // Empty out the pin code text box when hamburger button is clicked
                 PinCodeTextBox.Text = "";
 
             }
             else {
 
+                // Show pin to user
                 PinCodeTextBlock.Text = pin.ToString();
 
             }
-
-            // Set pane to open if it closed
-            //MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
 
         }// End HamburgerButton_Click
 
@@ -106,9 +129,8 @@ namespace AutismCommunicationApp
 
         //  ====================  DRAG AND DROP FROM DISPLAY TO COMMUNICATION BAR  ====================
 
-        /*
-         *  Adapted from http://www.shenchauhan.com/blog/2015/8/23/drag-and-drop-in-uwp
-        */
+        
+        //  ----------  Adapted from http://www.shenchauhan.com/blog/2015/8/23/drag-and-drop-in-uwp  ----------
 
         // Code for gridview displaying pictures
         private void DisplayPictures_DragItemsStarting(object sender, DragItemsStartingEventArgs e)
@@ -278,7 +300,7 @@ namespace AutismCommunicationApp
 
         }// DisplayPictures_DoubleTapped
 
-        // Adapted from https://msdn.microsoft.com/en-us/windows/uwp/launch-resume/launch-default-app
+        //  ----------  Adapted from https://msdn.microsoft.com/en-us/windows/uwp/launch-resume/launch-default-app  ----------
         // Button to lauch the web browser
         private async void WebBrowser_Click(object sender, RoutedEventArgs e)
         {
@@ -341,7 +363,6 @@ namespace AutismCommunicationApp
             var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
             // Create a simple setting
-
             localSettings.Values["pinCode"] = "1234";
 
             // Read data from a pinCode value
@@ -356,9 +377,7 @@ namespace AutismCommunicationApp
             }
             else
             {
-
                 return pin;
-
             }
 
         }// End loadPinCode

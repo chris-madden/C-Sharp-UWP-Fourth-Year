@@ -20,7 +20,7 @@
                     Width="120"
                     Height="120"
                     Orientation="Vertical"
-                    Visibility="Visible">
+                    Visibility="Collapsed">
 
             <TextBlock Name="PinCodeLabel"
                        Text="Enter Pin Code" 
