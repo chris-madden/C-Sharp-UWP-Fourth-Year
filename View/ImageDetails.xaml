@@ -99,7 +99,7 @@
             <!--  Store the label here  -->
             <TextBox Name="Label" 
                      Height="20"
-                     Width="200"
+                     Width="210"
                      HorizontalAlignment="Center"
                      PlaceholderText="         Add Label Here"
                      Text=""/>
