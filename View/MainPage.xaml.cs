@@ -20,6 +20,7 @@ namespace AutismCommunicationApp
         private ObservableCollection<Picture> Pictures;
         private ObservableCollection<Picture> communicationBar;
         private bool editEnabled;
+        private string pin;
 
         public object SupportedOrientations { get; private set; }
 
@@ -41,8 +42,25 @@ namespace AutismCommunicationApp
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
 
+            // If panel is closed when button is pressed then open it otherwise if it is open then close it
+            PinCodeStackPanel.Visibility = (PinCodeStackPanel.Visibility == Visibility.Collapsed) ? Visibility.Visible : Visibility.Collapsed;
+
+           var pin = loadPinCode();
+
+            if (String.IsNullOrEmpty(pin))
+            {
+
+                PinCodeTextBox.Text = "";
+
+            }
+            else {
+
+                PinCodeTextBlock.Text = pin.ToString();
+
+            }
+
             // Set pane to open if it closed
-            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+            //MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
 
         }// End HamburgerButton_Click
 
@@ -313,6 +331,74 @@ namespace AutismCommunicationApp
             }// End if
 
         }
+
+        //  ====================  PIN CODE FUNCTIONS  ====================
+
+        private string loadPinCode()
+        {
+
+            // Load pincode from local settings
+            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+
+            // Create a simple setting
+
+            localSettings.Values["pinCode"] = "1234";
+
+            // Read data from a pinCode value
+            Object value = localSettings.Values["pinCode"];
+
+            // Convert object to a string
+            pin = value.ToString();
+
+            if (value == null)
+            {
+                return null;
+            }
+            else
+            {
+
+                return pin;
+
+            }
+
+        }// End loadPinCode
+
+        // OK Button 
+        private void OKButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            // If code is correct unlock menu
+            if (string.Equals(pin, PinCodeTextBox.Text))
+            {
+
+                // Close pin code stackpanel
+                PinCodeStackPanel.Visibility = Visibility.Collapsed;
+
+                // Open the pane
+                MySplitView.IsPaneOpen = true;
+
+            }
+            else {
+
+                // Clear pin code text box
+                PinCodeTextBox.Text = "";
+
+            }
+
+        }// End  OKButton_Click
+
+        // Cancel Button
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            // Clear pin code text box
+            PinCodeTextBox.Text = "";
+
+            // Close pin code stackpanel
+            PinCodeStackPanel.Visibility = Visibility.Collapsed;
+
+        }// End cancelButton_Click
+
     }// End class MainPage
 
 }// End namespace AutismCommunicationApp

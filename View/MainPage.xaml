@@ -10,33 +10,68 @@
 
     <Grid x:Name="LayoutRoot" Background="White">
 
+        <!--  Stackpanel for displaying pin code and pin code options  -->
         <StackPanel Name="PinCodeStackPanel"
                     Canvas.ZIndex="3"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Background="Blue"
                     Margin="50, 0, 0, 0"
-                    Width="100"
-                    Height="100"
+                    Width="120"
+                    Height="120"
                     Orientation="Vertical"
-                    Visibility="Collapsed">
+                    Visibility="Visible">
 
+            <TextBlock Name="PinCodeLabel"
+                       Text="Enter Pin Code" 
+                       FontSize="12" 
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Margin="5"
+                       Foreground="White"/>
+
+            <!--  This text block shows the pin code so it isn't forgotten  -->
             <TextBlock Name="PinCodeTextBlock"
                        Text="Enter Pin Code" 
                        FontSize="10" 
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
-                       Margin="10"
+                       Margin="5"
                        Foreground="White"/>
 
             <!--  Store the label here  -->
             <TextBox Name="PinCodeTextBox" 
                      Height="30"
-                     Width="80"
+                     Width="100"
                      HorizontalAlignment="Center"
-                     Margin="10"
+                     Margin="5"
                      Text=""/>
 
+            <!--  Stackpanel for Pin Code buttons-->
+            <StackPanel Name="buttonsStackPanel"
+                        Orientation="Horizontal">
+
+                <Button Name="OKButton"
+                        Width="40"
+                        Height="20"
+                        Content="OK"
+                        Background="Green"
+                        Foreground="White"
+                        FontSize="7"
+                        Margin="18, 0, 5, 5"
+                        Click="OKButton_Click"/>
+
+                <Button Name="cancelButton"
+                        Width="40"
+                        Height="20"
+                        Content="Cancel"
+                        Background="red"
+                        Foreground="White"
+                        FontSize="7"
+                        Margin="0, 0, 0, 5"
+                        Click="cancelButton_Click"/>
+
+            </StackPanel>
 
         </StackPanel>
 
