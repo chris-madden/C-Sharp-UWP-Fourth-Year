@@ -17,6 +17,7 @@ namespace AutismCommunicationApp
         private string imagePath;
         private string imageName;
         private string textValidation = "Label must be 20 characters or less";
+        private string noLabelValidation = "You must give the picture a label";
         private StorageFile foundFile;
       
         public ImageDetails()
@@ -109,6 +110,7 @@ namespace AutismCommunicationApp
             // Check that string is 20 characters or less
             if (label.Length <= 20)
             {
+
                 // ----------  Adapted from https://msdn.microsoft.com/en-us/library/system.string.isnullorempty(v=vs.110).aspx  ----------
                 // If the label textbox has text in it 
                 if (!String.IsNullOrEmpty(label))
@@ -131,14 +133,19 @@ namespace AutismCommunicationApp
 
                     }// End using
 
+                    // Clear the textbox
+                    label = "";
+
+                    // Navigate back to main page
+                    this.Frame.Navigate(typeof(MainPage));
+
                 }// End if
+                else {
 
-                // Clear the textbox
-                label = "";
+                    // Display message to user saying the picture must have a label
+                    TextValidation.Text = noLabelValidation;
 
-                // Navigate to page where image is displayed and label can be set
-                // Pass the file name along
-                this.Frame.Navigate(typeof(MainPage));
+                }// End if (String is empty or not)
 
             }
             else {
@@ -146,7 +153,7 @@ namespace AutismCommunicationApp
                 // Display message to user saying it must be 20 characters or less
                 TextValidation.Text = textValidation;
 
-            }
+            }// End if (string is 20 characters or not)
 
             // Clear the textbox
             label = "";
