@@ -10,6 +10,36 @@
 
     <Grid x:Name="LayoutRoot" Background="White">
 
+        <StackPanel Name="PinCodeStackPanel"
+                    Canvas.ZIndex="3"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Background="Blue"
+                    Margin="50, 0, 0, 0"
+                    Width="100"
+                    Height="100"
+                    Orientation="Vertical"
+                    Visibility="Collapsed">
+
+            <TextBlock Name="PinCodeTextBlock"
+                       Text="Enter Pin Code" 
+                       FontSize="10" 
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Margin="10"
+                       Foreground="White"/>
+
+            <!--  Store the label here  -->
+            <TextBox Name="PinCodeTextBox" 
+                     Height="30"
+                     Width="80"
+                     HorizontalAlignment="Center"
+                     Margin="10"
+                     Text=""/>
+
+
+        </StackPanel>
+
         <!--  Copyright https://blogs.msdn.microsoft.com/quick_thoughts/2015/06/01/windows-10-splitview-build-your-first-hamburger-menu/  -->
         <SplitView x:Name="MySplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" 
                    CompactPaneLength="50" OpenPaneLength="170">
@@ -95,7 +125,7 @@
             <SplitView.Content>
 
                 <Grid Name="GridContent" Margin="20">
-                    
+ 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*" />
                         <RowDefinition Height="1.2*" />
