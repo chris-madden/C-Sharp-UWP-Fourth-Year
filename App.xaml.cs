@@ -17,6 +17,10 @@ namespace AutismCommunicationApp
     sealed partial class App : Application
     {
 
+        // These variables are used for local settings
+        public static int pinCodeLocally;
+        public static int comBarSize;
+
        /* Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
         Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
         */
@@ -51,7 +55,7 @@ namespace AutismCommunicationApp
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
+           
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -82,7 +86,21 @@ namespace AutismCommunicationApp
             // Ensure the current window is active
             Window.Current.Activate();
 
-        }
+            // ====================  LOCAL SETTINGS  ====================
+
+            // Load pincode from local settings
+            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+
+            // Read locla settings for pin code
+            Object loadPin = localSettings.Values["pinCode"];
+
+            // If there is no pincode set one to a default value
+            if (loadPin == null)
+            {
+                localSettings.Values["pinCode"] = "9999";
+            }
+
+        }// End OnLaunched
 
         /// <summary>
         /// Invoked when Navigation to a certain page fails

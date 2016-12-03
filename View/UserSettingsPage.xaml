@@ -126,12 +126,11 @@
                         Margin="5, 15, 5, 5"/>
 
             <!--  Textbox for changing the current label of picture  -->
-            <TextBox x:Name="Label"
+            <TextBox x:Name="UpdatePinTextBox"
                          Height="20"
                          Width="100"
                          HorizontalAlignment="Center"
                          PlaceholderText="   New Pin"
-                         Text="" 
                          Margin="5"/>
 
             <!--  Stackpanel to house buttons  -->
@@ -155,6 +154,7 @@
             <TextBlock Name="promptPinChange" 
                        HorizontalAlignment="Center"
                        Text=""
+                       Foreground="Red"
                        FontSize="10"
                        Margin="2"/>
 

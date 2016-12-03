@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,6 +12,10 @@ namespace AutismCommunicationApp.View
     /// </summary>
     public sealed partial class UserSettingsPage : Page
     {
+
+        private string promptUserPin = "Pin must be 4 exactly 4 numbers";
+        private string promptUserLetters = "Pin can only contain numbers";
+
         public UserSettingsPage()
         {
             this.InitializeComponent();
@@ -35,7 +29,36 @@ namespace AutismCommunicationApp.View
         private void UpdatePin_Click(object sender, RoutedEventArgs e)
         {
 
-        }
+            // If the user has entered a value
+            if (!String.IsNullOrEmpty(UpdatePinTextBox.Text) && UpdatePinTextBox.Text.Length == 4)
+            {
+
+                // Load pincode from local settings
+                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+
+                // Check if pin code entered consists of only numbers
+                bool containsInt = UpdatePinTextBox.Text.All(char.IsDigit);
+
+                // If pin code is all digits
+                if (containsInt)
+                {
+                    // Change the local setting for the pin code
+                    localSettings.Values["pinCode"] = UpdatePinTextBox.Text;
+                }
+                else {
+
+                    // Prompt user to only enter numbers
+                    promptPinChange.Text = promptUserLetters;
+                }
+               
+            }
+            else {
+
+                // Prompt user that pin code can only have four numbers
+                promptPinChange.Text = promptUserPin;
+            }
+
+        }// End UpdatePin_Click
 
         private void ReturnToMainPage_Click(object sender, RoutedEventArgs e)
         {

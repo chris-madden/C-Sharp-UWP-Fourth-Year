@@ -375,13 +375,10 @@ namespace AutismCommunicationApp
         private string loadPinCode()
         {
 
-            // Load pincode from local settings
+            // Access Local Settings
             var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
-            // Create a simple setting
-            localSettings.Values["pinCode"] = "1234";
-
-            // Read data from a pinCode value
+            // Load pin code
             Object value = localSettings.Values["pinCode"];
 
             // Convert object to a string
