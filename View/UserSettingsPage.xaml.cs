@@ -20,11 +20,29 @@ namespace AutismCommunicationApp.View
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Settings : Page
+    public sealed partial class UserSettingsPage : Page
     {
-        public Settings()
+        public UserSettingsPage()
         {
             this.InitializeComponent();
         }
-    }
-}
+
+        private void UpdateSize_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void UpdatePin_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ReturnToMainPage_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
+
+    }// End Class UserSettingsPage
+
+}// End namespace AutismCommunicationApp.View

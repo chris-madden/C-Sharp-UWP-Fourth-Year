@@ -10,6 +10,7 @@ using Windows.ApplicationModel.DataTransfer;
 using System.Collections.ObjectModel;
 using Windows.Media.Capture;
 using Windows.Foundation;
+using AutismCommunicationApp.View;
 
 namespace AutismCommunicationApp
 {
@@ -433,6 +434,11 @@ namespace AutismCommunicationApp
 
         }// End cancelButton_Click
 
+        // Button click for settings
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(UserSettingsPage));
+        }
     }// End class MainPage
 
 }// End namespace AutismCommunicationApp

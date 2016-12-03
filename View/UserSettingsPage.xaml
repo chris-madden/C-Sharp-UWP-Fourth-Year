@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="AutismCommunicationApp.View.Settings"
+    x:Class="AutismCommunicationApp.View.UserSettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AutismCommunicationApp.View"
@@ -22,8 +22,6 @@
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
-                        <Setter Target="SelectedImage.Height" Value="200" />
-                        <Setter Target="SelectedImage.Width" Value="200" />
                     </VisualState.Setters>
 
                 </VisualState>
@@ -36,8 +34,6 @@
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
-                        <Setter Target="SelectedImage.Height" Value="250" />
-                        <Setter Target="SelectedImage.Width" Value="250" />
                     </VisualState.Setters>
 
                 </VisualState>
@@ -50,8 +46,6 @@
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
-                        <Setter Target="SelectedImage.Height" Value="300" />
-                        <Setter Target="SelectedImage.Width" Value="300" />
                     </VisualState.Setters>
 
                 </VisualState>
@@ -75,7 +69,7 @@
                         Grid.Row="0">
 
             <!--  Textblock displays Title  -->
-            <TextBlock  Name="Page Title" 
+            <TextBlock  Name="PageTitle" 
                         HorizontalAlignment="Center"
                         Text="Settings"
                         FontSize="25"
@@ -96,8 +90,8 @@
                      PlaceholderText="   Number"
                      Text="" 
                      Margin="5"/>
-            
-            <!-- Button to confirm sentence size change --> 
+
+            <!-- Button to confirm sentence size change -->
             <Button x:Name="UpdateSize"
                     Height="26"
                     Width="100"
@@ -106,7 +100,7 @@
                     Foreground="White"
                     Background="Green"
                     HorizontalAlignment="Center"
-                    Click="Update_Click"
+                    Click="UpdateSize_Click"
                     Margin="5"/>
 
             <!--  Textblock that prompts user the numbers allowed if that enter a wrong number -->
@@ -143,7 +137,7 @@
             <!--  Stackpanel to house buttons  -->
             <StackPanel  Orientation="Horizontal"
                          HorizontalAlignment="Center">
-                
+
                 <!--  Button to update pin code  -->
                 <Button x:Name="UpdatePin"
                             Height="26"
@@ -152,7 +146,7 @@
                             Foreground="White"
                             Background="Green"
                             FontSize="11"
-                            Click="Update_Click"
+                            Click="UpdatePin_Click"
                             Margin="5"/>
 
             </StackPanel>

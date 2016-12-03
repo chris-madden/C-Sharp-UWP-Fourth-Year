@@ -152,7 +152,23 @@
                         <TextBlock Name="EditTextBlock" Text="Edit Disabled" FontSize="16" VerticalAlignment="Center" />
 
                     </StackPanel>
-                    
+
+                    <!--  Edit Button  -->
+                    <StackPanel Orientation="Horizontal">
+
+                        <Button x:Name="Settings" 
+                                FontFamily="Segoe MDL2 Assets" 
+                                Content="&#xE70F;"
+                                Width="50" 
+                                Height="50" 
+                                Background="Transparent"
+                                Click="Settings_Click"/>
+
+                        <!--  Need visual state manager to change this on click -->
+                        <TextBlock Name="SettingsTextBlock" Text="Settings" FontSize="16" VerticalAlignment="Center" />
+
+                    </StackPanel>
+
                 </StackPanel>
             </SplitView.Pane>
             
