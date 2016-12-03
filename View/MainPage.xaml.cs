@@ -22,6 +22,7 @@ namespace AutismCommunicationApp
         private ObservableCollection<Picture> communicationBar;
         private bool editEnabled;
         private string pin;
+        private string sentenceSize;
 
         public object SupportedOrientations { get; private set; }
 
@@ -161,6 +162,18 @@ namespace AutismCommunicationApp
         // gridview on the screen
         private async void CommunicationBar_Drop(object sender, DragEventArgs e)
         {
+
+            var localSettings = ApplicationData.Current.LocalSettings;
+
+            // Load value of sentence size into Object
+            Object size = localSettings.Values["sentenceSize"];
+
+            // Store value of object in  a string
+            sentenceSize = size.ToString();
+
+            // Convert string value to integer
+            int maxPictures = Int32.Parse(sentenceSize);
+
             // If a string is being passed over 
             if (e.DataView.Contains(StandardDataFormats.Text))
             {
@@ -188,7 +201,7 @@ namespace AutismCommunicationApp
                             var itemToMove = this.Pictures.First(i => i.pictureId.ToString() == itemId);
 
                             // If communication bar has no more than 2 pictures in it
-                            if (listViewItemsSource.Count() < 2)
+                            if (listViewItemsSource.Count() < maxPictures)
                             {
 
                                 // Move picture to communication bar
@@ -434,7 +447,13 @@ namespace AutismCommunicationApp
         // Button click for settings
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(UserSettingsPage));
+
+            // If pin code has been entered correctly and menu has been unlocked
+            if (MySplitView.IsPaneOpen == true)
+            {
+                this.Frame.Navigate(typeof(UserSettingsPage));
+            }
+
         }
     }// End class MainPage
 

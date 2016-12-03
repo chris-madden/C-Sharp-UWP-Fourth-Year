@@ -83,7 +83,7 @@
                         Margin="5"/>
 
             <!--  Textbox for changing the sentence size  -->
-            <TextBox x:Name="SentenceSizeTExtBox"
+            <TextBox x:Name="SentenceSizeTextBox"
                      Height="20"
                      Width="100"
                      HorizontalAlignment="Center"
@@ -106,8 +106,9 @@
             <!--  Textblock that prompts user the numbers allowed if that enter a wrong number -->
             <TextBlock Name="sizeWarningTextblock" 
                        HorizontalAlignment="Center"
-                       Text="Label will go here"
+                       Text=""
                        FontSize="10"
+                       Foreground="Red"
                        Margin="5"/>
 
         </StackPanel>

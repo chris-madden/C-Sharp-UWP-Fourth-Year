@@ -158,7 +158,7 @@
 
                         <Button x:Name="Settings" 
                                 FontFamily="Segoe MDL2 Assets" 
-                                Content="&#xE70F;"
+                                Content="&#xE713;"
                                 Width="50" 
                                 Height="50" 
                                 Background="Transparent"

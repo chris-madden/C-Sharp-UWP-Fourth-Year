@@ -88,7 +88,11 @@ namespace AutismCommunicationApp
 
             // ====================  LOCAL SETTINGS  ====================
 
-            // Load pincode from local settings
+            // -----  Adapted from https://msdn.microsoft.com/library/windows/apps/xaml/windows.storage.applicationdata.localsettings.aspx  -----
+
+            // =====  Pin Code  =====
+
+            // Access local settings
             var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
 
             // Read locla settings for pin code
@@ -99,6 +103,18 @@ namespace AutismCommunicationApp
             {
                 localSettings.Values["pinCode"] = "9999";
             }
+
+            // =====  Sentence Size  =====
+
+            Object size = localSettings.Values["sentenceSize"];
+
+            // If there is no size set one to a default value
+            if (size == null)
+            {
+                localSettings.Values["sentenceSize"] = "2";
+            }
+
+            Object test = localSettings.Values["sentenceSize"];
 
         }// End OnLaunched
 
