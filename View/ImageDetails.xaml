@@ -22,8 +22,10 @@
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
-                        <Setter Target="SelectedImage.Height" Value="200" />
-                        <Setter Target="SelectedImage.Width" Value="200" />
+                        <Setter Target="SelectedImage.Height" Value="150" />
+                        <Setter Target="SelectedImage.Width" Value="150" />
+                        <Setter Target="ImageDetailsPageTitle.FontSize" Value="15" />
+                        <Setter Target="PathOfImage.FontSize" Value="12" />
                     </VisualState.Setters>
 
                 </VisualState>
@@ -36,8 +38,10 @@
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
-                        <Setter Target="SelectedImage.Height" Value="250" />
-                        <Setter Target="SelectedImage.Width" Value="250" />
+                        <Setter Target="SelectedImage.Height" Value="200" />
+                        <Setter Target="SelectedImage.Width" Value="200" />
+                        <Setter Target="ImageDetailsPageTitle.FontSize" Value="20"/>
+                        <Setter Target="PathOfImage.FontSize" Value="15" />
                     </VisualState.Setters>
 
                 </VisualState>
@@ -50,8 +54,10 @@
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
-                        <Setter Target="SelectedImage.Height" Value="300" />
-                        <Setter Target="SelectedImage.Width" Value="300" />
+                        <Setter Target="SelectedImage.Height" Value="250" />
+                        <Setter Target="SelectedImage.Width" Value="250" />
+                        <Setter Target="ImageDetailsPageTitle.FontSize" Value="25" />
+                        <Setter Target="PathOfImage.FontSize" Value="20" />
                     </VisualState.Setters>
 
                 </VisualState>
@@ -62,7 +68,7 @@
 
         <Grid.RowDefinitions>
 
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
 
         </Grid.RowDefinitions>
@@ -73,14 +79,26 @@
                     VerticalAlignment="Center"
                     Grid.Row="0">
 
+            <StackPanel>
+                
+                <!--  Textblock displays Title  -->
+                <TextBlock  Name="ImageDetailsPageTitle" 
+                            x:Uid="ImageDetailsTitle"
+                            HorizontalAlignment="Center"                   
+                            Text=""
+                            Margin="10"
+                            FontSize="25"/>
+                
+            </StackPanel>
+
             <!--  Show the selected image on screen  -->
             <Image Name="SelectedImage" 
                    Height="150" 
                    Width="150"
-                   Margin="10"
                    Stretch="Fill"
                    HorizontalAlignment="Stretch"
-                   VerticalAlignment="Stretch"/>
+                   VerticalAlignment="Stretch"
+                   Margin="5"/>
 
         </StackPanel>
 
@@ -90,18 +108,25 @@
                     VerticalAlignment="Center"
                     Grid.Row="1">
 
-            <TextBlock Name="PathOfImage" 
+            <StackPanel>
+                
+                <!--  Label to prompt user to give their picture a label  -->
+                <TextBlock Name="PathOfImage" 
                        HorizontalAlignment="Center"
-                       Text="Give your picture a label" 
+                       x:Uid="addPictureLabel"
+                       Text="" 
                        FontSize="20"
-                       Margin="15"/>
+                       Margin="10"/>
+
+            </StackPanel>
 
             <!--  Store the label here  -->
             <TextBox Name="Label" 
+                     x:Uid="addLabelTextBox"
                      Height="20"
                      Width="210"
                      HorizontalAlignment="Center"
-                     PlaceholderText="         Add Label Here"
+                     PlaceholderText=""
                      Text=""/>
 
             <!--  =====  Stackpanel to house the buttons =====  -->
@@ -110,9 +135,10 @@
 
                 <!--  Save path and label of image to database -->
                 <Button Name="SaveToDB"
+                        x:Uid="saveNewPictureButton"
                         Height="30"
                         Width="100"
-                        Content="Save" 
+                        Content="" 
                         Foreground="White"
                         Background="Green"
                         Margin="5, 10"
@@ -120,9 +146,10 @@
 
                 <!--  Delete picture from local folder and return to main page -->
                 <Button Name="DiscardPicture"
+                        x:Uid="discardNewPictureButton"
                         Height="30"
                         Width="100"
-                        Content="Discard" 
+                        Content="" 
                         Click="DiscardPicture_Click"
                         Background="Red"
                         Foreground="White"

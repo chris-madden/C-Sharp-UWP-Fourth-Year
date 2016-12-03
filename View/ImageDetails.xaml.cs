@@ -16,8 +16,8 @@ namespace AutismCommunicationApp
 
         private string imagePath;
         private string imageName;
-        private string textValidation = "Label must be 20 characters or less";
-        private string noLabelValidation = "You must give the picture a label";
+        // string textValidation = "Label must be 20 characters or less";
+        //private string noLabelValidation = "You must give the picture a label";
         private StorageFile foundFile;
       
         public ImageDetails()
@@ -104,6 +104,13 @@ namespace AutismCommunicationApp
         private void SaveToDB_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
 
+            // Get access to resources for localisation
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+            // Retrieve reqired strings
+            var textValidation = loader.GetString("ImageDetailsTextValidation"); 
+            var noLabelValidation = loader.GetString("ImageDetailsNoLabelValidation");
+
             // Get text from label textbox
             string label = Label.Text;
 
@@ -140,10 +147,10 @@ namespace AutismCommunicationApp
                     this.Frame.Navigate(typeof(MainPage));
 
                 }// End if
-                else {
+                else { 
 
-                    // Display message to user saying the picture must have a label
-                    TextValidation.Text = noLabelValidation;
+                // Display message to user saying the picture must have a label
+                TextValidation.Text = noLabelValidation;
 
                 }// End if (String is empty or not)
 
@@ -167,15 +174,20 @@ namespace AutismCommunicationApp
             // Get file 
             foundFile = await SearchForFile(imageName);
 
-            // Point to the local storage folder
-            StorageFile deleteFile = await ApplicationData.Current.LocalFolder.GetFileAsync(foundFile.Name);
+            try {
 
-            // If file exists then delete it
-            if (deleteFile != null)
-            {
-                await deleteFile.DeleteAsync();
+                // Point to the local storage folder
+                StorageFile deleteFile = await ApplicationData.Current.LocalFolder.GetFileAsync(foundFile.Name);
+
+                // If file exists then delete it
+                if (deleteFile != null)
+                {
+                    await deleteFile.DeleteAsync();
+                }
+
             }
-
+            catch (NullReferenceException) { }
+            
             // Bring user back to main page
             this.Frame.Navigate(typeof(MainPage));
 

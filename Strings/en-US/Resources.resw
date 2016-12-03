@@ -117,12 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="addLabelTextBox.PlaceholderText" xml:space="preserve">
+    <value>Add Label Here</value>
+    <comment>Prompt user to enter their label in the textbox</comment>
+  </data>
   <data name="addPicture.Text" xml:space="preserve">
     <value>Add Picture</value>
     <comment>Prompt user to load picture into application </comment>
   </data>
+  <data name="addPictureLabel.Text" xml:space="preserve">
+    <value>Give your picture a label</value>
+    <comment>Tell user to add a label to describe the picture they are adding</comment>
+  </data>
   <data name="cancelButtonContent.Content" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="discardNewPictureButton.Content" xml:space="preserve">
+    <value>Discard</value>
+    <comment>Prompt user to reject the new picture </comment>
   </data>
   <data name="edit.Text" xml:space="preserve">
     <value>Edit Disabled</value>
@@ -136,12 +148,28 @@
     <value>Edit Enabled</value>
     <comment>Tell user that edit mode is activated</comment>
   </data>
+  <data name="ImageDetailsNoLabelValidation" xml:space="preserve">
+    <value>You must give the picture a label</value>
+    <comment>Tell user the picture must have a label</comment>
+  </data>
+  <data name="ImageDetailsTextValidation" xml:space="preserve">
+    <value>Label must be 20 characters or less</value>
+    <comment>Tell user the label can habe no more than 20 characters</comment>
+  </data>
+  <data name="ImageDetailsTitle.Text" xml:space="preserve">
+    <value>Add New Image</value>
+    <comment>Title of page that allows a new picture to be added to application</comment>
+  </data>
   <data name="okButtonContent.Content" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="PinCodeMessage.Text" xml:space="preserve">
     <value>Enter Pin Code</value>
     <comment>Prompt user to enter their pin code</comment>
+  </data>
+  <data name="saveNewPictureButton.Content" xml:space="preserve">
+    <value>Save</value>
+    <comment>Prompt user to save their picture to the application</comment>
   </data>
   <data name="settings.Text" xml:space="preserve">
     <value>Settings</value>
