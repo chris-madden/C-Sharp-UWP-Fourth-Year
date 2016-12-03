@@ -11,7 +11,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <StackPanel HorizontalAlignment="Center" Margin="5">
+    <StackPanel HorizontalAlignment="Center" Margin="5" Background="White">
 
         <!--  Adpated from https://github.com/Windows-Readiness/AbsoluteBeginnersWin10/blob/master/UWP-037/UWP-037/SimpleVisualStateTriggerExample/SimpleVisualStateTriggerExample/MainPage.xaml -->
         <VisualStateManager.VisualStateGroups>

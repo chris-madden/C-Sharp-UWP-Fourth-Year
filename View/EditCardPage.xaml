@@ -22,8 +22,10 @@
                     </VisualState.StateTriggers>
                     
                     <VisualState.Setters>
-                        <Setter Target="SelectedImage.Height" Value="200" />
-                        <Setter Target="SelectedImage.Width" Value="200" />
+                        <Setter Target="SelectedImage.Height" Value="150" />
+                        <Setter Target="SelectedImage.Width" Value="150" />
+                        <Setter Target="EditPageTitle.FontSize" Value="15" />
+                        <Setter Target="Image_Label.FontSize" Value="12" />
                     </VisualState.Setters>
                     
                 </VisualState>
@@ -36,8 +38,10 @@
                     </VisualState.StateTriggers>
                     
                     <VisualState.Setters>
-                        <Setter Target="SelectedImage.Height" Value="250" />
-                        <Setter Target="SelectedImage.Width" Value="250" />
+                        <Setter Target="SelectedImage.Height" Value="200" />
+                        <Setter Target="SelectedImage.Width" Value="200" />
+                        <Setter Target="EditPageTitle.FontSize" Value="20" />
+                        <Setter Target="Image_Label.FontSize" Value="15" />
                     </VisualState.Setters>
                     
                 </VisualState>
@@ -50,8 +54,10 @@
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
-                        <Setter Target="SelectedImage.Height" Value="300" />
-                        <Setter Target="SelectedImage.Width" Value="300" />
+                        <Setter Target="SelectedImage.Height" Value="250" />
+                        <Setter Target="SelectedImage.Width" Value="250" />
+                        <Setter Target="EditPageTitle.FontSize" Value="25" />
+                        <Setter Target="Image_Label.FontSize" Value="20" />
                     </VisualState.Setters>
 
                 </VisualState>
@@ -60,10 +66,9 @@
             
         </VisualStateManager.VisualStateGroups>
 
-
         <Grid.RowDefinitions>
 
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
 
         </Grid.RowDefinitions>
@@ -74,12 +79,24 @@
                         VerticalAlignment="Center"
                         Grid.Row="0">
 
-                <!--  Image that is carried over from the main page  -->
+            <StackPanel>
+                
+                <!--  Textblock displays Title  -->
+                <TextBlock  Name="EditPageTitle" 
+                            x:Uid="EditPageTitle"
+                            HorizontalAlignment="Center"                   
+                            Text=""
+                            Margin="5"
+                            FontSize="25"/>
+                
+            </StackPanel>
+                
+            <!--  Image that is carried over from the main page  -->
                 <Image Name="SelectedImage" 
                        Source="UpdateImage"
                        Height="150" 
                        Width="150"
-                       Margin="10"
+                       Margin="5"
                        Stretch="Fill"
                        HorizontalAlignment="Stretch"
                        VerticalAlignment="Stretch"/>
@@ -87,7 +104,7 @@
                 <!--  Textblock that holds the current label for the image  -->
                 <TextBlock Name="Image_Label" 
                            HorizontalAlignment="Center"
-                           Text="Label will go here"
+                           Text=""
                            FontSize="20"
                            Margin="5"/>
 
@@ -101,44 +118,51 @@
 
             <!--  Textbox for changing the current label of picture  -->
             <TextBox x:Name="Label"
-                         Height="20"
-                         Width="210"
-                         HorizontalAlignment="Center"
-                         PlaceholderText="     Update Label Name"
-                         Text="" 
-                         Margin="5"/>
+                     x:Uid="updateLabelPlaceholder"
+                     Height="20"
+                     Width="210"
+                     HorizontalAlignment="Center"
+                     PlaceholderText=""
+                     Text="" 
+                     Margin="3"/>
 
             <!--  Stackpanel to house the edit buttons  -->
             <StackPanel  Orientation="Horizontal"
                          HorizontalAlignment="Center">
 
                 <Button x:Name="DeletePicture"
-                            Height="30"
-                            Width="100"
-                            Content="Delete" 
-                            Background="Red"
-                            Foreground="White"
-                            Click="DeletePicture_Click"
-                            Margin="5"/>
+                        x:Uid="deletePicureButton"
+                        Height="30"
+                        Width="100"
+                        Content="" 
+                        Background="Red"
+                        Foreground="White"
+                        Click="DeletePicture_Click"
+                        Margin="3"
+                        FontSize="13"/>
 
                 <Button x:Name="Update"
-                            Height="30"
-                            Width="100"
-                            Content="Update" 
-                            Foreground="White"
-                            Background="Green"
-                            Click="Update_Click"
-                            Margin="5"/>
+                        x:Uid="updateLabelButton"
+                        Height="30"
+                        Width="100"
+                        Content="" 
+                        Foreground="White"
+                        Background="Green"
+                        Click="Update_Click"
+                        Margin="3"
+                        FontSize="13"/>
 
             </StackPanel>
 
             <!--  Return to main page without making changes -->
             <Button x:Name="ReturnToMainPage"
+                    x:Uid="returnWithoutChangesButton"
                     HorizontalAlignment="Center"
                     Width="210"
                     Height="30"
-                    Margin="5"
-                    Content="Return Without Changes"
+                    Margin="3"
+                    Content=""
+                    FontSize="13"
                     Foreground="White"
                     Background="Blue"
                     Click="ReturnToMainPage_Click"/> 

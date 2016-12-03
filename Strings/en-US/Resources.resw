@@ -136,6 +136,9 @@
     <value>Change Sentence Size</value>
     <comment>Tell user that the size of the sentences built can be changed here</comment>
   </data>
+  <data name="deletePicureButton.Content" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="discardNewPictureButton.Content" xml:space="preserve">
     <value>Discard</value>
     <comment>Prompt user to reject the new picture </comment>
@@ -151,6 +154,10 @@
   <data name="editEnabled" xml:space="preserve">
     <value>Edit Enabled</value>
     <comment>Tell user that edit mode is activated</comment>
+  </data>
+  <data name="EditPageTitle.Text" xml:space="preserve">
+    <value>Edit Page</value>
+    <comment>Title of page that allows a new picture to be added to application</comment>
   </data>
   <data name="ImageDetailsNoLabelValidation" xml:space="preserve">
     <value>You must give the picture a label</value>
@@ -181,6 +188,9 @@
   </data>
   <data name="returnButton.Content" xml:space="preserve">
     <value>Return</value>
+  </data>
+  <data name="returnWithoutChangesButton.Content" xml:space="preserve">
+    <value>Reurn without changes</value>
   </data>
   <data name="saveNewPictureButton.Content" xml:space="preserve">
     <value>Save</value>
@@ -225,6 +235,13 @@
   <data name="takePhoto.Text" xml:space="preserve">
     <value>Take Photo</value>
     <comment>Prompt user to add photo be taking a picture </comment>
+  </data>
+  <data name="updateLabelButton.Content" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="updateLabelPlaceholder.PlaceholderText" xml:space="preserve">
+    <value>Update Label Name</value>
+    <comment>Prompt user to enter a name for the picture</comment>
   </data>
   <data name="updatePinButton.Content" xml:space="preserve">
     <value>Update</value>
