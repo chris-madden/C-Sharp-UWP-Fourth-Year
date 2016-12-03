@@ -70,32 +70,36 @@
 
             <!--  Textblock displays Title  -->
             <TextBlock  Name="PageTitle" 
+                        x:Uid="SettingsPageTitle"
                         HorizontalAlignment="Center"
-                        Text="Settings"
+                        Text=""
                         FontSize="25"
                         Margin="5, 0, 5, 15"/>
 
             <!--  Textblock displays the setting title  -->
             <TextBlock  Name="ComBarItems" 
+                        x:Uid="changeSentenceSize"
                         HorizontalAlignment="Center"
-                        Text="Change Sentence Size"
+                        Text=""
                         FontSize="16"
                         Margin="5"/>
 
             <!--  Textbox for changing the sentence size  -->
             <TextBox x:Name="SentenceSizeTextBox"
+                     x:Uid="sentenceSizePlaceholder"
                      Height="20"
                      Width="100"
                      HorizontalAlignment="Center"
-                     PlaceholderText="   Number"
+                     PlaceholderText=""
                      Text="" 
                      Margin="5"/>
 
             <!-- Button to confirm sentence size change -->
             <Button x:Name="UpdateSize"
+                    x:Uid="updateSentenceSizeButton"
                     Height="26"
                     Width="100"
-                    Content="Update" 
+                    Content="" 
                     FontSize="11"
                     Foreground="White"
                     Background="Green"
@@ -121,18 +125,20 @@
 
             <!--  Textblock displays the setting title  -->
             <TextBlock  Name="PinCodeTextblock" 
+                        x:Uid="pinCodeLabel"
                         HorizontalAlignment="Center"
-                        Text="Change Pin Code"
+                        Text=""
                         FontSize="16"
                         Margin="5, 15, 5, 5"/>
 
             <!--  Textbox for changing the current label of picture  -->
             <TextBox x:Name="UpdatePinTextBox"
-                         Height="20"
-                         Width="100"
-                         HorizontalAlignment="Center"
-                         PlaceholderText="   New Pin"
-                         Margin="5"/>
+                     x:Uid="picCodePlaceholder"
+                     Height="20"
+                     Width="100"
+                     HorizontalAlignment="Center"
+                     PlaceholderText=""
+                     Margin="5"/>
 
             <!--  Stackpanel to house buttons  -->
             <StackPanel  Orientation="Horizontal"
@@ -140,14 +146,15 @@
 
                 <!--  Button to update pin code  -->
                 <Button x:Name="UpdatePin"
-                            Height="26"
-                            Width="100"
-                            Content="Update" 
-                            Foreground="White"
-                            Background="Green"
-                            FontSize="11"
-                            Click="UpdatePin_Click"
-                            Margin="5"/>
+                        x:Uid="updatePinButton"
+                        Height="26"
+                        Width="100"
+                        Content="" 
+                        Foreground="White"
+                        Background="Green"
+                        FontSize="11"
+                        Click="UpdatePin_Click"
+                        Margin="5"/>
 
             </StackPanel>
 
@@ -161,11 +168,12 @@
 
             <!--  Return to main page  -->
             <Button x:Name="ReturnToMainPage"
+                    x:Uid="returnButton"
                     HorizontalAlignment="Center"
                     Width="100"
                     Height="26"
                     Margin="2"
-                    Content="Return"
+                    Content=""
                     Foreground="White"
                     Background="Blue"
                     FontSize="11"

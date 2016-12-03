@@ -132,6 +132,10 @@
   <data name="cancelButtonContent.Content" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="changeSentenceSize.Text" xml:space="preserve">
+    <value>Change Sentence Size</value>
+    <comment>Tell user that the size of the sentences built can be changed here</comment>
+  </data>
   <data name="discardNewPictureButton.Content" xml:space="preserve">
     <value>Discard</value>
     <comment>Prompt user to reject the new picture </comment>
@@ -163,21 +167,70 @@
   <data name="okButtonContent.Content" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="picCodePlaceholder.PlaceholderText" xml:space="preserve">
+    <value>New Pin</value>
+    <comment>Prompt user to enter a new pin code</comment>
+  </data>
+  <data name="pinCodeLabel.Text" xml:space="preserve">
+    <value>Change Pin Code</value>
+    <comment>Prompt user to use textbox to change the pin code</comment>
+  </data>
   <data name="PinCodeMessage.Text" xml:space="preserve">
     <value>Enter Pin Code</value>
     <comment>Prompt user to enter their pin code</comment>
+  </data>
+  <data name="returnButton.Content" xml:space="preserve">
+    <value>Return</value>
   </data>
   <data name="saveNewPictureButton.Content" xml:space="preserve">
     <value>Save</value>
     <comment>Prompt user to save their picture to the application</comment>
   </data>
+  <data name="sentenceSizePlaceholder.PlaceholderText" xml:space="preserve">
+    <value>Number</value>
+    <comment>Prompt user to put a number in the textbox</comment>
+  </data>
   <data name="settings.Text" xml:space="preserve">
     <value>Settings</value>
     <comment>Tell user this button allows access to the application settings </comment>
   </data>
+  <data name="SettingsNoLettersAllowed" xml:space="preserve">
+    <value>Pin can only contain numbers</value>
+    <comment>Tell user only numbers will be accepted</comment>
+  </data>
+  <data name="SettingsNumberSuccess" xml:space="preserve">
+    <value>Number updated to</value>
+    <comment>Tell user that the number was updated</comment>
+  </data>
+  <data name="SettingsNumberWarning" xml:space="preserve">
+    <value>You must enter a number</value>
+    <comment>Tell user that only a number will be accepted</comment>
+  </data>
+  <data name="SettingsPageTitle.Text" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Title of page that allows a new picture to be added to application</comment>
+  </data>
+  <data name="SettingsPinChangeSuccess" xml:space="preserve">
+    <value>Pin changed to</value>
+    <comment>Tell user the pin code was updated</comment>
+  </data>
+  <data name="SettingsPinHasFourNumbers" xml:space="preserve">
+    <value>Pin must be 4 exactly 4 numbers</value>
+    <comment>Tell usesr that only 4 numbers will be accepted</comment>
+  </data>
+  <data name="SettingsSizeWarning" xml:space="preserve">
+    <value>Must be number between 2 and 4</value>
+    <comment>Tell user a number of 2, 3 or 4 must be entered</comment>
+  </data>
   <data name="takePhoto.Text" xml:space="preserve">
     <value>Take Photo</value>
     <comment>Prompt user to add photo be taking a picture </comment>
+  </data>
+  <data name="updatePinButton.Content" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="updateSentenceSizeButton.Content" xml:space="preserve">
+    <value>Update</value>
   </data>
   <data name="webBrowser.Text" xml:space="preserve">
     <value>Web Browser</value>
