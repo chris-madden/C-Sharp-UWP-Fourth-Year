@@ -295,11 +295,18 @@ namespace AutismCommunicationApp
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
 
+            // Get access to resources for localisation
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+
+            // Retrieve reqired strings
+            var editEnabledLocalisation = loader.GetString("editEnabled");
+            var editDisabledLocalisation = loader.GetString("editDisabled");
+
             // Switch the value of editEnabled to the opposite of what is currently is 
             editEnabled = (editEnabled == true) ? false : true;
 
             // Change the content of the edit textblock to show if it's enabled or disabled
-            EditTextBlock.Text = (editEnabled == true) ? "Edit Enabled" : "Edit Disabled";
+            EditTextBlock.Text = (editEnabled == true) ? editEnabledLocalisation : editDisabledLocalisation;
 
         }// End Edit_Click
 

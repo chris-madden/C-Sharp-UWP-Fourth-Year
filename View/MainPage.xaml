@@ -21,9 +21,11 @@
                     Height="120"
                     Orientation="Vertical"
                     Visibility="Collapsed">
-
+    
+            <!--  Prompt user to enter their pin code  -->
             <TextBlock Name="PinCodeLabel"
-                       Text="Enter Pin Code" 
+                       x:Uid="PinCodeMessage"
+                       Text="" 
                        FontSize="12" 
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
@@ -32,7 +34,7 @@
 
             <!--  This text block shows the pin code so it isn't forgotten  -->
             <TextBlock Name="PinCodeTextBlock"
-                       Text="Enter Pin Code" 
+                       Text="" 
                        FontSize="10" 
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
@@ -47,24 +49,28 @@
                      Margin="5"
                      Text=""/>
 
-            <!--  Stackpanel for Pin Code buttons-->
+            <!--  Stackpanel for Pin Code buttons  -->
             <StackPanel Name="buttonsStackPanel"
                         Orientation="Horizontal">
-
+                
+                <!--  Button to enter pin code  -->
                 <Button Name="OKButton"
-                        Width="40"
+                        x:Uid="okButtonContent"
+                        Width="44"
                         Height="20"
-                        Content="OK"
+                        Content=""
                         Background="Green"
                         Foreground="White"
                         FontSize="7"
-                        Margin="18, 0, 5, 5"
+                        Margin="14, 0, 5, 5"
                         Click="OKButton_Click"/>
-
+                
+                <!--  Button to close pin code stackpanel and cancel operation  -->
                 <Button Name="cancelButton"
-                        Width="40"
+                        x:Uid="cancelButtonContent"
+                        Width="44"
                         Height="20"
-                        Content="Cancel"
+                        Content=""
                         Background="red"
                         Foreground="White"
                         FontSize="7"
@@ -95,6 +101,7 @@
                     <!--  Add Picture From Device Button  -->
                     <StackPanel Orientation="Horizontal">
                         
+                        <!--  Button to open file explorer and add picture from device  -->
                         <Button x:Name="MenuButton1" 
                                 FontFamily="Segoe MDL2 Assets" 
                                 Content="&#xE710;"
@@ -103,13 +110,15 @@
                                 Background="Transparent" 
                                 Click="MenuButton1_Click"/>
                         
-                        <TextBlock Text="Add Picture" FontSize="16" VerticalAlignment="Center" />
+                        <!--  Label to tell user what operation button performs  -->
+                        <TextBlock x:Uid="addPicture" Text="" FontSize="16" VerticalAlignment="Center" />
                         
                     </StackPanel>
                     
                     <!--  Access the web browser -->
                     <StackPanel Orientation="Horizontal">
                         
+                        <!--  Button to open the web browser  -->
                         <Button x:Name="WebBrowser"
                                 FontFamily="Segoe MDL2 Assets"
                                 Content="&#xE909;"
@@ -118,13 +127,15 @@
                                 Background="Transparent"
                                 Click="WebBrowser_Click"/>
                         
-                        <TextBlock Text="Web Browser" FontSize="16" VerticalAlignment="Center" />
+                        <!--  Label to tell userwhat operation button performs  -->
+                        <TextBlock x:Uid="webBrowser" Text="Web Browser" FontSize="16" VerticalAlignment="Center" />
                         
                     </StackPanel>
 
                     <!--  Take a photo -->
                     <StackPanel Orientation="Horizontal">
 
+                        <!--  Button to open camera  -->
                         <Button x:Name="Camera"
                                 FontFamily="Segoe MDL2 Assets"
                                 Content="&#xE722;"
@@ -133,13 +144,15 @@
                                 Background="Transparent"
                                 Click="Camera_Click"/>
 
-                        <TextBlock Text="Take Photo" FontSize="16" VerticalAlignment="Center" />
+                        <!--  Label to tell userwhat operation button performs  -->
+                        <TextBlock x:Uid="takePhoto" Text="" FontSize="16" VerticalAlignment="Center" />
 
                     </StackPanel>
 
                     <!--  Edit Button  -->
                     <StackPanel Orientation="Horizontal">
 
+                        <!--  Button to activate/deactivate label and picture editing  -->
                         <Button x:Name="Edit" 
                                 FontFamily="Segoe MDL2 Assets" 
                                 Content="&#xE70F;"
@@ -148,8 +161,8 @@
                                 Background="Transparent"
                                 Click="Edit_Click"/>
 
-                        <!--  Need visual state manager to change this on click -->
-                        <TextBlock Name="EditTextBlock" Text="Edit Disabled" FontSize="16" VerticalAlignment="Center" />
+                        <!--  Label to tell userwhat operation button performs  -->
+                        <TextBlock x:Uid="edit" Name="EditTextBlock" Text="" FontSize="16" VerticalAlignment="Center" />
 
                     </StackPanel>
 
@@ -165,7 +178,7 @@
                                 Click="Settings_Click"/>
 
                         <!--  Need visual state manager to change this on click -->
-                        <TextBlock Name="SettingsTextBlock" Text="Settings" FontSize="16" VerticalAlignment="Center" />
+                        <TextBlock x:Uid="settings" Name="SettingsTextBlock" Text="" FontSize="16" VerticalAlignment="Center" />
 
                     </StackPanel>
 
