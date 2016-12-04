@@ -1,8 +1,11 @@
 #Communication App for Children with Autism
 
 **Student Name:** Christy Madden 
+
 **Student ID:** G00214065
+
 **Module:** Mobile Applications Development 3
+
 **Lecturer:** Dr Martin Kenirons
 
 # Introduction
@@ -26,6 +29,13 @@ If you want to run the application locally on your own device you will first nee
 Once you meet that criteria, you can clone my repository or download the zip file from this [link](https://github.com/chris2020/C-Sharp-UWP-Fourth-Year). After that you can open Visual Studio and select File-> Open-> Project/Solution. Then you can navigate to the folder you cloned or downloaded and select the file named AutismCommunicationApp, this is a _.csproj_ file and will open the app in Visual Studio. From there you can choose to run the open using _Local Machine_ or deploy it to a Windows 10 phone or tablet.
 
 # Features 
+
+### Adding Pictures To App
+This is an important point to highlight as it's the drving force of the whole application. When the application is run on a new device for the first time it has no pictures but without pictures the app serves no purpose. For this reason the app provides **_3_** different ways to save pictures.
+
+1. Add them from the device. This method opens the file explorer and lets you bring in any pictures that are already currently stored on the device.
+2. Open the web browser. Users can get the web browser to open which will allow the them to search and download pictures they want. 
+3. Use the devices camera. The last method is accessing the devices camera and taking a photo. Once the photo has been accepted, the user is brought back to the application where they can decide to save it or not.
 
 ### MVVM Architecture
 
@@ -209,9 +219,3 @@ The visual state manager is used on all the pages. It has three states that it r
 
 ```
 
-### Adding Pictures To App
-This is an important point to highlight as it's the drving force of the whole application. When the application is run on a new device for the first time it has no pictures but without pictures the app serves no purpose. For this reason the app provides **_3_** different ways to save pictures.
-
-1. Add them from the device. This method opens the file explorer and lets you bring in any pictures that are already currently stored on the device.
-2. Open the web browser. Users can get the web browser to open which will allow the them to search and download pictures they want. 
-3. Use the devices camera. The last method is accessing the devices camera and taking a photo. Once the photo has been accepted, the user is brought back to the application where they can decide to save it or not.
