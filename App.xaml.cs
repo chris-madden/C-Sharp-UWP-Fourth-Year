@@ -21,17 +21,10 @@ namespace AutismCommunicationApp
         public static int pinCodeLocally;
         public static int comBarSize;
 
-       /* Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-        Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
-        */
-      
-        // This MobileServiceClient has been configured to communicate with the Azure Mobile Service and
-        // Azure Gateway using the application key. You're all set to start working with your Mobile Service!
-
         // **********  CLOUD ADDRESS FOR SAVING DATA =  https://autismcommunicationapp.azurewebsites.net**********
-        public static MobileServiceClient MobileService = new MobileServiceClient(
+        /*public static MobileServiceClient MobileService = new MobileServiceClient(
             "https://autismcommunicationapp.azurewebsites.net"
-        );
+        );*/
         
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -114,7 +107,7 @@ namespace AutismCommunicationApp
                 localSettings.Values["sentenceSize"] = "2";
             }
 
-            Object test = localSettings.Values["sentenceSize"];
+            //Object test = localSettings.Values["sentenceSize"];
 
         }// End OnLaunched
 
