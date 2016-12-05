@@ -1,4 +1,4 @@
-<img src ="https://github.com/chris2020/C-Sharp-UWP-Fourth-Year/blob/master/Readme_Images/communicating.png"/>
+<div align="center"><img src ="https://github.com/chris2020/C-Sharp-UWP-Fourth-Year/blob/master/Readme_Images/communicating.png"/></div>
 
 #Communication App for Children with Autism
 
