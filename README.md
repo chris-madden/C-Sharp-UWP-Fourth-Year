@@ -27,6 +27,10 @@ If you want to run the application locally on your own device you will first nee
 
 Once you meet that criteria, you can clone my repository or download the zip file from this [link](https://github.com/chris2020/C-Sharp-UWP-Fourth-Year). After that you can open Visual Studio and select File-> Open-> Project/Solution. Then you can navigate to the folder you cloned or downloaded and select the file named AutismCommunicationApp, this is a _.csproj_ file and will open the app in Visual Studio. From there you can choose to run the open using _Local Machine_ or deploy it to a Windows 10 phone or tablet.
 
+### Where can I find more details?
+
+I strongly encourage you to check out the **_Wiki_** for this application (and not just because so much time went in to it!). In it you will find a lot more information about the application, from how to use it (there are some extra features that you might not figure out straight away without reading about them) to more details about the development of the application. In it you can find out how the application was researched, developed and tested as well as some nice pictures. To find the Wiki click on this [link](https://github.com/chris2020/C-Sharp-UWP-Fourth-Year/wiki)
+
 # Features 
 
 ### Adding Pictures To App
