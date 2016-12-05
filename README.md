@@ -203,7 +203,7 @@ The app uses _templates_ to combine the label with the picture. Using this metho
  **_NOTE_**<br />
  This code is from the CardTemplate.xaml file
 
- ### Visual State Manager
+### Visual State Manager
 The visual state manager is used on all the pages. It has three states that it reacts to, a phone state, a tablet state and a desktop state. It's main fuction is to change the size of the images and the label font size as if the pictures are too big, the screen can only display a few at a time making the app inefficient. By making the images and font smaller on smaller screens it means more pictures can be displayed and this leads to a better user experience with less scrolling or swiping needed. Code below shows one of the states.
 
 ```XAML
