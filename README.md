@@ -27,6 +27,9 @@ If you want to run the application locally on your own device you will first nee
 
 Once you meet that criteria, you can clone my repository or download the zip file from this [link](https://github.com/chris2020/C-Sharp-UWP-Fourth-Year). After that you can open Visual Studio and select File-> Open-> Project/Solution. Then you can navigate to the folder you cloned or downloaded and select the file named AutismCommunicationApp, this is a _.csproj_ file and will open the app in Visual Studio. From there you can choose to run the open using _Local Machine_ or deploy it to a Windows 10 phone or tablet.
 
+**Note**<br />
+Just a note about some files you don't need. There are **2 folders** that contain images that are used for the README file and Wiki. You can delete this folders if you wish as there are not part of the project itself. The folders are called *Readme_Images* and *ResearchImages*.
+
 ### Where can I find more details?
 
 I strongly encourage you to check out the **_Wiki_** for this application (and not just because so much time went in to it!). In it you will find a lot more information about the application, from how to use it (there are some extra features that you might not figure out straight away without reading about them) to more details about the development of the application. In it you can find out how the application was researched, developed and tested as well as some nice pictures. To find the Wiki click on this [link](https://github.com/chris2020/C-Sharp-UWP-Fourth-Year/wiki)
@@ -53,7 +56,7 @@ This app was designed using Microsofts _MVVM architecture_ which allows for _sep
 |EditCardPage.xaml| This page enables users to update or delete pictures that are currently saved in the application |
 |UserSettingsPage.xaml| This page lets users change some of the applications settings such as the pin code and the number of pictures allowed in a sentence |
 
-**_NOTE_** <br />
+**_NOTE_**<br />
 All these xaml pages have code behind them stored in C# classes. These classes contain functionality such as navigating pages, reacting to button clicks and validation.
 
 |ViewModel|Description|
@@ -70,7 +73,7 @@ All these xaml pages have code behind them stored in C# classes. These classes c
 
 The application stores picture data in the lightweight SQLite database. It is stored locally in the app within the _localstorage_ folder. It is a _code first_ database meaning it was generated from classes within the app. It uses the Picture.cs file to build a table and proves a benefit of using the .NET core framework.  
 
-**_NOTE_** <br />
+**_NOTE_**<br />
 The Entity Framework Core is used for this and _Linq_ is also used for database operations in the app. An example of one of the uses of Linq can be seen in the code snippet below.
 
 ```C#
@@ -97,7 +100,7 @@ if (storageFile != null)
 
 ```
 
-**_NOTE_** <br />
+**_NOTE_**<br />
 For more information about backing up images click this [link](https://blogs.windows.com/buildingapps/2016/05/10/getting-started-storing-app-data-locally/#Oem4oVmKcGaopeS3.97). 
  
 ### Local Settings
@@ -197,7 +200,7 @@ The app uses _templates_ to combine the label with the picture. Using this metho
 
 ```
 
- **_NOTE_** <br />
+ **_NOTE_**<br />
  This code is from the CardTemplate.xaml file
 
  ### Visual State Manager
