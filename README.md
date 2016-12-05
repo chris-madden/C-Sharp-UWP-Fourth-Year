@@ -49,7 +49,7 @@ This app was designed using Microsofts _MVVM architecture_ which allows for _sep
 |EditCardPage.xaml| This page enables users to update or delete pictures that are currently saved in the application |
 |UserSettingsPage.xaml| This page lets users change some of the applications settings such as the pin code and the number of pictures allowed in a sentence |
 
-**_NOTE_**
+**_NOTE_** <br />
 All these xaml pages have code behind them stored in C# classes. These classes contain functionality such as navigating pages, reacting to button clicks and validation.
 
 |ViewModel|Description|
@@ -66,7 +66,7 @@ All these xaml pages have code behind them stored in C# classes. These classes c
 
 The application stores picture data in the lightweight SQLite database. It is stored locally in the app within the _localstorage_ folder. It is a _code first_ database meaning it was generated from classes within the app. It uses the Picture.cs file to build a table and proves a benefit of using the .NET core framework.  
 
-**_NOTE_**
+**_NOTE_** <br />
 The Entity Framework Core is used for this and _Linq_ is also used for database operations in the app. An example of one of the uses of Linq can be seen in the code snippet below.
 
 ```C#
@@ -93,7 +93,7 @@ if (storageFile != null)
 
 ```
 
-**_NOTE_**
+**_NOTE_** <br />
 For more information about backing up images click this [link](https://blogs.windows.com/buildingapps/2016/05/10/getting-started-storing-app-data-locally/#Oem4oVmKcGaopeS3.97). 
  
 ### Local Settings
@@ -193,7 +193,7 @@ The app uses _templates_ to combine the label with the picture. Using this metho
 
 ```
 
- **_NOTE_**
+ **_NOTE_** <br />
  This code is from the CardTemplate.xaml file
 
  ### Visual State Manager
