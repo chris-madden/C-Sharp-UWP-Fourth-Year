@@ -1,12 +1,9 @@
 #Communication App for Children with Autism
 
-**Student Name:** Christy Madden 
-
-**Student ID:** G00214065
-
-**Module:** Mobile Applications Development 3
-
-**Lecturer:** Dr Martin Kenirons
+**Student Name:** Christy Madden <br />
+**Student ID:** G00214065 <br />
+**Module:** Mobile Applications Development 3 <br />
+**Lecturer:** Dr Martin Kenirons <br />
 
 # Introduction
 

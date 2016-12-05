@@ -26,9 +26,9 @@
                     </VisualState.StateTriggers>
                     
                     <VisualState.Setters>
-                        <Setter Target="CardPicture.Height" Value="100" />
-                        <Setter Target="CardPicture.Width" Value="100" />
-                        <Setter Target="CardText.FontSize" Value="10"/>
+                        <Setter Target="CardPicture.Height" Value="70" />
+                        <Setter Target="CardPicture.Width" Value="70" />
+                        <Setter Target="CardText.FontSize" Value="8"/>
                     </VisualState.Setters>
                     
                 </VisualState>
