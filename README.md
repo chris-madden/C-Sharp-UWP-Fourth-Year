@@ -1,3 +1,5 @@
+<img src ="https://github.com/chris2020/C-Sharp-UWP-Fourth-Year/Readme_Images/communicating.png"/>
+
 #Communication App for Children with Autism
 
 **Student Name:** Christy Madden <br />
