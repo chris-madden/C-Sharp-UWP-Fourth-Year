@@ -1,6 +1,6 @@
 <div align="center"><img src ="https://github.com/chris2020/C-Sharp-UWP-Fourth-Year/blob/master/Readme_Images/communicating.png"/></div>
 
-#Communication App for Children with Autism
+# Communication App for Children with Autism
 
 **Student Name:** Christy Madden <br />
 **Student ID:** G00214065 <br />
@@ -11,7 +11,7 @@
 
 ### What is the application?
 
-This is a communication app for non verbal children. It's purpose is to be used as a tool to allow children to express what they want by building sentences from pictures. It takes after the well known Picture Exchange Communication System (PECS) which was designed for children with Austism Specturm Disorder. For further reading on PECS click on this link [click on this link](http://www.pecsusa.com/pecs.php).
+This is a communication app for non verbal children. Its purpose is to be used as a tool to allow children to express what they want by building sentences from pictures. It takes after the well known Picture Exchange Communication System (PECS) which was designed for children with Austism Specturm Disorder. For further reading on PECS click on this link [click on this link](http://www.pecsusa.com/pecs.php).
 
 ### What does the appication run on?
 
