@@ -66,7 +66,7 @@ All these xaml pages have code behind them stored in C# classes. These classes c
 
 |DataModel|Description|
 |---|---|
-|Picture.cs| This file contains provides the model for the pictures. It has the attributes of a picture such as it's ID, storage path and label |
+|Picture.cs| This file provides the model for the pictures. It has the attributes of a picture such as it's ID, storage path and label |
 |PictureContext.cs|This file has configuration settings for the database|
 
 ### SQLite Database
